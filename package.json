@@ -16,5 +16,9 @@
     "discord.js": "^13.8.1",
     "memer-api": "^4.0.1",
     "node-fetch": "^3.2.6"
+  },
+  "devDependencies": {
+    "ts-node": "^10.8.2",
+    "typescript": "^4.7.4"
   }
 }
