@@ -7,7 +7,7 @@ const links = require("./../config/links.json");
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('help')
-		.setDescription('Replies With Full Command List'),
+		.setDescription('Full Command List 📜'),
 	async execute(interaction, client) {
 
 const row = new MessageActionRow()
@@ -66,14 +66,14 @@ const embed2 = new MessageEmbed()
 const embed3 = new MessageEmbed()
     .setColor(embeds.color)
   .setTitle(`${emojis.images} Images Commands`)
-    .setDescription(`Added Soon`)
+    .setDescription(`/affect, /aborted, /brazzers, /cancer, /corporate`)
   .setFooter({text: `${embeds.footer}`})
     .setTimestamp();
 
     const embed4 = new MessageEmbed()
     .setColor(embeds.color)
   .setTitle(`${emojis.meme} Memes Commands`)
-    .setDescription(`/meme`)
+    .setDescription(`/meme, /desi-meme`)
   .setFooter({text: `${embeds.footer}`})
     .setTimestamp();
 

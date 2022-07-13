@@ -7,11 +7,11 @@ const embeds = require("./../config/embed.json");
 
 module.exports = {
 	data: new SlashCommandBuilder()
-		.setName('meme')
-		.setDescription('😂 Funny Memes'),
+		.setName('desi-meme')
+		.setDescription('😂 Indian Memes'),
 	async execute(interaction, client) {
 
-  let data = await fetch ("http://meme-api.herokuapp.com/gimme/memes").then(res => res.json())
+  let data = await fetch ("http://meme-api.herokuapp.com/gimme/indiameme").then(res => res.json())
 
 const embed = new MessageEmbed()
   .setColor(embeds.color)

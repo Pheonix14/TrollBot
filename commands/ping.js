@@ -6,7 +6,7 @@ const embeds = require("./../config/embed.json");
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('ping')
-		.setDescription('Replies with Pong!'),
+		.setDescription('📶 Bot Latency'),
 	async execute(interaction, client) {
 
 const embed = new MessageEmbed()
