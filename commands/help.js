@@ -73,7 +73,7 @@ const embed3 = new MessageEmbed()
     const embed4 = new MessageEmbed()
     .setColor(embeds.color)
   .setTitle(`${emojis.meme} Memes Commands`)
-    .setDescription(`Added Soon`)
+    .setDescription(`/meme`)
   .setFooter({text: `${embeds.footer}`})
     .setTimestamp();
 
