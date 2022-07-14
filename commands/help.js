@@ -66,7 +66,7 @@ const embed2 = new MessageEmbed()
 const embed3 = new MessageEmbed()
     .setColor(embeds.color)
   .setTitle(`${emojis.images} Images Commands`)
-    .setDescription(`/affect, /aborted, /brazzers, /cancer, /corporate`)
+    .setDescription(`/affect, /aborted, /brazzers, /cancer, /corporate, /dab, /delete, /door, /egg, /failure, /fakenews, /hitler, /jail, /satan, /trash, /whodidthis, /ugly`)
   .setFooter({text: `${embeds.footer}`})
     .setTimestamp();
 
