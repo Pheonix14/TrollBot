@@ -7,21 +7,23 @@ const memer = new Meme(memerkey);
 
 module.exports = {
 	data: new SlashCommandBuilder()
-		.setName('aborted')
-		.setDescription("🧑‍🏫 aborted. Image Command")
+		.setName('bed')
+		.setDescription("🛏️ bed. Image Command")
 		.addUserOption(option => option.setName('user').setDescription('Give Me A User').setRequired(true)),
 	async execute(interaction) {
 		const user = interaction.options.getUser('user');
     
 const avatar = user.displayAvatarURL({ dynamic: true });
 
-memer.aborted(avatar)
+const avatar2 = interaction.user.displayAvatarURL({ dynamic: true });
+
+memer.bed(avatar, avatar2)
     .then(image => {
 
-    const attachment = new MessageAttachment(image, "aborted.png");
+    const attachment = new MessageAttachment(image, "bed.png");
       
 		return interaction.reply({files: [attachment] });
 })
 
 	},
-};
+}

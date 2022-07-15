@@ -70,7 +70,7 @@ const embed3 = new MessageEmbed()
     const embed4 = new MessageEmbed()
     .setColor(embeds.color)
   .setTitle(`${emojis.meme} Memes Commands`)
-    .setDescription(`/meme, /desi-meme`)
+    .setDescription(`/meme, /desi-meme, /abandon, /armor, /bed, /emergencymeeting, /facts, /godwhy`)
   .setFooter({text: `${embeds.footer}`});
 
   
