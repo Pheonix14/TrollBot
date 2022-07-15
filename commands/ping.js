@@ -15,8 +15,7 @@ const embed = new MessageEmbed()
 
 ${emojis.discord} Api Latency - ${interaction.client.ws.ping}ms`)
   
-.setFooter({text: `${embeds.footer}`})
-    .setTimestamp();
+.setFooter({text: `${embeds.footer}`});
     
 		return interaction.reply({embeds: [embed]});
 	},

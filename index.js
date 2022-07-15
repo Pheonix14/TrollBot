@@ -1,7 +1,7 @@
 const fs = require('node:fs');
 const path = require('node:path');
 const { Client, Collection, Intents } = require('discord.js');
-const { token } = require('./config/config.json');
+const { token, activitystatus, activitystatus2 } = require('./config/config.json');
 
 const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
 
@@ -48,5 +48,22 @@ client.on('interactionCreate', async interaction => {
 	}
 });
 
+client.on('ready', () => { 
+    setInterval(() => {
+
+        const statuses = [
+            `/help | ${client.guilds.cache.size} servers ${client.users.cache.size}`, 
+          `${activitystatus}`, 
+
+     `${activitystatus2}`
+        ]
+
+        const status = statuses[Math.floor(Math.random() * statuses.length)] 
+        client.user.setActivity(status, { type: "STREAMING" }) 
+    }, 
+
+            20000) 
+
+});
 
 client.login(token);

@@ -50,8 +50,7 @@ ${emojis.arrow} [Support](${links.support_server})
 
 ${emojis.arrow} [Invite Me](${links.invite})`)
  // .setImage(`${links.banner}`)
-.setFooter({text: `${embeds.footer}`})
-    .setTimestamp();
+.setFooter({text: `${embeds.footer}`});
 
 		 interaction.reply({embeds: [embed1], components: [row] });
 	
@@ -60,22 +59,19 @@ const embed2 = new MessageEmbed()
     .setColor(embeds.color)
   .setTitle(`${emojis.info} Info Commands`)
     .setDescription(`/ping, /help`)
-  .setFooter({text: `${embeds.footer}`})
-    .setTimestamp();
+  .setFooter({text: `${embeds.footer}`});
 
 const embed3 = new MessageEmbed()
     .setColor(embeds.color)
   .setTitle(`${emojis.images} Images Commands`)
     .setDescription(`/affect, /aborted, /brazzers, /cancer, /corporate, /dab, /delete, /door, /egg, /failure, /fakenews, /hitler, /jail, /satan, /trash, /whodidthis, /ugly`)
-  .setFooter({text: `${embeds.footer}`})
-    .setTimestamp();
+  .setFooter({text: `${embeds.footer}`});
 
     const embed4 = new MessageEmbed()
     .setColor(embeds.color)
   .setTitle(`${emojis.meme} Memes Commands`)
     .setDescription(`/meme, /desi-meme`)
-  .setFooter({text: `${embeds.footer}`})
-    .setTimestamp();
+  .setFooter({text: `${embeds.footer}`});
 
   
 

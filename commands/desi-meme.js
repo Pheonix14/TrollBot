@@ -18,8 +18,7 @@ const embed = new MessageEmbed()
   .setURL(`${data.postLink}`)
   .setTitle(`${data.title}`)
 .setImage(`${data.url}`)
-  .setFooter({text: `${embeds.footer}`})
-    .setTimestamp();
+  .setFooter({text: `${embeds.footer}`});
     
 		return interaction.reply({embeds: [embed]});
 	},

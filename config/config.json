@@ -1,6 +1,10 @@
 {
-	"clientId": "996428400497524736",
-	"guildId": "970639355607674931",
-	"token": "OTk2NDI4NDAwNDk3NTI0NzM2.Gjl10z.oPT9UxWmHD9otNsV0bp1mH-3fG87Z1WRf7QJHw",
-"memerkey": "vJvxXTQNMpi"
+"clientId": "996428400497524736",
+"guildId": "970639355607674931",
+"token": "OTk2NDI4NDAwNDk3NTI0NzM2.Gjl10z.oPT9UxWmHD9otNsV0bp1mH-3fG87Z1WRf7QJHw",
+"memerkey": "vJvxXTQNMpi",
+"mongodb": "",
+"activitystatus": "idk",
+"activitystatus2": "something",
+"developers": ["674145228063768587", "756508455837237358"]
 }
