@@ -66,4 +66,7 @@ client.on('ready', () => {
 
 });
 
+
+require('./database/connect.js')
+
 client.login(token);
