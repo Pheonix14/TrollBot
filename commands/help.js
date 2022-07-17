@@ -58,7 +58,7 @@ ${emojis.arrow} [Invite Me](${links.invite})`)
 const embed2 = new MessageEmbed()
     .setColor(embeds.color)
   .setTitle(`${emojis.info} Info Commands`)
-    .setDescription(`/ping, /help`)
+    .setDescription(`/ping, /help, /support, /invite, /botinfo, /updates`)
   .setFooter({text: `${embeds.footer}`});
 
 const embed3 = new MessageEmbed()
