@@ -52,7 +52,7 @@ client.on('ready', () => {
     setInterval(() => {
 
         const statuses = [
-            `/help | ${client.guilds.cache.size} servers ${client.users.cache.size}`, 
+            `/help | ${client.guilds.cache.size} Servers ${client.users.cache.size} Users`, 
           `${activitystatus}`, 
 
      `${activitystatus2}`

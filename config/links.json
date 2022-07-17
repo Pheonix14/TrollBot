@@ -1,5 +1,6 @@
 {
   "website": "https://trollbot.ml",
   "support_server": "https://discord.gg/dvY83mBKrz",
-  "invite": "https://discord.com/api/oauth2/authorize?client_id=996428400497524736&permissions=8&scope=bot%20applications.commands"
+  "invite": "https://discord.com/api/oauth2/authorize?client_id=996428400497524736&permissions=8&scope=bot%20applications.commands",
+  "support_server": "https://discord.gg/dvY83mBKrz"
 }
