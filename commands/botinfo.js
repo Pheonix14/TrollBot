@@ -25,7 +25,7 @@ module.exports = {
     let day = Math.floor(os.uptime() / 86400);
     let hour = Math.floor(os.uptime() / 3600) % 24;
     let minute = Math.floor(os.uptime() / 60) % 60;
-    
+    let second = Math.floor(os.uptime() / 1) % 60;
     
 
  const embed = new MessageEmbed()
@@ -52,7 +52,7 @@ ${emojis.discord} **API Latency** - ${(interaction.client.ws.ping)}ms
 
 ${emojis.bot} **Bot Uptime** - ${days}d ${hours}h ${minutes}m ${seconds}s
 
-${emojis.server} **Server Uptime** - ${day}d ${hour}h ${minute}m
+${emojis.server} **Server Uptime** - ${day}d ${hour}h ${minute}m ${second}s
 ㅤ`)
   .setFooter({text: `${embeds.footer}`});
 
