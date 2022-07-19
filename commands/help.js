@@ -39,17 +39,15 @@ const row = new MessageActionRow()
     
 const embed1 = new MessageEmbed()
   .setColor(embeds.color)
-  .setTitle(`**Select Your Option**`)
-.setDescription(`***Welcome To TrollBot***
-
-
+  .setTitle(`**Welcome To TrollBot**`)
+.setDescription(`Check The Menu And Select Your Option To See Commands List.
 
 ${emojis.arrow} [Website](${links.website})
 
 ${emojis.arrow} [Support](${links.support_server})
 
 ${emojis.arrow} [Invite Me](${links.invite})`)
- // .setImage(`${links.banner}`)
+ .setImage(`${links.banner}`)
 .setFooter({text: `${embeds.footer}`});
 
 		 interaction.reply({embeds: [embed1], components: [row] });
@@ -58,7 +56,7 @@ ${emojis.arrow} [Invite Me](${links.invite})`)
 const embed2 = new MessageEmbed()
     .setColor(embeds.color)
   .setTitle(`${emojis.info} Info Commands`)
-    .setDescription(`/ping, /help, /support, /invite, /botinfo, /updates`)
+    .setDescription(`/ping, /help, /support, /invite, /botinfo, /updates, /vote`)
   .setFooter({text: `${embeds.footer}`});
 
 const embed3 = new MessageEmbed()
@@ -70,7 +68,7 @@ const embed3 = new MessageEmbed()
     const embed4 = new MessageEmbed()
     .setColor(embeds.color)
   .setTitle(`${emojis.meme} Memes Commands`)
-    .setDescription(`/meme, /desi-meme, /abandon, /armor, /bed, /emergencymeeting, /facts, /godwhy, /humansgood, /note, /obama, /search, /savehumanity, /shit, /stonks, /comment, /tweet`)
+    .setDescription(`/meme, /abandon, /armor, /bed, /emergencymeeting, /facts, /godwhy, /humansgood, /note, /obama, /search, /savehumanity, /shit, /stonks, /comment, /tweet`)
   .setFooter({text: `${embeds.footer}`});
 
   

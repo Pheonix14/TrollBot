@@ -7,7 +7,7 @@ const links = require("./../config/links.json");
 module.exports = {
   data: new SlashCommandBuilder()
     .setName('invite')
-    .setDescription('Install/Invite Me On Your Server ➕'),
+    .setDescription('Invite Me On Your Server ➕'),
   async execute(interaction, client) {
 
     const row = new MessageActionRow()
@@ -21,8 +21,7 @@ module.exports = {
 
     const embed = new MessageEmbed()
       .setColor(embeds.color)
-      .setTitle(`TrollBot Invite`)
-      .setDescription(``)
+      .setDescription(`Click The Button Below To Invite TrollBot To Your Servers!`)
       .setFooter({ text: `${embeds.footer}` });
 
     return interaction.reply({ embeds: [embed], components: [row] });

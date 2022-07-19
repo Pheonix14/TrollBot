@@ -11,7 +11,7 @@ module.exports = {
 		.setDescription('😂 Funny Memes'),
 	async execute(interaction, client) {
 
-  let data = await fetch ("http://meme-api.herokuapp.com/gimme/memes").then(res => res.json())
+  let data = await fetch ("http://meme-api.herokuapp.com/gimme/meme").then(res => res.json())
 
 const embed = new MessageEmbed()
   .setColor(embeds.color)
