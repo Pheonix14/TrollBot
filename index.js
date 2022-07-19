@@ -66,6 +66,20 @@ client.on('ready', () => {
 
 });
 
+const express = require('express')
+const app = express()
+const port = 3000
+
+app.get('/', (req, res) => {
+  res.send('Webpage Created')
+})
+
+app.listen(port, () => {
+  console.log(`[down-checker] Status: Ready To host at : ${port} ✅`)
+}) 
+// 24/7 new code for node.js 
+
+
 
 
 client.login(token);
