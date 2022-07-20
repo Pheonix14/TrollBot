@@ -8,7 +8,7 @@ const cpuStat = require("cpu-stat")
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('botinfo')
-		.setDescription('Info About The Bot 📜'),
+		.setDescription("Info About Bot's System 📜"),
 	async execute(interaction, client) {
 
     let cpuLol;
@@ -30,7 +30,7 @@ module.exports = {
 
  const embed = new MessageEmbed()
   .setColor(embeds.color)
-    .setTitle(`__**${interaction.client.user.username}'s Information:**__`)
+    .setTitle(`__${interaction.client.user.username}'s System Info:__`)
 .setDescription(`${emojis.ram} **Memory Usage** - ${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB / 1 GB
 
 
