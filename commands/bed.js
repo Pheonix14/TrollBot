@@ -1,5 +1,4 @@
-const { SlashCommandBuilder } = require('@discordjs/builders');
-const { MessageAttachment } = require("discord.js");
+const { AttachmentBuilder, SlashCommandBuilder } = require("discord.js");
 const { memerkey } = require("./../config/config.json");
 const Meme = require("memer-api");
 const memer = new Meme(memerkey);
@@ -20,7 +19,7 @@ const avatar2 = interaction.user.displayAvatarURL({ dynamic: true });
 memer.bed(avatar, avatar2)
     .then(image => {
 
-    const attachment = new MessageAttachment(image, "bed.png");
+  const attachment = new AttachmentBuilder(image, { name: 'bed.png' });
       
 		return interaction.reply({files: [attachment] });
 })

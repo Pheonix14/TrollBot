@@ -1,5 +1,4 @@
-const { SlashCommandBuilder } = require('@discordjs/builders');
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder, SlashCommandBuilder } = require('discord.js');
 const fetch = (...args) =>
   import('node-fetch').then(({ default: fetch }) => fetch(...args));
 const emojis = require("./../config/emojis.json");
@@ -13,7 +12,7 @@ module.exports = {
 
   let data = await fetch ("http://meme-api.herokuapp.com/gimme/meme").then(res => res.json())
 
-const embed = new MessageEmbed()
+const embed = new EmbedBuilder()
   .setColor(embeds.color)
   .setURL(`${data.postLink}`)
   .setTitle(`${data.title}`)

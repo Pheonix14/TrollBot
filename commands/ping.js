@@ -1,5 +1,4 @@
-const { SlashCommandBuilder } = require('@discordjs/builders');
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder, SlashCommandBuilder } = require('discord.js');
 const emojis = require("./../config/emojis.json");
 const embeds = require("./../config/embed.json");
 
@@ -9,7 +8,7 @@ module.exports = {
 		.setDescription('📶 Bot Latency'),
 	async execute(interaction, client) {
 
-const embed = new MessageEmbed()
+const embed = new EmbedBuilder()
   .setColor(embeds.color)
 .setDescription(`${emojis.bot} Bot Ping - ${Date.now() - interaction.createdTimestamp}ms
 

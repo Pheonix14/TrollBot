@@ -1,5 +1,4 @@
-const { SlashCommandBuilder } = require('@discordjs/builders');
-const { MessageEmbed, version } = require("discord.js");
+const { EmbedBuilder, version, SlashCommandBuilder } = require("discord.js");
 const embeds = require("./../config/embed.json");
 const emojis = require("./../config/emojis.json");
 const os = require('node:os');
@@ -28,11 +27,10 @@ module.exports = {
     let second = Math.floor(os.uptime() / 1) % 60;
     
 
- const embed = new MessageEmbed()
+ const embed = new EmbedBuilder()
   .setColor(embeds.color)
     .setTitle(`__${interaction.client.user.username}'s System Info:__`)
 .setDescription(`${emojis.ram} **Memory Usage** - ${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB / 1 GB
-
 
 ${emojis.djs} **Discord.js** - v${version}
 

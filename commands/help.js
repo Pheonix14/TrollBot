@@ -1,5 +1,4 @@
-const { SlashCommandBuilder } = require('@discordjs/builders');
-const { MessageEmbed, MessageActionRow, MessageSelectMenu } = require("discord.js");
+const { EmbedBuilder, ActionRowBuilder, SelectMenuBuilder, SlashCommandBuilder } = require("discord.js");
 const embeds = require("./../config/embed.json");
 const emojis = require("./../config/emojis.json");
 const links = require("./../config/links.json");
@@ -10,9 +9,9 @@ module.exports = {
 		.setDescription('Full Command List 📜'),
 	async execute(interaction, client) {
 
-const row = new MessageActionRow()
+const row = new ActionRowBuilder()
   .addComponents(
-    new MessageSelectMenu()
+    new SelectMenuBuilder()
      .setCustomId("select")
     .setPlaceholder("Select Your Option")
     .addOptions([
@@ -37,7 +36,7 @@ const row = new MessageActionRow()
     ])
   )
     
-const embed1 = new MessageEmbed()
+const embed1 = new EmbedBuilder()
   .setColor(embeds.color)
   .setTitle(`**Welcome To TrollBot**`)
 .setDescription(`Check The Menu And Select Your Option To See Commands List.
@@ -53,19 +52,19 @@ ${emojis.arrow} [Invite Me](${links.invite})`)
 		 interaction.reply({embeds: [embed1], components: [row] });
 	
   
-const embed2 = new MessageEmbed()
+const embed2 = new EmbedBuilder()
     .setColor(embeds.color)
   .setTitle(`${emojis.info} Info Commands`)
     .setDescription(`/ping, /help, /support, /invite, /botinfo, /updates, /vote`)
   .setFooter({text: `${embeds.footer}`});
 
-const embed3 = new MessageEmbed()
+const embed3 = new EmbedBuilder()
     .setColor(embeds.color)
   .setTitle(`${emojis.images} Images Commands`)
     .setDescription(`/affect, /aborted, /brazzers, /cancer, /corporate, /dab, /delete, /door, /egg, /failure, /fakenews, /hitler, /jail, /satan, /trash, /whodidthis, /ugly`)
   .setFooter({text: `${embeds.footer}`});
 
-    const embed4 = new MessageEmbed()
+    const embed4 = new EmbedBuilder()
     .setColor(embeds.color)
   .setTitle(`${emojis.meme} Memes Commands`)
     .setDescription(`/meme, /abandon, /armor, /bed, /emergencymeeting, /facts, /godwhy, /humansgood, /note, /obama, /search, /savehumanity, /shit, /stonks, /comment, /tweet`)
@@ -74,7 +73,7 @@ const embed3 = new MessageEmbed()
   
 
 const collector = interaction.channel.createMessageComponentCollector({ 
-componentType: "SELECT_MENU",
+ComponentType: "SELECT_MENU",
 customId: 'select'
 })
 

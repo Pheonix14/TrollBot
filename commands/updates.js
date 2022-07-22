@@ -1,5 +1,4 @@
-const { SlashCommandBuilder } = require('@discordjs/builders');
-const { MessageEmbed } = require("discord.js");
+const { EmbedBuilder, SlashCommandBuilder } = require("discord.js");
 const embeds = require("./../config/embed.json");
 const emojis = require("./../config/emojis.json");
 
@@ -9,7 +8,7 @@ module.exports = {
 		.setDescription('Know About Letest Updates 📜'),
 	async execute(interaction, client) {
 
-  const embed = new MessageEmbed()
+  const embed = new EmbedBuilder()
   .setColor(embeds.color)
     .setTitle(`**TrollBot Updates**`)
 .setDescription(`No Updates`)
