@@ -61,7 +61,7 @@ const embed2 = new EmbedBuilder()
 const embed3 = new EmbedBuilder()
     .setColor(embeds.color)
   .setTitle(`${emojis.images} Images Commands`)
-    .setDescription(`/affect, /aborted, /brazzers, /cancer, /corporate, /dab, /delete, /door, /egg, /failure, /fakenews, /hitler, /jail, /satan, /trash, /whodidthis, /ugly`)
+    .setDescription(`/avatar, /affect, /aborted, /brazzers, /cancer, /corporate, /dab, /delete, /door, /egg, /failure, /fakenews, /hitler, /jail, /satan, /trash, /whodidthis, /ugly`)
   .setFooter({text: `${embeds.footer}`});
 
     const embed4 = new EmbedBuilder()
