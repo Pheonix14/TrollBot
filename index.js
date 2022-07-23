@@ -1,6 +1,6 @@
 const fs = require('node:fs');
 const path = require('node:path');
-const { Client, Collection, GatewayIntentBits, Partials, InteractionType } = require('discord.js');
+const { Client, Collection, GatewayIntentBits, Partials, InteractionType, ActivityType } = require('discord.js');
 const { token, activitystatus, activitystatus2 } = require('./config/config.json');
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds], partials: [Partials.Channel] });
@@ -59,10 +59,10 @@ client.on('ready', () => {
         ]
 
         const status = statuses[Math.floor(Math.random() * statuses.length)] 
-        client.user.setActivity(status, { type: "PLAYING" }) 
+        client.user.setPresence({ activities: [{ name: `${status}`, type: ActivityType.Playing }], status: 'online' }) 
     }, 
 
-            20000) 
+            40000) 
 
 });
 
