@@ -66,17 +66,6 @@ client.on('ready', () => {
 
 });
 
-const express = require('express')
-const app = express()
-const port = 1470
-
-app.get('/', (req, res) => {
-  res.send('Webpage Created')
-})
-
-app.listen(port, () => {
-  console.log(`[down-checker] Status: Ready To host at : ${port} ✅`)
-}) 
 
 
 client.login(token);
