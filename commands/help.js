@@ -39,13 +39,25 @@ const row = new ActionRowBuilder()
 const embed1 = new EmbedBuilder()
   .setColor(embeds.color)
   .setTitle(`**Welcome To TrollBot**`)
-.setDescription(`Check The Menu And Select Your Option To See Commands List.
+.setDescription(`__**🙋 My Features**__
 
-${emojis.arrow} [Website](${links.website})
+> **${emojis.info} 5+ Info Commands. ${emojis.images} Funny Image Gen With 16+ Commands. ${emojis.meme} Funny Meme Gen With 15+ Commands.**
+
+__**📈 My Stats**__
+
+> **${emojis.server} ${interaction.client.guilds.cache.size} Servers ${emojis.users} ${interaction.client.users.cache.size} Users ${emojis.channel} ${interaction.client.channels.cache.size} Channels**
+
+__**❗Note**__
+
+> **Check The Menu And Select Your Option To See Commands List.**
+
+__**📌 Links**__
+
+**${emojis.arrow} [Website](${links.website})
 
 ${emojis.arrow} [Support](${links.support_server})
 
-${emojis.arrow} [Invite Me](${links.invite})`)
+${emojis.arrow} [Invite Me](${links.invite})**`)
  .setImage(`${links.banner}`)
 .setFooter({text: `${embeds.footer}`});
 
@@ -55,19 +67,19 @@ ${emojis.arrow} [Invite Me](${links.invite})`)
 const embed2 = new EmbedBuilder()
     .setColor(embeds.color)
   .setTitle(`${emojis.info} Info Commands`)
-    .setDescription(`/ping, /help, /support, /invite, /botinfo, /updates, /vote`)
+    .setDescription("`/ping`, `/help`, `/support`, `/invite`, `/botinfo`, `/updates`, `/vote`")
   .setFooter({text: `${embeds.footer}`});
 
 const embed3 = new EmbedBuilder()
     .setColor(embeds.color)
   .setTitle(`${emojis.images} Images Commands`)
-    .setDescription(`/avatar, /affect, /aborted, /brazzers, /cancer, /corporate, /dab, /delete, /door, /egg, /failure, /fakenews, /hitler, /jail, /satan, /trash, /whodidthis, /ugly`)
+    .setDescription("`/avatar`, `/affect`, `/aborted`, `/brazzers`, `/cancer`, `/corporate`, `/dab`, `/delete`, `/door`, `/egg`, `/failure`, `/fakenews`, `/hitler`, `/jail`, `/satan`, `/trash`, `/whodidthis`, `/ugly`")
   .setFooter({text: `${embeds.footer}`});
 
     const embed4 = new EmbedBuilder()
     .setColor(embeds.color)
   .setTitle(`${emojis.meme} Memes Commands`)
-    .setDescription(`/meme, /abandon, /armor, /bed, /emergencymeeting, /facts, /godwhy, /humansgood, /note, /obama, /search, /savehumanity, /shit, /stonks, /comment, /tweet`)
+    .setDescription("`/meme`, `/abandon`, `/armor`, `/bed`, `/emergencymeeting`, `/facts`, `/godwhy`, `/humansgood`, `/note`, `/obama`, `/search`, `/savehumanity`, `/shit`, `/stonks`, `/comment`, `/tweet`")
   .setFooter({text: `${embeds.footer}`});
 
   

@@ -11,20 +11,20 @@ module.exports = {
   const embed = new EmbedBuilder()
   .setColor(embeds.color)
     .setTitle(`**TrollBot Updates**`)
-.setDescription(`**Version - 1.1.0
+.setDescription(`**Version - 1.1.1
 
-- Updated Discord.js v13 To v14
+- Improvements In Some Commands
 
-- Updated Discord Api v9 To v10
-
-- Added /avatar Command
-
-- Added Avatar Context Menu Command
+- Ping Issue Fixed
 
 - Crash Issue Fixed
 
 - Bug Fixes
 
+- Performance Optimised
+
+Thank You!
+- TrollBot Development
 **`)
   
 .setFooter({text: `${embeds.footer}`})

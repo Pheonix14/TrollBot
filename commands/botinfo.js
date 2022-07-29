@@ -30,7 +30,7 @@ module.exports = {
  const embed = new EmbedBuilder()
   .setColor(embeds.color)
     .setTitle(`__${interaction.client.user.username}'s System Info:__`)
-.setDescription(`${emojis.ram} **Memory Usage** - ${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB / 1 GB
+.setDescription(`${emojis.ram} **Memory Usage** - ${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB / 100 MB
 
 ${emojis.djs} **Discord.js** - v${version}
 
