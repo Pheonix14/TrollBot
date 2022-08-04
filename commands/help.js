@@ -32,6 +32,12 @@ const row = new ActionRowBuilder()
   emoji: emojis.meme,
  description: "Click here to see Memes Commands", 
  value: "third"
+},
+{
+ label: "Economy (BETA)", 
+  emoji: emojis.troll_coin,
+ description: "Click here to see Economy Commands", 
+ value: "fourth"
 }
     ])
   )
@@ -82,11 +88,16 @@ const embed3 = new EmbedBuilder()
     .setDescription("`/meme`, `/abandon`, `/armor`, `/bed`, `/emergencymeeting`, `/facts`, `/godwhy`, `/humansgood`, `/note`, `/obama`, `/search`, `/savehumanity`, `/shit`, `/stonks`, `/comment`, `/tweet`")
   .setFooter({text: `${embeds.footer}`});
 
-  
+  const embed5 = new EmbedBuilder()
+    .setColor(embeds.color)
+  .setTitle(`${emojis.troll_coin} Economy Commands`)
+    .setDescription("`/balance`, `/deposit`, `/withdraw`, `pay`, `/daily`, `/work`, `/beg`")
+  .setFooter({text: `${embeds.footer}`});
 
 const collector = interaction.channel.createMessageComponentCollector({ 
 ComponentType: "SELECT_MENU",
-customId: 'select'
+customId: 'select',
+time: '60000'
 })
 
 collector.on("collect", async (collected) => { const value = collected.values[0]
@@ -104,6 +115,10 @@ collected.reply ({embeds: [embed3], ephemeral: true})
 if(value === "third") {
 
 collected.reply ({embeds: [embed4], ephemeral: true})
+}
+if(value === "fourth") {
+
+collected.reply ({embeds: [embed5], ephemeral: true})
 }
 
    })
