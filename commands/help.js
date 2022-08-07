@@ -91,7 +91,7 @@ const embed3 = new EmbedBuilder()
   const embed5 = new EmbedBuilder()
     .setColor(embeds.color)
   .setTitle(`${emojis.troll_coin} Economy Commands`)
-    .setDescription("`/balance`, `/deposit`, `/withdraw`, `pay`, `/daily`, `/work`, `/beg`")
+    .setDescription("`/balance`, `/deposit`, `/withdraw`, `pay`, `/daily`, `/work`, `/beg`, `/coinflip`")
   .setFooter({text: `${embeds.footer}`});
 
 const collector = interaction.channel.createMessageComponentCollector({ 

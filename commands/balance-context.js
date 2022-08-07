@@ -1,19 +1,16 @@
-const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
+const { EmbedBuilder, ContextMenuCommandBuilder, ApplicationCommandType } = require('discord.js');
 const { QuickDB } = require('quick.db');
 const db = new QuickDB({ filePath: "././database/database.sqlite" });
 const emojis = require("./../config/emojis.json");
 const embeds = require("./../config/embed.json");
 
-
 module.exports = {
-	data: new SlashCommandBuilder()
-		.setName('balance')
-		.setDescription('💸 balance. economy command')
-  .addUserOption(option => option.setName('user').setDescription('Give Me A User').setRequired(true)),
-                   
+	data: new ContextMenuCommandBuilder()
+		.setName('Balance')
+.setType(ApplicationCommandType.User),
 	async execute(interaction, client) {
 
-    const user = interaction.options.getUser('user');
+    const user = interaction.targetUser;
 
 let bal = await db.get(`${user.id}.balance`)
 
@@ -24,14 +21,12 @@ let bank = await db.get(`${user.id}.bank`)
 if (bank === undefined) bank = 0;
 
 let Total = bal + bank
-
-    const embed = new EmbedBuilder()
+    
+const embed = new EmbedBuilder()
   .setColor(embeds.color)
 .setDescription(`**${user.username}'s Balance**\n**Pocket:** ${emojis.troll_coin} ${bal}\n**Troll Bank:** ${emojis.troll_coin} ${bank}\n**Total:** ${emojis.troll_coin} ${Total}`)
 .setFooter({text: `${embeds.footer}`});
-
-  return interaction.reply({embeds: [embed]});
-
-
+    
+		return interaction.reply({embeds: [embed]});
 	},
 }

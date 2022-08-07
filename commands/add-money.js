@@ -1,4 +1,4 @@
-const { SlashCommandBuilder } = require('discord.js');
+const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 const { QuickDB } = require('quick.db');
 const db = new QuickDB({ filePath: "././database/database.sqlite" });
 const { developers } = require("./../config/emojis.json");
@@ -20,13 +20,18 @@ module.exports = {
 
     const ammount = interaction.options.getNumber('ammount');
 
-    if (!interaction.user.id === developers) return interaction.reply({content: 'You Are Not My Developer', ephemeral: true})
+    if (interaction.user.id ==! developers) return interaction.reply({content: 'You Are Not My Developer', ephemeral: true})
 
     await db.add(`${user.id}.balance`, ammount)
     
 let bal = await db.get(`${user.id}.balance`)
 
-interaction.reply(`Added ${ammount} coins\n\nNew Balance: ${bal}`)
+    const embed = new EmbedBuilder()
+  .setColor(embeds.color)
+  .setDescription(`Added ${emojis.troll_coin} ${ammount} troll coins\n\nNew Balance: ${emojis.troll_coin} ${bal}`)
+.setFooter({text: `${embeds.footer}`});
+    
+		return interaction.reply({embeds: [embed]});
     
 	},
 }
