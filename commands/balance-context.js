@@ -10,6 +10,8 @@ module.exports = {
 .setType(ApplicationCommandType.User),
 	async execute(interaction, client) {
 
+await interaction.deferReply();
+    
     const user = interaction.targetUser;
 
 let bal = await db.get(`${user.id}.balance`)
@@ -27,6 +29,6 @@ const embed = new EmbedBuilder()
 .setDescription(`**${user.username}'s Balance**\n**Pocket:** ${emojis.troll_coin} ${bal}\n**Troll Bank:** ${emojis.troll_coin} ${bank}\n**Total:** ${emojis.troll_coin} ${Total}`)
 .setFooter({text: `${embeds.footer}`});
     
-		return interaction.reply({embeds: [embed]});
+		return interaction.editReply({embeds: [embed]});
 	},
 }

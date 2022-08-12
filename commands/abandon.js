@@ -10,7 +10,8 @@ module.exports = {
 		.setDescription("👶 abandon. Meme Command")
 		.addStringOption(option => option.setName('text').setDescription('Give Me A Text').setRequired(true)),
 	async execute(interaction) {
-		
+
+    await interaction.deferReply();
     const text = interaction.options.getString('text');
 
 memer.abandon(text)
@@ -18,7 +19,7 @@ memer.abandon(text)
 
     const attachment = new AttachmentBuilder(image, { name: 'abandom.png' });
       
-		return interaction.reply({files: [attachment] });
+		return interaction.editReply({files: [attachment] });
 })
 
 	},

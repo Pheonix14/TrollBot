@@ -8,7 +8,8 @@ module.exports = {
 		.setName('help')
 		.setDescription('Full Command List 📜'),
 	async execute(interaction, client) {
-
+await interaction.deferReply();
+    
 const row = new ActionRowBuilder()
   .addComponents(
     new SelectMenuBuilder()
@@ -47,7 +48,7 @@ const embed1 = new EmbedBuilder()
   .setTitle(`**Welcome To TrollBot**`)
 .setDescription(`__**🙋 My Features**__
 
-> **${emojis.info} 5+ Info Commands. ${emojis.images} Funny Image Gen With 16+ Commands. ${emojis.meme} Funny Meme Gen With 15+ Commands.**
+> **${emojis.info} 5+ Info Commands. ${emojis.images} Funny Image Gen With 10 Commands. ${emojis.meme} Funny Meme Gen With 10+ Commands.**
 
 __**📈 My Stats**__
 
@@ -67,7 +68,7 @@ ${emojis.arrow} [Invite Me](${links.invite})**`)
  .setImage(`${links.banner}`)
 .setFooter({text: `${embeds.footer}`});
 
-		 interaction.reply({embeds: [embed1], components: [row] });
+		 interaction.editReply({embeds: [embed1], components: [row] });
 	
   
 const embed2 = new EmbedBuilder()
@@ -79,19 +80,19 @@ const embed2 = new EmbedBuilder()
 const embed3 = new EmbedBuilder()
     .setColor(embeds.color)
   .setTitle(`${emojis.images} Images Commands`)
-    .setDescription("`/avatar`, `/affect`, `/aborted`, `/brazzers`, `/cancer`, `/corporate`, `/dab`, `/delete`, `/door`, `/egg`, `/failure`, `/fakenews`, `/hitler`, `/jail`, `/satan`, `/trash`, `/whodidthis`, `/ugly`")
+    .setDescription("`/affect`, `/dab`, `/delete`, `/egg`, `/failure`, `/fakenews`, `/hitler`, `/jail`, `/trash`, `/ugly`")
   .setFooter({text: `${embeds.footer}`});
 
     const embed4 = new EmbedBuilder()
     .setColor(embeds.color)
   .setTitle(`${emojis.meme} Memes Commands`)
-    .setDescription("`/meme`, `/abandon`, `/armor`, `/bed`, `/emergencymeeting`, `/facts`, `/godwhy`, `/humansgood`, `/note`, `/obama`, `/search`, `/savehumanity`, `/shit`, `/stonks`, `/comment`, `/tweet`")
+    .setDescription("`/meme`, `/abandon`, `/bed`, `/emergencymeeting`, `/facts`, `/note`, `/shit`, `/stonks`, `/comment`, `/tweet`, `/vr`")
   .setFooter({text: `${embeds.footer}`});
 
   const embed5 = new EmbedBuilder()
     .setColor(embeds.color)
   .setTitle(`${emojis.troll_coin} Economy Commands`)
-    .setDescription("`/balance`, `/deposit`, `/withdraw`, `pay`, `/daily`, `/work`, `/beg`, `/coinflip`")
+    .setDescription("`/balance`, `/deposit`, `/withdraw`, `pay`, `/daily`, `/work`, `/beg`, `/coinflip`, `/store`")
   .setFooter({text: `${embeds.footer}`});
 
 const collector = interaction.channel.createMessageComponentCollector({ 

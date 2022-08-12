@@ -10,6 +10,7 @@ module.exports = {
 		.setDescription("🚮 trash. Image Command")
 		.addUserOption(option => option.setName('user').setDescription('Give Me A User').setRequired(true)),
 	async execute(interaction) {
+    await interaction.deferReply();
 		const user = interaction.options.getUser('user');
     
 const avatar = user.displayAvatarURL({ dynamic: true });
@@ -19,7 +20,7 @@ memer.trash(avatar)
 
     const attachment = new AttachmentBuilder(image, { name: 'trash.png' });
       
-		return interaction.reply({files: [attachment] });
+		return interaction.editReply({files: [attachment] });
 })
 
 	},

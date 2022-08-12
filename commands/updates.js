@@ -7,7 +7,7 @@ module.exports = {
 		.setName('updates')
 		.setDescription('Know About Letest Updates 📜'),
 	async execute(interaction, client) {
-
+await interaction.deferReply();
   const embed = new EmbedBuilder()
   .setColor(embeds.color)
     .setTitle(`**TrollBot Updates**`)
@@ -30,7 +30,7 @@ Thank You!
 .setFooter({text: `${embeds.footer}`})
     .setTimestamp();
 
-	return interaction.reply({embeds: [embed] });
+	return interaction.editReply({embeds: [embed] });
 
   },
 };

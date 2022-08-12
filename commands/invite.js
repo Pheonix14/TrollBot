@@ -8,7 +8,7 @@ module.exports = {
     .setName('invite')
     .setDescription('Invite Me On Your Server ➕'),
   async execute(interaction, client) {
-
+await interaction.deferReply();
     const row = new ActionRowBuilder()
       .addComponents(
         new ButtonBuilder()
@@ -23,6 +23,6 @@ module.exports = {
       .setDescription(`Click The Button Below To Invite TrollBot To Your Servers!`)
       .setFooter({ text: `${embeds.footer}` });
 
-    return interaction.reply({ embeds: [embed], components: [row] });
+    return interaction.editReply({ embeds: [embed], components: [row] });
   },
 };

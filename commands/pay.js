@@ -14,7 +14,7 @@ module.exports = {
   .addNumberOption(option => option.setName('ammount').setDescription('Give Me A Amount To Pay').setRequired(true)),
                    
 	async execute(interaction, client) {
-
+await interaction.deferReply();
     
     const user = interaction.options.getUser('user');
 
@@ -25,14 +25,14 @@ module.exports = {
 let balance = await db.get(`${user2.id}`);
     
 if (user.id === user2.id) {
-      return interaction.reply({content: `${emojis.cross} You Can't pay to yourself`, ephemeral: true});
+      return interaction.editReply({content: `${emojis.cross} You Can't pay to yourself`, ephemeral: true});
 }
     if (user.id === user2.bot) {
-      return interaction.reply({content: `${emojis.cross} You Can't pay to a bot`, ephemeral: true});
+      return interaction.editReply({content: `${emojis.cross} You Can't pay to a bot`, ephemeral: true});
     }
 
   if (balance < ammount) {
-      return interaction.reply({content: `${emojis.cross} You don't have that much money`, ephemeral: true});
+      return interaction.editReply({content: `${emojis.cross} You don't have that much money`, ephemeral: true});
   }
     
     await db.add(`${user.id}.balance`, ammount)
@@ -44,7 +44,7 @@ await db.sub(`${user2.id}.balance`, ammount)
 .setDescription(`You Paid ${emojis.troll_coin} ${ammount} To ${user.username}`)
 .setFooter({text: `${embeds.footer}`});
 
-  return interaction.reply({embeds: [embed]});
+  return interaction.editReply({embeds: [embed]});
     
 	},
 }

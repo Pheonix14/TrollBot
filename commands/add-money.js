@@ -15,7 +15,7 @@ module.exports = {
                    
 	async execute(interaction, client) {
 
-    
+    await interaction.deferReply();    
     const user = interaction.options.getUser('user');
 
     const ammount = interaction.options.getNumber('ammount');
@@ -31,7 +31,7 @@ let bal = await db.get(`${user.id}.balance`)
   .setDescription(`Added ${emojis.troll_coin} ${ammount} troll coins\n\nNew Balance: ${emojis.troll_coin} ${bal}`)
 .setFooter({text: `${embeds.footer}`});
     
-		return interaction.reply({embeds: [embed]});
+		return interaction.editReply({embeds: [embed]});
     
 	},
 }

@@ -10,7 +10,7 @@ module.exports = {
 		.setDescription("📙 facts. Meme Command")
 		.addStringOption(option => option.setName('text').setDescription('Give Me A Text').setRequired(true)),
 	async execute(interaction) {
-		
+		await interaction.deferReply();
     const text = interaction.options.getString('text');
     
 
@@ -19,7 +19,7 @@ memer.facts(text)
 
     const attachment = new AttachmentBuilder(image, { name: 'facts.png' });
       
-		return interaction.reply({files: [attachment] });
+		return interaction.editReply({files: [attachment] });
 })
 
 	},

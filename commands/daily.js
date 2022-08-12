@@ -13,6 +13,7 @@ module.exports = {
                    
 	async execute(interaction, client) {
 
+    await interaction.deferReply();
   let user = interaction.user;
 
         let timeout = 86400000;
@@ -27,14 +28,14 @@ module.exports = {
                 .setColor(embeds.color)
                 .setDescription(`${emojis.cross} You've Already Collected Your Daily Reward\n\nCollect It Again In ${time}`)
           .setFooter({text: `${embeds.footer}`})
-            interaction.reply({embeds: [embed1]})
+            interaction.editReply({embeds: [embed1]})
         } else {
             let embed2 = new EmbedBuilder()
                 .setColor(embeds.color)
                 .setDescription(`You've Collected Your Daily Reward Of ${emojis.troll_coin} ${amount} Troll Coins`)
           .setFooter({text: `${embeds.footer}`});
             
-interaction.reply({embeds: [embed2]})
+interaction.editReply({embeds: [embed2]})
 
             await db.add(`${user.id}.balance`, amount)
             await db.set(`${user.id}.daily`, Date.now())

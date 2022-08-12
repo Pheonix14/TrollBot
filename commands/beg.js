@@ -14,6 +14,7 @@ module.exports = {
                    
 	async execute(interaction, client) {
 
+    await interaction.deferReply();
 const JbegR = Jbeg[Math.floor(Math.random() * Jbeg.length)];
     
     const reward = Math.floor(Math.random() * (300 -  + 75)) + 75;
@@ -32,14 +33,14 @@ const JbegR = Jbeg[Math.floor(Math.random() * Jbeg.length)];
                 .setColor(embeds.color)
                 .setDescription(`${emojis.cross} You Just Begged To Someone And Earned Some Money\n\nBeg Again In ${time}`)
           .setFooter({text: `${embeds.footer}`})
-            interaction.reply({embeds: [embed1]})
+            interaction.editReply({embeds: [embed1]})
         } else {
             let embed2 = new EmbedBuilder()
                 .setColor(embeds.color)
                 .setDescription(`${JbegR} ${emojis.troll_coin} ${amount}`)
           .setFooter({text: `${embeds.footer}`});
             
-interaction.reply({embeds: [embed2]})
+interaction.editReply({embeds: [embed2]})
 
           await db.add(`${user.id}.begs`, 1)
             await db.add(`${user.id}.balance`, amount)

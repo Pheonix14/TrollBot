@@ -10,7 +10,7 @@ module.exports = {
 		.setDescription("💬 tweet. Meme Command")
 		.addStringOption(option => option.setName('text').setDescription('Give Me A Text').setRequired(true)),
 	async execute(interaction) {
-		
+		await interaction.deferReply();
     const text = interaction.options.getString('text');
 const avatar = interaction.user.displayAvatarURL({ dynamic: true });
 
@@ -22,7 +22,7 @@ memer.tweet(avatar, username, text)
 
     const attachment = new AttachmentBuilder(image, { name: 'tweet.png' });
       
-		return interaction.reply({files: [attachment] });
+		return interaction.editReply({files: [attachment] });
 })
 
 	},

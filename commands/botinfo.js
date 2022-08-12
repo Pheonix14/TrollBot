@@ -10,6 +10,7 @@ module.exports = {
 		.setDescription("Info About Bot's System 📜"),
 	async execute(interaction, client) {
 
+    await interaction.deferReply();
     let cpuLol;
   cpuStat.usagePercent(function(err, percent ) {
       if (err) {
@@ -54,7 +55,7 @@ ${emojis.server} **Server Uptime** - ${day}d ${hour}h ${minute}m ${second}s
 ㅤ`)
   .setFooter({text: `${embeds.footer}`});
 
-	return interaction.reply({embeds: [embed] });
+	return interaction.editReply({embeds: [embed] });
 
    })
   },

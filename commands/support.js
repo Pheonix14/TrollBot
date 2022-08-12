@@ -8,7 +8,7 @@ module.exports = {
     .setName('support')
     .setDescription('Get Help Releted Me 📌'),
   async execute(interaction, client) {
-
+await interaction.deferReply();
     const row = new ActionRowBuilder()
       .addComponents(
         new ButtonBuilder()
@@ -26,6 +26,6 @@ module.exports = {
 
       .setFooter({ text: `${embeds.footer}` });
 
-    return interaction.reply({ embeds: [embed], components: [row] });
+    return interaction.editReply({ embeds: [embed], components: [row] });
   },
 };

@@ -12,7 +12,7 @@ module.exports = {
   .addNumberOption(option => option.setName('ammount').setDescription('Give Me A Amount To Deposit Money').setRequired(true)),
                    
 	async execute(interaction, client) {
-
+await interaction.deferReply();
     const ammount = interaction.options.getNumber('ammount');
     const user = interaction.user;
 
@@ -20,7 +20,7 @@ let balance = await db.get(`${user.id}.balance`)
     
 
     if (balance < ammount) {
-                return interaction.reply({content: `${emojis.cross} You Don't Have That Much Money On Your Pocket`, ephemeral: true});
+                return interaction.editReply({content: `${emojis.cross} You Don't Have That Much Money On Your Pocket`, ephemeral: true});
     }
 
     await db.add(`${user.id}.bank`, ammount)
@@ -35,7 +35,7 @@ ${emojis.troll_coin} ${ammount} Troll Coins Into Your Bank`)
 .setFooter({text: `${embeds.footer}`});
 
     
-  return interaction.reply({embeds: [embed2]});
+  return interaction.editReply({embeds: [embed2]});
 
 
 	},

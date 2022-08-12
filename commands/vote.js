@@ -8,6 +8,7 @@ module.exports = {
 		.setName('vote')
 		.setDescription('Vote The Bot On Top.gg And DBL 🗳️'),
 	async execute(interaction, client) {
+    await interaction.deferReply();
     const row = new ActionRowBuilder()
 			.addComponents(
 				new ButtonBuilder()
@@ -34,6 +35,6 @@ const embed = new EmbedBuilder()
   
 .setFooter({text: `${embeds.footer}`});
 
-		return interaction.reply({embeds: [embed], components: [row, row2] });
+		return interaction.editReply({embeds: [embed], components: [row, row2] });
 	},
 };

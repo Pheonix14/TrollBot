@@ -7,7 +7,7 @@ module.exports = {
 		.setName('ping')
 		.setDescription('📶 Bot Latency'),
 	async execute(interaction, client) {
-
+await interaction.deferReply();
 const embed = new EmbedBuilder()
   .setColor(embeds.color)
 .setDescription(`${emojis.bot} Bot Ping - ${Date.now() - interaction.createdTimestamp}ms
@@ -15,6 +15,6 @@ const embed = new EmbedBuilder()
 ${emojis.discord} Api Latency - ${interaction.client.ws.ping}ms`)
 .setFooter({text: `${embeds.footer}`});
 
-  return interaction.reply({embeds: [embed]});
+  return interaction.editReply({embeds: [embed]});
 	},
 }

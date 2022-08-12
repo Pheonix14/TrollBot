@@ -13,6 +13,7 @@ module.exports = {
                    
 	async execute(interaction, client) {
 
+    await interaction.deferReply();
     const bet = interaction.options.getNumber('bet');
     
   let user = interaction.user;
@@ -31,11 +32,11 @@ module.exports = {
 
 
     if (balance < amount) {
-                return interaction.reply({content: `${emojis.cross} You Don't Have That Much Money To Bet`, ephemeral: true});
+                return interaction.editReply({content: `${emojis.cross} You Don't Have That Much Money To Bet`, ephemeral: true});
     }
 
     if (amount < 1000) {
-                return interaction.reply({content: `${emojis.cross} You Can't Bet Lower Than 1000`, ephemeral: true});
+                return interaction.editReply({content: `${emojis.cross} You Can't Bet Lower Than 1000`, ephemeral: true});
     }
         
    if (coins[coinc] === coins[coinb]) {
@@ -47,7 +48,7 @@ module.exports = {
 The Coin Spins... ${coins[coinb]} And You Won ${emojis.troll_coin} ${betw}`)
           .setFooter({text: `${embeds.footer}`});
             
-interaction.reply({embeds: [embed2]})
+interaction.editReply({embeds: [embed2]})
 
           await db.add(`${user.id}.flips`, 1)
             await db.add(`${user.id}.balance`, amount)
@@ -60,7 +61,7 @@ else {
 The Coin Spins... ${coins[coinb]} And You Lost It All`)
           .setFooter({text: `${embeds.footer}`});
             
-interaction.reply({embeds: [embed2]})
+interaction.editReply({embeds: [embed2]})
 
           await db.add(`${user.id}.flips`, 1)
             await db.sub(`${user.id}.balance`, amount)

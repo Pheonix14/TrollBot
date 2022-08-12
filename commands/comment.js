@@ -10,6 +10,8 @@ module.exports = {
 		.setDescription("💬 comment. Meme Command")
 		.addStringOption(option => option.setName('text').setDescription('Give Me A Text').setRequired(true)),
 	async execute(interaction) {
+
+    await interaction.deferReply();
 		
     const text = interaction.options.getString('text');
 const avatar = interaction.user.displayAvatarURL({ dynamic: true });
@@ -22,7 +24,7 @@ memer.youtube(avatar, username, text)
 
     const attachment = new AttachmentBuilder(image, { name: 'comments.png' });
       
-		return interaction.reply({files: [attachment] });
+		return interaction.editReply({files: [attachment] });
 })
 
 	},

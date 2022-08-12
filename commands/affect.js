@@ -11,7 +11,8 @@ module.exports = {
 		.addUserOption(option => option.setName('user').setDescription('Give Me A User').setRequired(true)),
 	async execute(interaction) {
 		const user = interaction.options.getUser('user');
-    
+
+    await interaction.deferReply();
 const avatar = user.displayAvatarURL({ dynamic: true });
 
 memer.affect(avatar)
@@ -19,7 +20,7 @@ memer.affect(avatar)
 
     const attachment = new AttachmentBuilder(image, { name: 'affect.png' });
       
-		return interaction.reply({files: [attachment] });
+		return interaction.editReply({files: [attachment] });
 })
 
 	},

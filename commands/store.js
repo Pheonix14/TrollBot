@@ -8,7 +8,7 @@ module.exports = {
 		.setName('store')
 		.setDescription('🏪 See Items To Buy'),
 	async execute(interaction, client) {
-
+await interaction.deferReply();
 const row = new ActionRowBuilder()
   .addComponents(
     new SelectMenuBuilder()
@@ -38,7 +38,7 @@ const embed1 = new EmbedBuilder()
 **Click The Drop-down Menu To See Prices**`)
 .setFooter({text: `${embeds.footer}`});
 
-		 interaction.reply({embeds: [embed1], components: [row] });
+		 interaction.editReply({embeds: [embed1], components: [row] });
 	
   
 const embed2 = new EmbedBuilder()
