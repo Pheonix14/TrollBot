@@ -3,7 +3,8 @@ const path = require('node:path');
 const { Client, Collection, GatewayIntentBits, Partials, InteractionType, ActivityType } = require('discord.js');
 const { token, activitystatus, activitystatus2 } = require('./config/config.json');
 
-const client = new Client({ intents: [GatewayIntentBits.Guilds], partials: [Partials.Channel] });
+const client = new Client({ intents: [GatewayIntentBits.Guilds], partials: [Partials.Channel]
+});
 
 
 const eventsPath = path.join(__dirname, 'events');

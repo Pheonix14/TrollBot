@@ -9,7 +9,7 @@ module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('balance')
 		.setDescription('💸 balance. economy command')
-  .addUserOption(option => option.setName('user').setDescription('Give Me A User').setRequired(true)),
+  .addUserOption(option => option.setName('user').setDescription('Give Me A User')),
                    
 	async execute(interaction, client) {
 
@@ -19,6 +19,24 @@ const economy = db.table("economy");
     
     const user = interaction.options.getUser('user');
 
+let bal2 = await economy.get(`${interaction.user.id}.balance`)
+
+if (bal2 === undefined) bal2 = 0;
+
+let bank2 = await economy.get(`${interaction.user.id}.bank`)
+    
+if (bank2 === undefined) bank2 = 0;
+
+let Total2 = bal2 + bank2
+
+    
+const embed0 = new EmbedBuilder()
+  .setColor(embeds.color)
+.setDescription(`**Your Balance**\n**Pocket:** ${emojis.troll_coin} ${bal2}\n**Troll Bank:** ${emojis.troll_coin} ${bank2}\n**Total:** ${emojis.troll_coin} ${Total2}`)
+.setFooter({text: `${embeds.footer}`});
+
+if (!user) return interaction.editReply({embeds: [embed0]});
+    
 let bal = await economy.get(`${user.id}.balance`)
 
 if (bal === undefined) bal = 0;
