@@ -14,6 +14,9 @@ module.exports = {
                    
 	async execute(interaction, client) {
 await interaction.deferReply();
+
+const economy = db.table("economy");
+
     const JworkR = Jwork[Math.floor(Math.random() * Jwork.length)];
 
     const reward = Math.floor(Math.random() * (2000 -  + 750)) + 750;
@@ -23,7 +26,7 @@ await interaction.deferReply();
         let timeout = 3600000;
         let amount = reward;
 
-        let daily = await db.get(`${user.id}.work`);
+        let daily = await economy.get(`${user.id}.work`);
 
         if (daily !== undefined && timeout - (Date.now() - daily) > 0) {
             let time = ms(timeout - (Date.now() - daily));
@@ -41,9 +44,9 @@ await interaction.deferReply();
             
 interaction.editReply({embeds: [embed2]})
 
-          await db.add(`${user.id}.works`, 1)
-            await db.add(`${user.id}.balance`, amount)
-            await db.set(`${user.id}.work`, Date.now())
+          await economy.add(`${user.id}.works`, 1)
+            await economy.add(`${user.id}.balance`, amount)
+            await economy.set(`${user.id}.work`, Date.now())
 
 
               }

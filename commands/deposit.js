@@ -13,19 +13,24 @@ module.exports = {
                    
 	async execute(interaction, client) {
 await interaction.deferReply();
+
+const economy = db.table("economy");
+    
     const ammount = interaction.options.getNumber('ammount');
     const user = interaction.user;
 
-let balance = await db.get(`${user.id}.balance`)
+let balance = await economy.get(`${user.id}.balance`)
     
+if (balance === undefined) balance = 0;
 
+    
     if (balance < ammount) {
                 return interaction.editReply({content: `${emojis.cross} You Don't Have That Much Money On Your Pocket`, ephemeral: true});
     }
 
-    await db.add(`${user.id}.bank`, ammount)
+    await economy.add(`${user.id}.bank`, ammount)
 
-    await db.sub(`${user.id}.balance`, ammount)
+    await economy.sub(`${user.id}.balance`, ammount)
 
 
     const embed2 = new EmbedBuilder()

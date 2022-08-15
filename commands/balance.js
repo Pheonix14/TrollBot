@@ -14,13 +14,16 @@ module.exports = {
 	async execute(interaction, client) {
 
     await interaction.deferReply();
+
+const economy = db.table("economy");
+    
     const user = interaction.options.getUser('user');
 
-let bal = await db.get(`${user.id}.balance`)
+let bal = await economy.get(`${user.id}.balance`)
 
 if (bal === undefined) bal = 0;
 
-let bank = await db.get(`${user.id}.bank`)
+let bank = await economy.get(`${user.id}.bank`)
     
 if (bank === undefined) bank = 0;
 

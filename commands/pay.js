@@ -14,7 +14,11 @@ module.exports = {
   .addNumberOption(option => option.setName('ammount').setDescription('Give Me A Amount To Pay').setRequired(true)),
                    
 	async execute(interaction, client) {
+
+    
 await interaction.deferReply();
+
+const economy = db.table("economy");
     
     const user = interaction.options.getUser('user');
 
@@ -22,7 +26,9 @@ await interaction.deferReply();
 
     const user2 = interaction.user;
 
-let balance = await db.get(`${user2.id}`);
+let balance = await economy.get(`${user2.id}.balance`);
+
+if (balance === undefined) balance = 0;
     
 if (user.id === user2.id) {
       return interaction.editReply({content: `${emojis.cross} You Can't pay to yourself`, ephemeral: true});
@@ -35,9 +41,9 @@ if (user.id === user2.id) {
       return interaction.editReply({content: `${emojis.cross} You don't have that much money`, ephemeral: true});
   }
     
-    await db.add(`${user.id}.balance`, ammount)
+    await economy.add(`${user.id}.balance`, ammount)
     
-await db.sub(`${user2.id}.balance`, ammount)
+await economy.sub(`${user2.id}.balance`, ammount)
 
     const embed = new EmbedBuilder()
   .setColor(embeds.color)

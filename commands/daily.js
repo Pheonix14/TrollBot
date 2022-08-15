@@ -14,12 +14,15 @@ module.exports = {
 	async execute(interaction, client) {
 
     await interaction.deferReply();
+
+const economy = db.table("economy");
+    
   let user = interaction.user;
 
         let timeout = 86400000;
         let amount = 5000;
 
-        let daily = await db.get(`${user.id}.daily`);
+        let daily = await economy.get(`${user.id}.daily`);
 
         if (daily !== undefined && timeout - (Date.now() - daily) > 0) {
             let time = ms(timeout - (Date.now() - daily));
@@ -37,8 +40,8 @@ module.exports = {
             
 interaction.editReply({embeds: [embed2]})
 
-            await db.add(`${user.id}.balance`, amount)
-            await db.set(`${user.id}.daily`, Date.now())
+            await economy.add(`${user.id}.balance`, amount)
+            await economy.set(`${user.id}.daily`, Date.now())
 
 
               }

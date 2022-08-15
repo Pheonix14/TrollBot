@@ -14,13 +14,18 @@ module.exports = {
 	async execute(interaction, client) {
 
     await interaction.deferReply();
+
+const economy = db.table("economy");
+
     const bet = interaction.options.getNumber('bet');
     
   let user = interaction.user;
 
         
         let amount = bet;
-    let balance = await db.get(`${user.id}.balance`);
+    let balance = await economy.get(`${user.id}.balance`);
+
+if (balance === undefined) balance = 0;
 
     let betw = bet + bet
 
@@ -50,8 +55,8 @@ The Coin Spins... ${coins[coinb]} And You Won ${emojis.troll_coin} ${betw}`)
             
 interaction.editReply({embeds: [embed2]})
 
-          await db.add(`${user.id}.flips`, 1)
-            await db.add(`${user.id}.balance`, amount)
+          await economy.add(`${user.id}.flips`, 1)
+            await economy.add(`${user.id}.balance`, amount)
           } 
      
 else {
@@ -63,8 +68,8 @@ The Coin Spins... ${coins[coinb]} And You Lost It All`)
             
 interaction.editReply({embeds: [embed2]})
 
-          await db.add(`${user.id}.flips`, 1)
-            await db.sub(`${user.id}.balance`, amount)
+          await economy.add(`${user.id}.flips`, 1)
+            await economy.sub(`${user.id}.balance`, amount)
 }
         
 

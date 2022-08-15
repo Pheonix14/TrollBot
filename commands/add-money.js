@@ -14,17 +14,20 @@ module.exports = {
   .addNumberOption(option => option.setName('ammount').setDescription('Give Me A Amount To Add Money').setRequired(true)),
                    
 	async execute(interaction, client) {
+    
+  await interaction.deferReply();
 
-    await interaction.deferReply();    
+    const economy = db.table("economy");
+    
     const user = interaction.options.getUser('user');
 
     const ammount = interaction.options.getNumber('ammount');
 
     if (interaction.user.id ==! developers) return interaction.reply({content: 'You Are Not My Developer', ephemeral: true})
 
-    await db.add(`${user.id}.balance`, ammount)
+    await economy.add(`${user.id}.balance`, ammount)
     
-let bal = await db.get(`${user.id}.balance`)
+let bal = await economy.get(`${user.id}.balance`)
 
     const embed = new EmbedBuilder()
   .setColor(embeds.color)

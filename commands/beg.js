@@ -15,6 +15,9 @@ module.exports = {
 	async execute(interaction, client) {
 
     await interaction.deferReply();
+
+const economy = db.table("economy");
+    
 const JbegR = Jbeg[Math.floor(Math.random() * Jbeg.length)];
     
     const reward = Math.floor(Math.random() * (300 -  + 75)) + 75;
@@ -24,7 +27,7 @@ const JbegR = Jbeg[Math.floor(Math.random() * Jbeg.length)];
         let timeout = 60000;
         let amount = reward;
 
-        let daily = await db.get(`${user.id}.beg`);
+        let daily = await economy.get(`${user.id}.beg`);
 
         if (daily !== undefined && timeout - (Date.now() - daily) > 0) {
             let time = ms(timeout - (Date.now() - daily));
@@ -42,9 +45,9 @@ const JbegR = Jbeg[Math.floor(Math.random() * Jbeg.length)];
             
 interaction.editReply({embeds: [embed2]})
 
-          await db.add(`${user.id}.begs`, 1)
-            await db.add(`${user.id}.balance`, amount)
-            await db.set(`${user.id}.beg`, Date.now())
+          await economy.add(`${user.id}.begs`, 1)
+            await economy.add(`${user.id}.balance`, amount)
+            await economy.set(`${user.id}.beg`, Date.now())
 
 
               }
