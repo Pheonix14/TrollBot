@@ -1,4 +1,4 @@
-entrypoint = "cluster.js"
+entrypoint = "index.js"
 
 hidden = [".config"]
 
@@ -74,7 +74,7 @@ support = true
       cwd = "."
       environment = []
       pauseForSourceMap = false
-      program = "./cluster.js"
+      program = "./index.js"
       request = "launch"
       sourceMaps = true
       stopOnEntry = false

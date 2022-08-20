@@ -55,7 +55,8 @@ ${emojis.shovel} Shovel — ${emojis.troll_coin} ${prices.shovel}
 
 ${emojis.fishing_rod} Fishing Rod — ${emojis.troll_coin} ${prices.fishing_rod}
 
-`)
+
+${emojis.bank_upgrader} Bank Upgrade — ${emojis.troll_coin} ${prices.bank_upgrader}`)
   .setFooter({text: `${embeds.footer}`});
 
 const embed3 = new EmbedBuilder()
@@ -64,7 +65,6 @@ const embed3 = new EmbedBuilder()
     .setDescription(`soon`)
   .setFooter({text: `${embeds.footer}`});
 
-    
 
 const collector = interaction.channel.createMessageComponentCollector({ 
 ComponentType: "SELECT_MENU",

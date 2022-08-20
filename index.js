@@ -6,7 +6,7 @@ const { token, activitystatus, activitystatus2 } = require('./config/config.json
 const client = new Client({ intents: [GatewayIntentBits.Guilds], partials: [Partials.Channel]
 });
 
-
+//events
 const eventsPath = path.join(__dirname, 'events');
 const eventFiles = fs.readdirSync(eventsPath).filter(file => file.endsWith('.js'));
 
@@ -20,6 +20,7 @@ for (const file of eventFiles) {
 	}
 }
 
+//command handler
 client.commands = new Collection();
 const commandsPath = path.join(__dirname, 'commands');
 const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
@@ -45,9 +46,11 @@ client.on('interactionCreate', async interaction => {
 		await command.execute(interaction);
 	} catch (error) {
 		console.error(error);
-		await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
+		await interaction.editReply({ content: 'There was an error while executing this command!', ephemeral: true });
 	}
 });
+
+//activity status
 
 client.on('ready', () => { 
     setInterval(() => {
@@ -66,6 +69,5 @@ client.on('ready', () => {
             40000) 
 
 });
-
 
 client.login(token);

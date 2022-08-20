@@ -19,9 +19,10 @@
   "channel": "<:Channel:1002649975781589102>",
   "troll_coin": "<:troll_coin:1003890332506792037>",
   "cross": "<a:Cross:1004096185457463336>",
-  "phone": "📱",
-  "laptop": "💻",
-  "shovel": "<:shovel:1007352922671173653>",
-  "fishing_rod": "🎣",
-  "cool_meow": "🔜"
+  "phone": "<:troll_phone:1010268853659517018>",
+  "laptop": "<:troll_laptop_lol:1010268952275976292>",
+  "shovel": "<:not_a_shovel:1010269239623569429>",
+  "fishing_rod": "<:not_a_fishing_rod:1010269075823403110>",
+  "cool_meow": "<:cool_meow:1010150497170231366>",
+  "bank_upgrader": "<:bank_upgrader:1010146919441506305>"
 }

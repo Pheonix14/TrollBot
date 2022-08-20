@@ -10,9 +10,7 @@ module.exports = {
 await interaction.deferReply();
 const embed = new EmbedBuilder()
   .setColor(embeds.color)
-.setDescription(`${emojis.bot} Bot Ping - ${Date.now() - interaction.createdTimestamp}ms
-
-${emojis.discord} Api Latency - ${interaction.client.ws.ping}ms`)
+.setDescription(`${emojis.discord} Api Latency - ${interaction.client.ws.ping}ms`)
 .setFooter({text: `${embeds.footer}`});
 
   return interaction.editReply({embeds: [embed]});

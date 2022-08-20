@@ -17,14 +17,13 @@ module.exports = {
     
   await interaction.deferReply();
 
+    
     const economy = db.table("economy");
     
     const user = interaction.options.getUser('user');
 
     const ammount = interaction.options.getNumber('ammount');
-
-    if (interaction.user.id ==! developers) return interaction.reply({content: 'You Are Not My Developer', ephemeral: true})
-
+    
     await economy.add(`${user.id}.balance`, ammount)
     
 let bal = await economy.get(`${user.id}.balance`)
