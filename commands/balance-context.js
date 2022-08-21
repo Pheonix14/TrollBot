@@ -24,11 +24,19 @@ let bank = await economy.get(`${user.id}.bank`)
     
 if (bank === undefined) bank = 0;
 
-let Total = bal + bank
+let invw = await economy.get(`${user.id}.inventory_worth`)
+    
+if (invw === undefined) invw = 0;
+
+let bank_space = await economy.get(`${user.id}.bank_space`)
+    
+if (bank_space === undefined) bank_space = 0;
+
+let net = bal + bank + invw
     
 const embed = new EmbedBuilder()
   .setColor(embeds.color)
-.setDescription(`**${user.username}'s Balance**\n**Pocket:** ${emojis.troll_coin} ${bal}\n**Troll Bank:** ${emojis.troll_coin} ${bank}\n**Total:** ${emojis.troll_coin} ${Total}`)
+.setDescription(`**${user.username}'s Balance**\n**Pocket:** ${emojis.troll_coin} ${bal}\n**Troll Bank:** ${emojis.troll_coin} ${bank} / ${bank_space}\n**Net Worth:** ${emojis.troll_coin} ${net}`)
 .setFooter({text: `${embeds.footer}`});
     
 		return interaction.editReply({embeds: [embed]});

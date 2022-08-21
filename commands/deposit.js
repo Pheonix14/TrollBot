@@ -20,14 +20,22 @@ const economy = db.table("economy");
     const user = interaction.user;
 
 let balance = await economy.get(`${user.id}.balance`)
+
+let bank_space = await economy.get(`${user.id}.bank_space`)
     
 if (balance === undefined) balance = 0;
 
+if (bank_space === undefined) bank_space = 0;
     
     if (balance < ammount) {
                 return interaction.editReply({content: `${emojis.cross} You Don't Have That Much Money On Your Pocket`, ephemeral: true});
     }
 
+if (bank_space < ammount) {
+                return interaction.editReply({content: `${emojis.cross} You Don't Have That Much Bank Space. Use Bank Upgrader To Increase It`, ephemeral: true});
+    }
+
+    
     await economy.add(`${user.id}.bank`, ammount)
 
     await economy.sub(`${user.id}.balance`, ammount)
