@@ -19,6 +19,14 @@ const economy = db.table("economy");
     
     const user = interaction.options.getUser('user');
 
+let register = await economy.get(`${interaction.user.id}.register`)
+
+if (register === undefined) register = 'false';
+    
+    if (register === 'false') {
+return interaction.editReply(`${emojis.cross} Use /register To Register Your Account In My Database`)
+    }
+
 let bal2 = await economy.get(`${interaction.user.id}.balance`)
 
 if (bal2 === undefined) bal2 = 0;

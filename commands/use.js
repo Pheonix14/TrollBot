@@ -1,11 +1,9 @@
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 const { QuickDB } = require('quick.db');
 const db = new QuickDB({ filePath: "././database/database.sqlite" });
-const ms = require("ms");
 const emojis = require("./../config/emojis.json");
 const embeds = require("./../config/embed.json");
-const Jbeg = require('./../JSON/begs.json');
-
+const prices = require("./../JSON/prices.json");
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -20,6 +18,14 @@ module.exports = {
   await interaction.deferReply();
 
 const economy = db.table("economy");
+
+let register = await economy.get(`${interaction.user.id}.register`)
+
+if (register === undefined) register = 'false';
+    
+    if (register === 'false') {
+return interaction.editReply(`${emojis.cross} Use /register To Register Your Account In My Database`)
+    }
     
 const item = interaction.options.getString('item');
 
@@ -37,6 +43,8 @@ const random = Math.floor(Math.random() * (110000 -  + 80000)) + 80000;
 
 
 await economy.sub(`${interaction.user.id}.bank_upgrader`, 1)
+
+  await economy.sub(`${interaction.user.id}.inventory_worth`, prices.bank_upgrader)
   
   let embed1 = new EmbedBuilder()
                 .setColor(embeds.color)

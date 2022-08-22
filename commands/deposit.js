@@ -19,9 +19,22 @@ const economy = db.table("economy");
     const ammount = interaction.options.getNumber('ammount');
     const user = interaction.user;
 
+let register = await economy.get(`${user.id}.register`)
+
+if (register === undefined) register = 'false';
+    
+    if (register === 'false') {
+return interaction.editReply(`${emojis.cross} Use /register To Register Your Account In My Database`)
+    }
+
+    
 let balance = await economy.get(`${user.id}.balance`)
 
 let bank_space = await economy.get(`${user.id}.bank_space`)
+
+let bank = await economy.get(`${user.id}.bank`)
+
+let total = balance + bank;
     
 if (balance === undefined) balance = 0;
 
@@ -31,7 +44,7 @@ if (bank_space === undefined) bank_space = 0;
                 return interaction.editReply({content: `${emojis.cross} You Don't Have That Much Money On Your Pocket`, ephemeral: true});
     }
 
-if (bank_space < ammount) {
+if (bank_space < total) {
                 return interaction.editReply({content: `${emojis.cross} You Don't Have That Much Bank Space. Use Bank Upgrader To Increase It`, ephemeral: true});
     }
 

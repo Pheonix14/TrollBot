@@ -25,6 +25,14 @@ const user = interaction.user;
 await interaction.deferReply();
 
     const economy = db.table("economy");
+
+let register = await economy.get(`${user.id}.register`)
+
+if (register === undefined) register = 'false';
+    
+    if (register === 'false') {
+return interaction.editReply(`${emojis.cross} Use /register To Register Your Account In My Database`)
+    }
     
     const item = interaction.options.getString('item');
 

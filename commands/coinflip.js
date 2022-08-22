@@ -21,7 +21,14 @@ const economy = db.table("economy");
     
   let user = interaction.user;
 
-        
+let register = await economy.get(`${user.id}.register`)
+
+if (register === undefined) register = 'false';
+    
+    if (register === 'false') {
+return interaction.editReply(`${emojis.cross} Use /register To Register Your Account In My Database`)
+    }
+    
         let amount = bet;
     let balance = await economy.get(`${user.id}.balance`);
 
