@@ -24,5 +24,15 @@
   "shovel": "<:not_a_shovel:1010269239623569429>",
   "fishing_rod": "<:not_a_fishing_rod:1010269075823403110>",
   "cool_meow": "<:cool_meow:1010150497170231366>",
-  "bank_upgrader": "<:bank_upgrader:1010146919441506305>"
+  "bank_upgrader": "<:bank_upgrader:1010146919441506305>",
+"junk": "🩴",
+"common_fish": "🐠",
+"uncommon_fish": "🐬",
+"rare_fish": "🐳",
+"legendary_fish": "🦈",
+"dirt": "🔜",
+"worm": "🪱",
+"fossil": "🔜",
+"rere_fossil": "🔜",
+"dino_skeleton": "🔜"
 }

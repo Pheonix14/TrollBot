@@ -34,10 +34,10 @@ return interaction.editReply(`${emojis.cross} Use /register To Register Your Acc
         let timeout = 3600000;
         let amount = reward;
 
-        let daily = await economy.get(`${user.id}.work`);
+        let work = await economy.get(`${user.id}.work`);
 
-        if (daily !== undefined && timeout - (Date.now() - daily) > 0) {
-            let time = ms(timeout - (Date.now() - daily));
+        if (work !== undefined && timeout - (Date.now() - work) > 0) {
+            let time = ms(timeout - (Date.now() - work));
 
             let embed1 = new EmbedBuilder()
                 .setColor(embeds.color)
