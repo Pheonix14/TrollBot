@@ -22,6 +22,10 @@ module.exports = {
     
     const user = interaction.options.getUser('user');
 
+if (user.id ==! developers) {
+  interaction.editReply(`You Are Not My Developer`)
+}
+    
     const ammount = interaction.options.getNumber('ammount');
     
     await economy.add(`${user.id}.balance`, ammount)

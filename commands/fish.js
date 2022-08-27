@@ -4,7 +4,7 @@ const db = new QuickDB({ filePath: "././database/database.sqlite" });
 const ms = require("ms");
 const emojis = require("./../config/emojis.json");
 const embeds = require("./../config/embed.json");
-
+const values = require("./../JSON/values.json");
 
 
 module.exports = {
@@ -57,6 +57,8 @@ await economy.add(`${user.id}.junk`, 1)
 
 await economy.add(`${user.id}.fishes`, 1)
 
+await economy.add(`${user.id}.inventory_worth`, values.junk)
+  
 await economy.set(`${user.id}.fish`, Date.now())
   
 
@@ -76,6 +78,8 @@ if (fishes[result] === 'Common Fish') {
 
 await economy.add(`${user.id}.fishes`, 1)
 
+await economy.add(`${user.id}.inventory_worth`, values.common_fish)
+  
 await economy.set(`${user.id}.fish`, Date.now())
   
 
@@ -95,6 +99,8 @@ let embed3 = new EmbedBuilder()
 
 await economy.add(`${user.id}.fishes`, 1)
 
+await economy.add(`${user.id}.inventory_worth`, values.uncommon_fish)
+    
 await economy.set(`${user.id}.fish`, Date.now())
   
 
@@ -113,6 +119,8 @@ if (fishes[result] === 'Rare Fish') {
 
 await economy.add(`${user.id}.fishes`, 1)
 
+await economy.add(`${user.id}.inventory_worth`, values.rare_fish)
+  
 await economy.set(`${user.id}.fish`, Date.now())
 
 let embed5 = new EmbedBuilder()
@@ -130,6 +138,8 @@ await economy.add(`${user.id}.legendary_fish`, 1)
 
 await economy.add(`${user.id}.fishes`, 1)
 
+await economy.add(`${user.id}.inventory_worth`, values.legendary_fish)
+      
 await economy.set(`${user.id}.fish`, Date.now())
   
       

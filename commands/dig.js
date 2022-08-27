@@ -4,7 +4,7 @@ const db = new QuickDB({ filePath: "././database/database.sqlite" });
 const ms = require("ms");
 const emojis = require("./../config/emojis.json");
 const embeds = require("./../config/embed.json");
-
+const values = require("./../JSON/values.json");
 
 
 module.exports = {
@@ -57,6 +57,8 @@ await economy.add(`${user.id}.dirt`, 1)
 
 await economy.add(`${user.id}.digs`, 1)
 
+await economy.add(`${user.id}.inventory_worth`, values.dirt)
+  
 await economy.set(`${user.id}.dig`, Date.now())
   
 
@@ -76,6 +78,8 @@ if (items[result] === 'Worm') {
 
 await economy.add(`${user.id}.digs`, 1)
 
+await economy.add(`${user.id}.inventory_worth`, values.worm)
+  
 await economy.set(`${user.id}.dig`, Date.now())
   
 
@@ -95,6 +99,8 @@ let embed3 = new EmbedBuilder()
 
 await economy.add(`${user.id}.digs`, 1)
 
+await economy.add(`${user.id}.inventory_worth`, values.fossil)
+    
 await economy.set(`${user.id}.dig`, Date.now())
   
 
@@ -113,6 +119,8 @@ if (items[result] === 'Rare Fossil') {
 
 await economy.add(`${user.id}.digs`, 1)
 
+await economy.add(`${user.id}.inventory_worth`, values.rare_fossil)
+  
 await economy.set(`${user.id}.dig`, Date.now())
 
 let embed5 = new EmbedBuilder()
@@ -130,6 +138,8 @@ await economy.add(`${user.id}.dino_skeleton`, 1)
 
 await economy.add(`${user.id}.digs`, 1)
 
+await economy.add(`${user.id}.inventory_worth`, values.dino_skeleton)
+      
 await economy.set(`${user.id}.dig`, Date.now())
   
       

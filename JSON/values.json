@@ -1,0 +1,17 @@
+{
+  "phone": 500,
+  "laptop": 1000,
+  "shovel": 500,
+  "fishing_rod": 500,
+  "bank_upgrader": 50000,
+  "junk": 100,
+  "common_fish": 200,
+  "uncommon_fish": 500,
+  "rare_fish": 1000,
+  "legendary_fish": 2000,
+  "dirt": 50,
+  "worm": 200,
+  "fossil": 1000,
+  "rare_fossil": 2000,
+  "dino_skeleton": 3000
+}
