@@ -17,7 +17,8 @@ module.exports = {
 				{ name: 'Shovel', value: 'shovel' },
     { name: 'Fishing Rod', value: 'rod' },
 { name: 'Bank Upgrader', value: 'bank' },
-)),
+))
+  .addNumberOption(option => option.setName('quantity').setDescription('A Quantity You Want To Buy')),
 	async execute(interaction, client) {
 
 const user = interaction.user;
@@ -36,62 +37,72 @@ return interaction.editReply(`${emojis.cross} Use /register To Register Your Acc
     
     const item = interaction.options.getString('item');
 
+    let quantity = interaction.options.getNumber('quantity');
 
 let balance = await economy.get(`${user.id}.balance`);
 
 
   if (balance === undefined) balance = 0;
 
+    if (quantity === null) quantity = 1;
+    
+if (quantity === 0) quantity = 1;
     
 if (item === 'phone') {
+
+let totalph = prices.phone * quantity
   
-if (balance < prices.phone) return interaction.editReply({content: "You didn't Have Enough Money To Buy It", ephemeral: true })
+if (balance < totalph) return interaction.editReply({content: "You didn't Have Enough Money To Buy It", ephemeral: true })
 
-  await economy.add(`${user.id}.phone`, 1)
+  await economy.add(`${user.id}.phone`, quantity)
 
-  await economy.add(`${user.id}.inventory_worth`, prices.phone)
+  await economy.add(`${user.id}.inventory_worth`, totalph)
 
-await economy.sub(`${user.id}.balance`, prices.phone)
+await economy.sub(`${user.id}.balance`, totalph)
   
   let embedph = new EmbedBuilder()
                 .setColor(embeds.color)
-.setDescription(`Purchased A Phone ${emojis.phone} For ${emojis.troll_coin} ${prices.phone}`)
+.setDescription(`Purchased ${quantity}x Phone ${emojis.phone} For ${emojis.troll_coin} ${totalph}`)
 .setFooter({text: `${embeds.footer}`});
 
   interaction.editReply({embeds: [embedph]})
 }
 
 if (item === 'laptop') {
-  
-if (balance < prices.laptop) return interaction.editReply({content: "You didn't Have Enough Money To Buy It", ephemeral: true })
 
-  await economy.add(`${user.id}.laptop`, 1)
-
-await economy.add(`${user.id}.inventory_worth`, prices.laptop)
+let totallap = prices.laptop * quantity
   
-await economy.sub(`${user.id}.balance`, prices.phone)
+if (balance < totallap) return interaction.editReply({content: "You didn't Have Enough Money To Buy It", ephemeral: true })
+
+  await economy.add(`${user.id}.laptop`, quantity)
+
+await economy.add(`${user.id}.inventory_worth`, totallap)
+  
+await economy.sub(`${user.id}.balance`, totallap)
   
   let embedlap = new EmbedBuilder()
                 .setColor(embeds.color)
-.setDescription(`Purchased A Laptop ${emojis.laptop} For ${emojis.troll_coin} ${prices.laptop}`)
+.setDescription(`Purchased ${quantity}x Laptop ${emojis.laptop} For ${emojis.troll_coin} ${totallap}`)
 .setFooter({text: `${embeds.footer}`});
 
   interaction.editReply({embeds: [embedlap]})
 }
     
 if (item === 'shovel') {
-  
-if (balance < prices.shovel) return interaction.editReply({content: "You didn't Have Enough Money To Buy It", ephemeral: true })
 
-  await economy.add(`${user.id}.shovel`, 1)
-
-await economy.add(`${user.id}.inventory_worth`, prices.shovel)
+let totalsho = prices.shovel * quantity
   
-await economy.sub(`${user.id}.balance`, prices.shovel)
+if (balance < totalsho) return interaction.editReply({content: "You didn't Have Enough Money To Buy It", ephemeral: true })
+
+  await economy.add(`${user.id}.shovel`, quantity)
+
+await economy.add(`${user.id}.inventory_worth`, totalsho)
+  
+await economy.sub(`${user.id}.balance`, totalsho)
   
   let embedsho = new EmbedBuilder()
                 .setColor(embeds.color)
-.setDescription(`Purchased A Shovel ${emojis.shovel} For ${emojis.troll_coin} ${prices.shovel}`)
+.setDescription(`Purchased ${quantity}x Shovel ${emojis.shovel} For ${emojis.troll_coin} ${totalsho}`)
 .setFooter({text: `${embeds.footer}`});
 
   interaction.editReply({embeds: [embedsho]})
@@ -99,17 +110,19 @@ await economy.sub(`${user.id}.balance`, prices.shovel)
 
 if (item === 'rod') {
   
-if (balance < prices.fishing_rod) return interaction.editReply({content: "You didn't Have Enough Money To Buy It", ephemeral: true })
+let totalrod = prices.fishing_rod * quantity
 
-  await economy.add(`${user.id}.fishing_rod`, 1)
+if (balance < totalrod) return interaction.editReply({content: "You didn't Have Enough Money To Buy It", ephemeral: true })
 
-await economy.add(`${user.id}.inventory_worth`, prices.fishing_rod)
+  await economy.add(`${user.id}.fishing_rod`, quantity)
+
+await economy.add(`${user.id}.inventory_worth`, totalrod)
   
-await economy.sub(`${user.id}.balance`, prices.shovel)
+await economy.sub(`${user.id}.balance`, totalrod)
   
   let embedfis = new EmbedBuilder()
                 .setColor(embeds.color)
-.setDescription(`Purchased A Fishing Rod ${emojis.fishing_rod} For ${emojis.troll_coin} ${prices.fishing_rod}`)
+.setDescription(`Purchased ${quantity}x Fishing Rod ${emojis.fishing_rod} For ${emojis.troll_coin} ${totalrod}`)
 .setFooter({text: `${embeds.footer}`});
 
   interaction.editReply({embeds: [embedfis]})
@@ -117,21 +130,23 @@ await economy.sub(`${user.id}.balance`, prices.shovel)
 
 
 if (item === 'bank') {
-  
-if (balance < prices.bank_upgrader) return interaction.editReply({content: "You didn't Have Enough Money To Buy It", ephemeral: true })
 
-  await economy.add(`${user.id}.bank_upgrader`, 1)
+let totalbank = prices.bank_upgrader * quantity
+  
+if (balance < totalbank) return interaction.editReply({content: "You didn't Have Enough Money To Buy It", ephemeral: true })
 
-await economy.add(`${user.id}.inventory_worth`, prices.bank_upgrader)
+  await economy.add(`${user.id}.bank_upgrader`, quantity)
+
+await economy.add(`${user.id}.inventory_worth`, totalbank)
   
-await economy.sub(`${user.id}.balance`, prices.shovel)
+await economy.sub(`${user.id}.balance`, totalbank)
   
-  let embedfis = new EmbedBuilder()
+  let embedbank = new EmbedBuilder()
                 .setColor(embeds.color)
-.setDescription(`Purchased A Bank Upgrader ${emojis.bank_upgrader} For ${emojis.troll_coin} ${prices.bank_upgrader}`)
+.setDescription(`Purchased ${quantity}x Bank Upgrader ${emojis.bank_upgrader} For ${emojis.troll_coin} ${totalbank}`)
 .setFooter({text: `${embeds.footer}`});
 
-  interaction.editReply({embeds: [embedfis]})
+  interaction.editReply({embeds: [embedtotal]})
                           }
     
 	},
