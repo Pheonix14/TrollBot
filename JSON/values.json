@@ -10,8 +10,8 @@
   "rare_fish": 1000,
   "legendary_fish": 2000,
   "dirt": 50,
-  "worm": 200,
-  "fossil": 1000,
-  "rare_fossil": 2000,
-  "dino_skeleton": 3000
+  "sand": 200,
+  "worm": 500,
+  "iron": 2000,
+  "fossil": 3000
 }

@@ -9,7 +9,12 @@ module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('coinflip')
 		.setDescription('🪙 flip a coin and win some troll coins')
-  .addNumberOption(option => option.setName('bet').setDescription('Give Me A Amount You Want To Bet').setRequired(true)),
+  .addNumberOption(option => option.setName('bet').setDescription('Give Me A Amount You Want To Bet').setRequired(true))
+  .addStringOption(option => option.setName('choose').setDescription('choose head or tali')
+  .addChoices(
+{ name: 'Head', value: 'Heads' },
+    { name: 'Tail', value: 'Tails' },
+)),
                    
 	async execute(interaction, client) {
 
@@ -18,6 +23,8 @@ module.exports = {
 const economy = db.table("economy");
 
     const bet = interaction.options.getNumber('bet');
+
+let choose = interaction.options.getString('choose');
     
   let user = interaction.user;
 
@@ -42,7 +49,9 @@ if (balance === undefined) balance = 0;
 
     let coinb = Math.floor(Math.random() * coins.length);
 
+if (choose === null) choose = coins[coinc];
 
+    
     if (balance < amount) {
                 return interaction.editReply({content: `${emojis.cross} You Don't Have That Much Money To Bet`, ephemeral: true});
     }
@@ -50,13 +59,17 @@ if (balance === undefined) balance = 0;
     if (amount < 1000) {
                 return interaction.editReply({content: `${emojis.cross} You Can't Bet Lower Than 1000`, ephemeral: true});
     }
-        
-   if (coins[coinc] === coins[coinb]) {
+
+if (amount > 150000) {
+                return interaction.editReply({content: `${emojis.cross} You Can't Bet Higher Than 150000`, ephemeral: true});
+}
+    
+   if (choose === coins[coinb]) {
 
             
             let embed2 = new EmbedBuilder()
                 .setColor(embeds.color)
-                .setDescription(`You Spend ${emojis.troll_coin} ${bet} And Choose ${coins[coinc]}
+                .setDescription(`You Spend ${emojis.troll_coin} ${bet} And Choose ${choose}
 The Coin Spins... ${coins[coinb]} And You Won ${emojis.troll_coin} ${betw}`)
           .setFooter({text: `${embeds.footer}`});
             
@@ -69,7 +82,7 @@ interaction.editReply({embeds: [embed2]})
 else {
             let embed2 = new EmbedBuilder()
                 .setColor(embeds.color)
-                .setDescription(`You Spend ${emojis.troll_coin} ${bet} And Choose ${coins[coinc]}
+                .setDescription(`You Spend ${emojis.troll_coin} ${bet} And Choose ${choose}
 The Coin Spins... ${coins[coinb]} And You Lost It All`)
           .setFooter({text: `${embeds.footer}`});
             

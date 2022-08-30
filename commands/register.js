@@ -14,9 +14,10 @@ module.exports = {
 
    await interaction.deferReply();
 
+const economy = db.table("economy");
+    
 const user = interaction.user;
     
-const economy = db.table("economy");
     
 let register = await economy.get(`${user.id}.register`)
 

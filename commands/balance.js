@@ -15,7 +15,7 @@ module.exports = {
 
     await interaction.deferReply();
 
-const economy = db.table("economy");
+    const economy = db.table("economy");
     
     const user = interaction.options.getUser('user');
 

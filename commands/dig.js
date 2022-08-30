@@ -47,7 +47,7 @@ let shovel = await economy.get(`${user.id}.shovel`)
             return interaction.editReply({embeds: [embed1]})
         } 
 
-const items = ["Dirt", "Worm", "Fossil", "Rare Fossil", "Dino Skeleton"];
+const items = ["Dirt", "Sand", "Worm", "Iron", "Fossil"];
 
     let result = Math.floor(Math.random() * items.length);
 
@@ -64,88 +64,88 @@ await economy.set(`${user.id}.dig`, Date.now())
 
 let embed2 = new EmbedBuilder()
                 .setColor(embeds.color)
-      .setDescription(`You Got A ${emojis.dirt} Dirt While Digging`)
+      .setDescription(`You Got ${emojis.dirt} Dirt While Digging`)
           .setFooter({text: `${embeds.footer}`})
             return interaction.editReply({embeds: [embed2]}) 
 
 
 }
     
-if (items[result] === 'Worm') {
+if (items[result] === 'Sand') {
 
 
-  await economy.add(`${user.id}.worm`, 1)
+  await economy.add(`${user.id}.sand`, 1)
 
 await economy.add(`${user.id}.digs`, 1)
 
-await economy.add(`${user.id}.inventory_worth`, values.worm)
+await economy.add(`${user.id}.inventory_worth`, values.sand)
   
 await economy.set(`${user.id}.dig`, Date.now())
   
 
 let embed3 = new EmbedBuilder()
                 .setColor(embeds.color)
-      .setDescription(`You Got A ${emojis.worm} Worm While Digging`)
+      .setDescription(`You Got ${emojis.sand} Sand While Digging`)
           .setFooter({text: `${embeds.footer}`})
             return interaction.editReply({embeds: [embed3]}) 
 
 
 }
 
-  if (items[result] === 'Fossil') {
+  if (items[result] === 'Worm') {
 
 
-    await economy.add(`${user.id}.fossil`, 1)
+    await economy.add(`${user.id}.worm`, 1)
 
 await economy.add(`${user.id}.digs`, 1)
 
-await economy.add(`${user.id}.inventory_worth`, values.fossil)
+await economy.add(`${user.id}.inventory_worth`, values.worm)
     
 await economy.set(`${user.id}.dig`, Date.now())
   
 
 let embed4 = new EmbedBuilder()
                 .setColor(embeds.color)
-      .setDescription(`You Got A ${emojis.fossil} Fossil While Digging`)
+      .setDescription(`You Got A ${emojis.worm} Worm While Digging`)
           .setFooter({text: `${embeds.footer}`})
             return interaction.editReply({embeds: [embed4]}) 
 
 
   }
 
-if (items[result] === 'Rare Fossil') {
+if (items[result] === 'Irom') {
 
-  await economy.add(`${user.id}.rare_fossil`, 1)
+  await economy.add(`${user.id}.iron`, 1)
 
 await economy.add(`${user.id}.digs`, 1)
 
-await economy.add(`${user.id}.inventory_worth`, values.rare_fossil)
+await economy.add(`${user.id}.inventory_worth`, values.iron)
   
 await economy.set(`${user.id}.dig`, Date.now())
 
 let embed5 = new EmbedBuilder()
                 .setColor(embeds.color)
-      .setDescription(`You Got A ${emojis.rare_fossil} Rare Fossil While Digging`)
+      .setDescription(`You Got A ${emojis.iron} Iron While Digging`)
           .setFooter({text: `${embeds.footer}`})
             return interaction.editReply({embeds: [embed5]}) 
 
   
 }
 
-    if (items[result] === 'Dino Skeleton') {
+    if (items[result] === 'Fossil') {
   
-await economy.add(`${user.id}.dino_skeleton`, 1)
+await economy.add(`${user.id}.fossil`, 1)
 
 await economy.add(`${user.id}.digs`, 1)
 
-await economy.add(`${user.id}.inventory_worth`, values.dino_skeleton)
+await economy.add(`${user.id}.inventory_worth`, values.fossil)
       
 await economy.set(`${user.id}.dig`, Date.now())
   
       
 let embed6 = new EmbedBuilder()
                 .setColor(embeds.color)
-      .setDescription(`You Got A ${emojis.dino_skeleton} Dino Skeleton While Digging`)
+      .setDescription(`You Got A ${emojis.fossil} Fossil While Digging`)
           .setFooter({text: `${embeds.footer}`})
             return interaction.editReply({embeds: [embed6]}) 
 
