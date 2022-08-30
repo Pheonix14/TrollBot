@@ -12,8 +12,8 @@ module.exports = {
   .addNumberOption(option => option.setName('bet').setDescription('Give Me A Amount You Want To Bet').setRequired(true))
   .addStringOption(option => option.setName('choose').setDescription('choose head or tali')
   .addChoices(
-{ name: 'Head', value: 'Heads' },
-    { name: 'Tail', value: 'Tails' },
+{ name: 'Heads', value: 'Heads' },
+    { name: 'Tails', value: 'Tails' },
 )),
                    
 	async execute(interaction, client) {
