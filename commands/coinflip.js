@@ -91,7 +91,7 @@ interaction.editReply({embeds: [embed2]})
           await economy.add(`${user.id}.flips`, 1)
             await economy.sub(`${user.id}.balance`, amount)
 }
-        
 
+    
 	},
 }

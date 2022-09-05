@@ -75,7 +75,19 @@ ${emojis.bank_upgrader} Bank Upgrade — ${emojis.troll_coin} ${prices.bank_upgr
 const embed3 = new EmbedBuilder()
     .setColor(embeds.color)
   .setTitle(`Collectable Items`)
-    .setDescription(`soon`)
+    .setDescription(`${emojis.toilet_paper} Toilet Paper — ${emojis.troll_coin} ${prices.toilet_paper}
+    
+    
+${emojis.cool_meow} Cool Meow — ${emojis.troll_coin} ${prices.cool_meow}
+
+
+${emojis.golden_toilet_paper} Golden Toilet Paper — ${emojis.troll_coin} ${prices.golden_toilet_paper}
+
+
+${emojis.golden_troll_coin} Golden Troll Coin — ${emojis.troll_coin} ${prices.golden_troll_coin}
+
+
+${emojis.troll_crown} Troll Crown — ${emojis.troll_coin} ${prices.troll_crown}`)
   .setFooter({text: `${embeds.footer}`});
 
 
