@@ -31,6 +31,8 @@ interaction.editReply(`Registering Your Account In My Database. Please Wait...`)
 
 await economy.set(`${user.id}.register`, 'true')
 
+await economy.set(`${user.id}.joined`, Date.now())
+    
 await economy.add(`${user.id}.bank_space`, 5000)
 
 const embed = new EmbedBuilder()

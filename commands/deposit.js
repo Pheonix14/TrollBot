@@ -34,11 +34,14 @@ let bank_space = await economy.get(`${user.id}.bank_space`)
 
 let bank = await economy.get(`${user.id}.bank`)
 
-let total = balance + bank;
     
 if (balance === undefined) balance = 0;
 
 if (bank_space === undefined) bank_space = 0;
+
+if (bank === undefined) bank = 0;
+    
+let total = ammount + bank;
     
     if (balance < ammount) {
                 return interaction.editReply({content: `${emojis.cross} You Don't Have That Much Money On Your Pocket`, ephemeral: true});
