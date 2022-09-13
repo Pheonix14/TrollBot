@@ -85,4 +85,6 @@ client.on('ready', () => {
         require(`./handlers/${h}`)(client);
     })
 
+require('./database/connect.js')
+
 client.login(token);

@@ -1,6 +1,4 @@
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
-const { QuickDB } = require('quick.db');
-const db = new QuickDB({ filePath: "././database/database.sqlite" });
 const emojis = require("./../config/emojis.json");
 const embeds = require("./../config/embed.json");
 
@@ -12,14 +10,19 @@ module.exports = {
   .addNumberOption(option => option.setName('ammount').setDescription('Give Me A Amount To Deposit Money').setRequired(true)),
                    
 	async execute(interaction, client) {
+
+const db = require("./../database/connect.js");
+    
 await interaction.deferReply();
 
-const economy = db.table("economy");
+const currency = db.table("currency");
     
+const settings = db.table("settings");
+
     const ammount = interaction.options.getNumber('ammount');
     const user = interaction.user;
 
-let register = await economy.get(`${user.id}.register`)
+let register = await settings.get(`${user.id}.register`)
 
 if (register === undefined) register = 'false';
     
@@ -28,11 +31,11 @@ return interaction.editReply(`${emojis.cross} Use /register To Register Your Acc
     }
 
     
-let balance = await economy.get(`${user.id}.balance`)
+let balance = await currency.get(`${user.id}.balance`)
 
-let bank_space = await economy.get(`${user.id}.bank_space`)
+let bank_space = await currency.get(`${user.id}.bank_space`)
 
-let bank = await economy.get(`${user.id}.bank`)
+let bank = await currency.get(`${user.id}.bank`)
 
     
 if (balance === undefined) balance = 0;
@@ -52,9 +55,9 @@ if (bank_space < total) {
     }
 
     
-    await economy.add(`${user.id}.bank`, ammount)
+    await currency.add(`${user.id}.bank`, ammount)
 
-    await economy.sub(`${user.id}.balance`, ammount)
+    await currency.sub(`${user.id}.balance`, ammount)
 
 
     const embed2 = new EmbedBuilder()

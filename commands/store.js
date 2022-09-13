@@ -1,6 +1,4 @@
 const { EmbedBuilder, ActionRowBuilder, SelectMenuBuilder, SlashCommandBuilder } = require("discord.js");
-const { QuickDB } = require('quick.db');
-const db = new QuickDB({ filePath: "././database/database.sqlite" });
 const embeds = require("./../config/embed.json");
 const emojis = require("./../config/emojis.json");
 const prices = require("./../JSON/prices.json");
@@ -12,9 +10,11 @@ module.exports = {
 	async execute(interaction, client) {
 await interaction.deferReply();
 
-const economy = db.table("economy");
+const db = require("./../database/connect.js");
     
-let register = await economy.get(`${interaction.user.id}.register`)
+const settings = db.table("settings");
+    
+let register = await settings.get(`${interaction.user.id}.register`)
 
 if (register === undefined) register = 'false';
     

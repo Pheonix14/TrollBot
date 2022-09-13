@@ -1,6 +1,4 @@
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
-const { QuickDB } = require('quick.db');
-const db = new QuickDB({ filePath: "././database/database.sqlite" });
 const emojis = require("./../config/emojis.json");
 const embeds = require("./../config/embed.json");
 const prices = require("./../JSON/prices.json");
@@ -15,12 +13,18 @@ module.exports = {
 ))
   .addNumberOption(option => option.setName('quantity').setDescription('A Quantity You Want To Use')),
 	async execute(interaction, client) {
-  
+
+const db = require("./../database/connect.js");
+    
   await interaction.deferReply();
 
-const economy = db.table("economy");
+const currency = db.table("currency");
 
-let register = await economy.get(`${interaction.user.id}.register`)
+const settings = db.table("settings");
+
+const items = db.table("items");
+
+let register = await settings.get(`${interaction.user.id}.register`)
 
 if (register === undefined) register = 'false';
     
@@ -36,7 +40,7 @@ if (quantity === null) quantity = 1;
     
 if (quantity === 0) quantity = 1;
     
-  let bank_upgrader = await economy.get(`${interaction.user.id}.bank_upgrader`)
+  let bank_upgrader = await items.get(`${interaction.user.id}.bank_upgrader`)
 
 if (bank_upgrader === undefined) bank_upgrader = 0;
 
@@ -48,12 +52,14 @@ const random = Math.floor(Math.random() * (110000 -  + 80000)) + 80000;
 
 let totalbank = random * quantity;
   
-  await economy.add(`${interaction.user.id}.bank_space`, totalbank)
+  await currency.add(`${interaction.user.id}.bank_space`, totalbank)
 
 
-await economy.sub(`${interaction.user.id}.bank_upgrader`, quantity)
+await items.sub(`${interaction.user.id}.bank_upgrader`, quantity)
 
-  await economy.sub(`${interaction.user.id}.inventory_worth`, prices.bank_upgrader)
+
+
+  await currency.sub(`${interaction.user.id}.inventory_worth`, prices.bank_upgrader)
   
   let embed1 = new EmbedBuilder()
                 .setColor(embeds.color)

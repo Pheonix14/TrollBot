@@ -1,6 +1,4 @@
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
-const { QuickDB } = require('quick.db');
-const db = new QuickDB({ filePath: "././database/database.sqlite" });
 const { developers } = require("./../config/emojis.json");
 const emojis = require("./../config/emojis.json");
 const embeds = require("./../config/embed.json");
@@ -15,9 +13,12 @@ module.exports = {
                    
 	async execute(interaction, client) {
     
+
+const db = require("./../database/connect.js");
+
   await interaction.deferReply();
 
-    const economy = db.table("economy");
+const currency = db.table("currency");
     
     const user = interaction.options.getUser('user');
 
@@ -27,9 +28,9 @@ if (user.id ==! developers) {
     
     const ammount = interaction.options.getNumber('ammount');
     
-    await economy.add(`${user.id}.balance`, ammount)
+    await currency.add(`${user.id}.balance`, ammount)
     
-let bal = await economy.get(`${user.id}.balance`)
+let bal = await currency.get(`${user.id}.balance`)
 
     const embed = new EmbedBuilder()
   .setColor(embeds.color)

@@ -1,6 +1,4 @@
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
-const { QuickDB } = require('quick.db');
-const db = new QuickDB({ filePath: "././database/database.sqlite" });
 const { developers } = require("./../config/emojis.json");
 const emojis = require("./../config/emojis.json");
 const embeds = require("./../config/embed.json");
@@ -15,10 +13,14 @@ module.exports = {
                    
 	async execute(interaction, client) {
 
+const db = require("./../database/connect.js");
     
 await interaction.deferReply();
 
-const economy = db.table("economy");
+const currency = db.table("currency");
+
+const settings = db.table("settings")
+
     
     const user = interaction.options.getUser('user');
 
@@ -26,7 +28,7 @@ const economy = db.table("economy");
 
     const user2 = interaction.user;
 
-let register = await economy.get(`${user2.id}.register`)
+let register = await settings.get(`${user2.id}.register`)
 
 if (register === undefined) register = 'false';
     
@@ -35,7 +37,7 @@ return interaction.editReply(`${emojis.cross} Use /register To Register Your Acc
     }
 
     
-let balance = await economy.get(`${user2.id}.balance`);
+let balance = await currency.get(`${user2.id}.balance`);
 
 if (balance === undefined) balance = 0;
     
@@ -50,9 +52,9 @@ if (user.id === user2.id) {
       return interaction.editReply({content: `${emojis.cross} You don't have that much money`, ephemeral: true});
   }
     
-    await economy.add(`${user.id}.balance`, ammount)
+    await currency.add(`${user.id}.balance`, ammount)
     
-await economy.sub(`${user2.id}.balance`, ammount)
+await currency.sub(`${user2.id}.balance`, ammount)
 
     const embed = new EmbedBuilder()
   .setColor(embeds.color)

@@ -1,6 +1,4 @@
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
-const { QuickDB } = require('quick.db');
-const db = new QuickDB({ filePath: "././database/database.sqlite" });
 const ms = require("ms");
 const emojis = require("./../config/emojis.json");
 const embeds = require("./../config/embed.json");
@@ -18,9 +16,15 @@ module.exports = {
                    
 	async execute(interaction, client) {
 
+const db = require("./../database/connect.js");
+    
     await interaction.deferReply();
 
-const economy = db.table("economy");
+const currency = db.table("economy");
+
+const settings = db.table("settings");
+
+const counts = db.table("counts");
 
     const bet = interaction.options.getNumber('bet');
 
@@ -28,7 +32,7 @@ let choose = interaction.options.getString('choose');
     
   let user = interaction.user;
 
-let register = await economy.get(`${user.id}.register`)
+let register = await settings.get(`${user.id}.register`)
 
 if (register === undefined) register = 'false';
     
@@ -37,7 +41,7 @@ return interaction.editReply(`${emojis.cross} Use /register To Register Your Acc
     }
     
         let amount = bet;
-    let balance = await economy.get(`${user.id}.balance`);
+    let balance = await currency.get(`${user.id}.balance`);
 
 if (balance === undefined) balance = 0;
 
@@ -75,8 +79,8 @@ The Coin Spins... ${coins[coinb]} And You Won ${emojis.troll_coin} ${betw}`)
             
 interaction.editReply({embeds: [embed2]})
 
-          await economy.add(`${user.id}.flips`, 1)
-            await economy.add(`${user.id}.balance`, amount)
+          await counts.add(`${user.id}.flips`, 1)
+            await currency.add(`${user.id}.balance`, amount)
           } 
      
 else {
@@ -88,8 +92,8 @@ The Coin Spins... ${coins[coinb]} And You Lost It All`)
             
 interaction.editReply({embeds: [embed2]})
 
-          await economy.add(`${user.id}.flips`, 1)
-            await economy.sub(`${user.id}.balance`, amount)
+          await counts.add(`${user.id}.flips`, 1)
+            await currency.sub(`${user.id}.balance`, amount)
 }
 
     

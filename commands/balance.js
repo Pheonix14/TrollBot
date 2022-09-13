@@ -1,6 +1,4 @@
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
-const { QuickDB } = require('quick.db');
-const db = new QuickDB({ filePath: "././database/database.sqlite" });
 const emojis = require("./../config/emojis.json");
 const embeds = require("./../config/embed.json");
 
@@ -13,13 +11,18 @@ module.exports = {
                    
 	async execute(interaction, client) {
 
+const db = require("./../database/connect.js");
+
     await interaction.deferReply();
 
-    const economy = db.table("economy");
+    const currency = db.table("currency");
     
+const settings = db.table("settings");
+
+
     const user = interaction.options.getUser('user');
 
-let register = await economy.get(`${interaction.user.id}.register`)
+let register = await settings.get(`${interaction.user.id}.register`)
 
 if (register === undefined) register = 'false';
     
@@ -27,19 +30,22 @@ if (register === undefined) register = 'false';
 return interaction.editReply(`${emojis.cross} Use /register To Register Your Account In My Database`)
     }
 
-let bal2 = await economy.get(`${interaction.user.id}.balance`)
+if (!user) {
+  
+
+let bal2 = await currency.get(`${interaction.user.id}.balance`)
 
 if (bal2 === undefined) bal2 = 0;
 
-let bank2 = await economy.get(`${interaction.user.id}.bank`)
+let bank2 = await currency.get(`${interaction.user.id}.bank`)
     
 if (bank2 === undefined) bank2 = 0;
 
-let invw2 = await economy.get(`${interaction.user.id}.inventory_worth`)
+let invw2 = await currency.get(`${interaction.user.id}.inventory_worth`)
     
 if (invw2 === undefined) invw2 = 0;
 
-let bank_space2 = await economy.get(`${interaction.user.id}.bank_space`)
+let bank_space2 = await currency.get(`${interaction.user.id}.bank_space`)
     
 if (bank_space2 === undefined) bank_space2 = 0;
 
@@ -52,21 +58,25 @@ const embed0 = new EmbedBuilder()
 .setDescription(`**Your Balance**\n**Pocket:** ${emojis.troll_coin} ${bal2}\n**Troll Bank:** ${emojis.troll_coin} ${bank2} / ${bank_space2}\n**Net Worth:** ${emojis.troll_coin} ${net2}`)
 .setFooter({text: `${embeds.footer}`});
 
-if (!user) return interaction.editReply({embeds: [embed0]});
+interaction.editReply({embeds: [embed0]});
     
-let bal = await economy.get(`${user.id}.balance`)
+}
+
+if (user) {
+  
+let bal = await currency.get(`${user.id}.balance`)
 
 if (bal === undefined) bal = 0;
 
-let bank = await economy.get(`${user.id}.bank`)
+let bank = await currency.get(`${user.id}.bank`)
     
 if (bank === undefined) bank = 0;
 
-let invw = await economy.get(`${user.id}.inventory_worth`)
+let invw = await currency.get(`${user.id}.inventory_worth`)
     
 if (invw === undefined) invw2 = 0;
 
-let bank_space = await economy.get(`${user.id}.bank_space`)
+let bank_space = await currency.get(`${user.id}.bank_space`)
     
 if (bank_space === undefined) bank_space = 0;
     
@@ -79,6 +89,7 @@ let net = bal + bank + invw
 
   return interaction.editReply({embeds: [embed]});
 
+}
 
 	},
 }

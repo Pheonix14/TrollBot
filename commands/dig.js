@@ -1,6 +1,4 @@
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
-const { QuickDB } = require('quick.db');
-const db = new QuickDB({ filePath: "././database/database.sqlite" });
 const ms = require("ms");
 const emojis = require("./../config/emojis.json");
 const embeds = require("./../config/embed.json");
@@ -13,13 +11,24 @@ module.exports = {
 		.setDescription('⛏️ Dig And Get Some Items'),
                    
 	async execute(interaction, client) {
+
+const db = require("./../database/connect.js");
+
 await interaction.deferReply();
 
-const economy = db.table("economy");
+const currency = db.table("currency");
+
+const settings = db.table("settings")
+
+const items = db.table("items");
+
+const times = db.table("times");
+
+const counts = db.table("counts");
 
   let user = interaction.user;
 
-let register = await economy.get(`${user.id}.register`)
+let register = await settings.get(`${user.id}.register`)
 
 if (register === undefined) register = 'false';
     
@@ -28,14 +37,14 @@ return interaction.editReply(`${emojis.cross} Use /register To Register Your Acc
     }
 
     
-let shovel = await economy.get(`${user.id}.shovel`)
+let shovel = await items.get(`${user.id}.shovel`)
 
     if (shovel === undefined) {
       return interaction.editReply(`${emojis.cross} You Didn't Have A Shovel`)
     }
 
         let timeout = 20000;
-        let dig = await economy.get(`${user.id}.dig`);
+        let dig = await times.get(`${user.id}.dig`);
 
         if (dig !== undefined && timeout - (Date.now() - dig) > 0) {
             let time = ms(timeout - (Date.now() - dig));
@@ -47,19 +56,19 @@ let shovel = await economy.get(`${user.id}.shovel`)
             return interaction.editReply({embeds: [embed1]})
         } 
 
-const items = ["Dirt", "Sand", "Worm", "Iron", "Fossil"];
+const item = ["Dirt", "Sand", "Worm", "Iron", "Fossil"];
 
-    let result = Math.floor(Math.random() * items.length);
+    let result = Math.floor(Math.random() * item.length);
 
-if (items[result] === 'Dirt') {
+if (item[result] === 'Dirt') {
   
-await economy.add(`${user.id}.dirt`, 1)
+await items.add(`${user.id}.dirt`, 1)
 
-await economy.add(`${user.id}.digs`, 1)
+await counts.add(`${user.id}.digs`, 1)
 
-await economy.add(`${user.id}.inventory_worth`, values.dirt)
+await currency.add(`${user.id}.inventory_worth`, values.dirt)
   
-await economy.set(`${user.id}.dig`, Date.now())
+await times.set(`${user.id}.dig`, Date.now())
   
 
 let embed2 = new EmbedBuilder()
@@ -71,16 +80,16 @@ let embed2 = new EmbedBuilder()
 
 }
     
-if (items[result] === 'Sand') {
+if (item[result] === 'Sand') {
 
 
-  await economy.add(`${user.id}.sand`, 1)
+  await items.add(`${user.id}.sand`, 1)
 
-await economy.add(`${user.id}.digs`, 1)
+await counts.add(`${user.id}.digs`, 1)
 
-await economy.add(`${user.id}.inventory_worth`, values.sand)
+await currency.add(`${user.id}.inventory_worth`, values.sand)
   
-await economy.set(`${user.id}.dig`, Date.now())
+await times.set(`${user.id}.dig`, Date.now())
   
 
 let embed3 = new EmbedBuilder()
@@ -92,16 +101,16 @@ let embed3 = new EmbedBuilder()
 
 }
 
-  if (items[result] === 'Worm') {
+  if (item[result] === 'Worm') {
 
 
-    await economy.add(`${user.id}.worm`, 1)
+    await items.add(`${user.id}.worm`, 1)
 
-await economy.add(`${user.id}.digs`, 1)
+await counts.add(`${user.id}.digs`, 1)
 
-await economy.add(`${user.id}.inventory_worth`, values.worm)
+await currency.add(`${user.id}.inventory_worth`, values.worm)
     
-await economy.set(`${user.id}.dig`, Date.now())
+await times.set(`${user.id}.dig`, Date.now())
   
 
 let embed4 = new EmbedBuilder()
@@ -113,15 +122,15 @@ let embed4 = new EmbedBuilder()
 
   }
 
-if (items[result] === 'Irom') {
+if (item[result] === 'Irom') {
 
-  await economy.add(`${user.id}.iron`, 1)
+  await items.add(`${user.id}.iron`, 1)
 
-await economy.add(`${user.id}.digs`, 1)
+await counts.add(`${user.id}.digs`, 1)
 
-await economy.add(`${user.id}.inventory_worth`, values.iron)
+await currency.add(`${user.id}.inventory_worth`, values.iron)
   
-await economy.set(`${user.id}.dig`, Date.now())
+await times.set(`${user.id}.dig`, Date.now())
 
 let embed5 = new EmbedBuilder()
                 .setColor(embeds.color)
@@ -132,15 +141,15 @@ let embed5 = new EmbedBuilder()
   
 }
 
-    if (items[result] === 'Fossil') {
+    if (item[result] === 'Fossil') {
   
-await economy.add(`${user.id}.fossil`, 1)
+await items.add(`${user.id}.fossil`, 1)
 
-await economy.add(`${user.id}.digs`, 1)
+await counts.add(`${user.id}.digs`, 1)
 
-await economy.add(`${user.id}.inventory_worth`, values.fossil)
+await currency.add(`${user.id}.inventory_worth`, values.fossil)
       
-await economy.set(`${user.id}.dig`, Date.now())
+await times.set(`${user.id}.dig`, Date.now())
   
       
 let embed6 = new EmbedBuilder()

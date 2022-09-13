@@ -1,6 +1,4 @@
 const { EmbedBuilder, ContextMenuCommandBuilder, ApplicationCommandType } = require('discord.js');
-const { QuickDB } = require('quick.db');
-const db = new QuickDB({ filePath: "././database/database.sqlite" });
 const emojis = require("./../config/emojis.json");
 const embeds = require("./../config/embed.json");
 
@@ -9,26 +7,28 @@ module.exports = {
 		.setName('Balance')
 .setType(ApplicationCommandType.User),
 	async execute(interaction, client) {
+
+    const db = require("./../database/connect.js");
     
 await interaction.deferReply();
-
-    const economy = db.table("economy");
+    
+    const currency = db.table("currency");
     
     const user = interaction.targetUser;
 
-let bal = await economy.get(`${user.id}.balance`)
+let bal = await currency.get(`${user.id}.balance`)
 
 if (bal === undefined) bal = 0;
 
-let bank = await economy.get(`${user.id}.bank`)
+let bank = await currency.get(`${user.id}.bank`)
     
 if (bank === undefined) bank = 0;
 
-let invw = await economy.get(`${user.id}.inventory_worth`)
+let invw = await currency.get(`${user.id}.inventory_worth`)
     
 if (invw === undefined) invw = 0;
 
-let bank_space = await economy.get(`${user.id}.bank_space`)
+let bank_space = await currency.get(`${user.id}.bank_space`)
     
 if (bank_space === undefined) bank_space = 0;
 

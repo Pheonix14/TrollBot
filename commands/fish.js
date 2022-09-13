@@ -1,6 +1,4 @@
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
-const { QuickDB } = require('quick.db');
-const db = new QuickDB({ filePath: "././database/database.sqlite" });
 const ms = require("ms");
 const emojis = require("./../config/emojis.json");
 const embeds = require("./../config/embed.json");
@@ -13,13 +11,24 @@ module.exports = {
 		.setDescription('🎣 Fish And Catch Some Fishes'),
                    
 	async execute(interaction, client) {
+
+const db = require("./../database/connect.js");
+    
 await interaction.deferReply();
 
-const economy = db.table("economy");
+const currency = db.table("currency");
 
+const settings = db.table("settings")
+
+const items = db.table("items");
+
+const times = db.table("times");
+
+const counts = db.table("counts");
+    
   let user = interaction.user;
 
-let register = await economy.get(`${user.id}.register`)
+let register = await settings.get(`${user.id}.register`)
 
 if (register === undefined) register = 'false';
     
@@ -28,14 +37,14 @@ return interaction.editReply(`${emojis.cross} Use /register To Register Your Acc
     }
 
     
-let fishingrod = await economy.get(`${user.id}.fishing_rod`)
+let fishingrod = await items.get(`${user.id}.fishing_rod`)
 
     if (fishingrod === undefined) {
       return interaction.editReply(`${emojis.cross} You Didn't Have A Fishing Rod`)
     }
 
         let timeout = 20000;
-        let fish = await economy.get(`${user.id}.fish`);
+        let fish = await times.get(`${user.id}.fish`);
 
         if (fish !== undefined && timeout - (Date.now() - fish) > 0) {
             let time = ms(timeout - (Date.now() - fish));
@@ -53,13 +62,13 @@ const fishes = ["Junk", "Common Fish", "Uncommon Fish", "Rare Fish", "Legendary 
 
 if (fishes[result] === 'Junk') {
   
-await economy.add(`${user.id}.junk`, 1)
+await items.add(`${user.id}.junk`, 1)
 
-await economy.add(`${user.id}.fishes`, 1)
+await counts.add(`${user.id}.fishes`, 1)
 
-await economy.add(`${user.id}.inventory_worth`, values.junk)
+await currency.add(`${user.id}.inventory_worth`, values.junk)
   
-await economy.set(`${user.id}.fish`, Date.now())
+await times.set(`${user.id}.fish`, Date.now())
   
 
 let embed2 = new EmbedBuilder()
@@ -74,13 +83,13 @@ let embed2 = new EmbedBuilder()
 if (fishes[result] === 'Common Fish') {
 
 
-  await economy.add(`${user.id}.common_fish`, 1)
+  await items.add(`${user.id}.common_fish`, 1)
 
-await economy.add(`${user.id}.fishes`, 1)
+await counts.add(`${user.id}.fishes`, 1)
 
-await economy.add(`${user.id}.inventory_worth`, values.common_fish)
+await currency.add(`${user.id}.inventory_worth`, values.common_fish)
   
-await economy.set(`${user.id}.fish`, Date.now())
+await times.set(`${user.id}.fish`, Date.now())
   
 
 let embed3 = new EmbedBuilder()
@@ -95,13 +104,13 @@ let embed3 = new EmbedBuilder()
   if (fishes[result] === 'Uncommon Fish') {
 
 
-    await economy.add(`${user.id}.uncommon_fish`, 1)
+    await items.add(`${user.id}.uncommon_fish`, 1)
 
-await economy.add(`${user.id}.fishes`, 1)
+await counts.add(`${user.id}.fishes`, 1)
 
-await economy.add(`${user.id}.inventory_worth`, values.uncommon_fish)
+await currency.add(`${user.id}.inventory_worth`, values.uncommon_fish)
     
-await economy.set(`${user.id}.fish`, Date.now())
+await times.set(`${user.id}.fish`, Date.now())
   
 
 let embed4 = new EmbedBuilder()
@@ -115,13 +124,13 @@ let embed4 = new EmbedBuilder()
 
 if (fishes[result] === 'Rare Fish') {
 
-  await economy.add(`${user.id}.rare_fish`, 1)
+  await items.add(`${user.id}.rare_fish`, 1)
 
-await economy.add(`${user.id}.fishes`, 1)
+await counts.add(`${user.id}.fishes`, 1)
 
-await economy.add(`${user.id}.inventory_worth`, values.rare_fish)
+await currency.add(`${user.id}.inventory_worth`, values.rare_fish)
   
-await economy.set(`${user.id}.fish`, Date.now())
+await times.set(`${user.id}.fish`, Date.now())
 
 let embed5 = new EmbedBuilder()
                 .setColor(embeds.color)
@@ -134,13 +143,13 @@ let embed5 = new EmbedBuilder()
 
     if (fishes[result] === 'Legendary Fish') {
   
-await economy.add(`${user.id}.legendary_fish`, 1)
+await items.add(`${user.id}.legendary_fish`, 1)
 
-await economy.add(`${user.id}.fishes`, 1)
+await counts.add(`${user.id}.fishes`, 1)
 
-await economy.add(`${user.id}.inventory_worth`, values.legendary_fish)
+await currency.add(`${user.id}.inventory_worth`, values.legendary_fish)
       
-await economy.set(`${user.id}.fish`, Date.now())
+await times.set(`${user.id}.fish`, Date.now())
   
       
 let embed6 = new EmbedBuilder()

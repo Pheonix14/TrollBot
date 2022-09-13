@@ -1,6 +1,4 @@
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
-const { QuickDB } = require('quick.db');
-const db = new QuickDB({ filePath: "././database/database.sqlite" });
 const ms = require('ms')
 const emojis = require("./../config/emojis.json");
 const embeds = require("./../config/embed.json");
@@ -14,15 +12,21 @@ module.exports = {
                    
 	async execute(interaction, client) {
 
+const db = require("./../database/connect.js");
+    
     await interaction.deferReply();
 
-    const economy = db.table("economy");
+const currency = db.table("currency");
+
+  const times = db.table("times");
+
+const settings = db.table("settings")
     
     const user = interaction.options.getUser('user');
 
     const user1 = interaction.user;
     
-let register = await economy.get(`${user1.id}.register`)
+let register = await settings.get(`${user1.id}.register`)
 
 if (register === undefined) register = 'false';
     
@@ -32,25 +36,25 @@ return interaction.editReply(`${emojis.cross} Use /register To Register Your Acc
 
 if (!user) {
 
-let bal1 = await economy.get(`${user1.id}.balance`)
+let bal1 = await currency.get(`${user1.id}.balance`)
 
 if (bal1 === undefined) bal1 = 0;
   
-let bank1 = await economy.get(`${user1.id}.bank`)
+let bank1 = await currency.get(`${user1.id}.bank`)
 
 if (bank1 === undefined) bank1 = 0;
   
-let invw1 = await economy.get(`${user1.id}.inventory_worth`)
+let invw1 = await currency.get(`${user1.id}.inventory_worth`)
 
 if (invw1 === undefined) invw1 = 0;
 
 let net1 = bal1 + bank1 + invw1;
 
-let rank1 = await economy.get(`${user1.id}.rank`)
+let rank1 = await settings.get(`${user1.id}.rank`)
  
 if (rank1 === undefined) rank1 = 'None';
 
-let joined1 = await economy.get(`${user1.id}.joined`)
+let joined1 = await times.get(`${user1.id}.joined`)
 
   
 let joinedr1 = ms(Date.now() - joined1, { long: true });
@@ -78,25 +82,25 @@ let embed1 = new EmbedBuilder()
 
 if (user) {
 
-let bal2 = await economy.get(`${user.id}.balance`)
+let bal2 = await currency.get(`${user.id}.balance`)
 
 if (bal2 === undefined) bal2 = 0;
   
-let bank2 = await economy.get(`${user.id}.bank`)
+let bank2 = await currency.get(`${user.id}.bank`)
 
 if (bank2 === undefined) bank2 = 0;
   
-let invw2 = await economy.get(`${user.id}.inventory_worth`)
+let invw2 = await currency.get(`${user.id}.inventory_worth`)
 
 if (invw2 === undefined) invw2 = 0;
 
 let net2 = bal2 + bank2 + invw2;
 
-let rank2 = await economy.get(`${user.id}.rank`)
+let rank2 = await settings.get(`${user.id}.rank`)
  
 if (rank2 === undefined) rank2 = 'None';
 
-let joined2 = await economy.get(`${user.id}.joined`)
+let joined2 = await times.get(`${user.id}.joined`)
 
 if (joined2 === undefined) joined2 = Date.now();
   

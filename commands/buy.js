@@ -1,6 +1,4 @@
 const { EmbedBuilder, SlashCommandBuilder } = require('discord.js');
-const { QuickDB } = require('quick.db');
-const db = new QuickDB({ filePath: "././database/database.sqlite" });
 const emojis = require("./../config/emojis.json");
 const embeds = require("./../config/embed.json");
 const prices = require("./../JSON/prices.json");
@@ -26,13 +24,19 @@ module.exports = {
   .addNumberOption(option => option.setName('quantity').setDescription('A Quantity You Want To Buy')),
 	async execute(interaction, client) {
 
+const db = require("./../database/connect.js");
+    
 const user = interaction.user;
 
 await interaction.deferReply();
 
-    const economy = db.table("economy");
+    const currency = db.table("currency");
 
-let register = await economy.get(`${user.id}.register`)
+const items = db.table("items");
+
+const settings = db.table("settings");
+
+let register = await settings.get(`${user.id}.register`)
 
 if (register === undefined) register = 'false';
     
@@ -44,7 +48,7 @@ return interaction.editReply(`${emojis.cross} Use /register To Register Your Acc
 
     let quantity = interaction.options.getNumber('quantity');
 
-let balance = await economy.get(`${user.id}.balance`);
+let balance = await currency.get(`${user.id}.balance`);
 
 
   if (balance === undefined) balance = 0;
@@ -59,11 +63,11 @@ let totalph = prices.phone * quantity
   
 if (balance < totalph) return interaction.editReply({content: "You didn't Have Enough Money To Buy It", ephemeral: true })
 
-  await economy.add(`${user.id}.phone`, quantity)
+  await items.add(`${user.id}.phone`, quantity)
 
-  await economy.add(`${user.id}.inventory_worth`, totalph)
+  await currency.add(`${user.id}.inventory_worth`, totalph)
 
-await economy.sub(`${user.id}.balance`, totalph)
+await currency.sub(`${user.id}.balance`, totalph)
   
   let embedph = new EmbedBuilder()
                 .setColor(embeds.color)
@@ -79,11 +83,11 @@ let totallap = prices.laptop * quantity
   
 if (balance < totallap) return interaction.editReply({content: "You didn't Have Enough Money To Buy It", ephemeral: true })
 
-  await economy.add(`${user.id}.laptop`, quantity)
+  await items.add(`${user.id}.laptop`, quantity)
 
-await economy.add(`${user.id}.inventory_worth`, totallap)
+await currency.add(`${user.id}.inventory_worth`, totallap)
   
-await economy.sub(`${user.id}.balance`, totallap)
+await currency.sub(`${user.id}.balance`, totallap)
   
   let embedlap = new EmbedBuilder()
                 .setColor(embeds.color)
@@ -99,11 +103,11 @@ let totalsho = prices.shovel * quantity
   
 if (balance < totalsho) return interaction.editReply({content: "You didn't Have Enough Money To Buy It", ephemeral: true })
 
-  await economy.add(`${user.id}.shovel`, quantity)
+  await items.add(`${user.id}.shovel`, quantity)
 
-await economy.add(`${user.id}.inventory_worth`, totalsho)
+await currency.add(`${user.id}.inventory_worth`, totalsho)
   
-await economy.sub(`${user.id}.balance`, totalsho)
+await currency.sub(`${user.id}.balance`, totalsho)
   
   let embedsho = new EmbedBuilder()
                 .setColor(embeds.color)
@@ -119,11 +123,11 @@ let totalrod = prices.fishing_rod * quantity
 
 if (balance < totalrod) return interaction.editReply({content: "You didn't Have Enough Money To Buy It", ephemeral: true })
 
-  await economy.add(`${user.id}.fishing_rod`, quantity)
+  await items.add(`${user.id}.fishing_rod`, quantity)
 
-await economy.add(`${user.id}.inventory_worth`, totalrod)
+await currency.add(`${user.id}.inventory_worth`, totalrod)
   
-await economy.sub(`${user.id}.balance`, totalrod)
+await currency.sub(`${user.id}.balance`, totalrod)
   
   let embedfis = new EmbedBuilder()
                 .setColor(embeds.color)
@@ -140,11 +144,11 @@ let totalbank = prices.bank_upgrader * quantity
   
 if (balance < totalbank) return interaction.editReply({content: "You didn't Have Enough Money To Buy It", ephemeral: true })
 
-  await economy.add(`${user.id}.bank_upgrader`, quantity)
+  await items.add(`${user.id}.bank_upgrader`, quantity)
 
-await economy.add(`${user.id}.inventory_worth`, totalbank)
+await currency.add(`${user.id}.inventory_worth`, totalbank)
   
-await economy.sub(`${user.id}.balance`, totalbank)
+await currency.sub(`${user.id}.balance`, totalbank)
   
   let embedbank = new EmbedBuilder()
                 .setColor(embeds.color)
@@ -160,11 +164,11 @@ let totaltp = prices.toilet_paper * quantity
   
 if (balance < totaltp) return interaction.editReply({content: "You didn't Have Enough Money To Buy It", ephemeral: true })
 
-  await economy.add(`${user.id}.toilet_paper`, quantity)
+  await items.add(`${user.id}.toilet_paper`, quantity)
 
-await economy.add(`${user.id}.inventory_worth`, totaltp)
+await currency.add(`${user.id}.inventory_worth`, totaltp)
   
-await economy.sub(`${user.id}.balance`, totaltp)
+await currency.sub(`${user.id}.balance`, totaltp)
   
   let embedtp = new EmbedBuilder()
                 .setColor(embeds.color)
@@ -181,11 +185,11 @@ let totalmeow = prices.cool_meow * quantity
   
 if (balance < totalmeow) return interaction.editReply({content: "You didn't Have Enough Money To Buy It", ephemeral: true })
 
-  await economy.add(`${user.id}.cool_meow`, quantity)
+  await items.add(`${user.id}.cool_meow`, quantity)
 
-await economy.add(`${user.id}.inventory_worth`, totalmeow)
+await currency.add(`${user.id}.inventory_worth`, totalmeow)
   
-await economy.sub(`${user.id}.balance`, totalmeow)
+await currency.sub(`${user.id}.balance`, totalmeow)
   
   let embedmeow = new EmbedBuilder()
                 .setColor(embeds.color)
@@ -201,11 +205,11 @@ let totalgtp = prices.golden_toilet_paper * quantity
   
 if (balance < totalgtp) return interaction.editReply({content: "You didn't Have Enough Money To Buy It", ephemeral: true })
 
-  await economy.add(`${user.id}.golden_toilet_paper`, quantity)
+  await items.add(`${user.id}.golden_toilet_paper`, quantity)
 
-await economy.add(`${user.id}.inventory_worth`, totalgtp)
+await currency.add(`${user.id}.inventory_worth`, totalgtp)
   
-await economy.sub(`${user.id}.balance`, totalgtp)
+await currency.sub(`${user.id}.balance`, totalgtp)
   
   let embedgtp = new EmbedBuilder()
                 .setColor(embeds.color)
@@ -222,11 +226,11 @@ let totalgtc = prices.golden_troll_coin * quantity
   
 if (balance < totalgtc) return interaction.editReply({content: "You didn't Have Enough Money To Buy It", ephemeral: true })
 
-  await economy.add(`${user.id}.golden_troll_coin`, quantity)
+  await items.add(`${user.id}.golden_troll_coin`, quantity)
 
-await economy.add(`${user.id}.inventory_worth`, totalgtc)
+await currency.add(`${user.id}.inventory_worth`, totalgtc)
   
-await economy.sub(`${user.id}.balance`, totalgtc)
+await currency.sub(`${user.id}.balance`, totalgtc)
   
   let embedgtc = new EmbedBuilder()
                 .setColor(embeds.color)
@@ -243,11 +247,11 @@ let totalcrown = prices.troll_crown * quantity
   
 if (balance < totalcrown) return interaction.editReply({content: "You didn't Have Enough Money To Buy It", ephemeral: true })
 
-  await economy.add(`${user.id}.troll_crown`, quantity)
+  await items.add(`${user.id}.troll_crown`, quantity)
 
-await economy.add(`${user.id}.inventory_worth`, totalcrown)
+await currency.add(`${user.id}.inventory_worth`, totalcrown)
   
-await economy.sub(`${user.id}.balance`, totalcrown)
+await currency.sub(`${user.id}.balance`, totalcrown)
   
   let embedcrown = new EmbedBuilder()
                 .setColor(embeds.color)

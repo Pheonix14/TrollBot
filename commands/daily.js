@@ -1,6 +1,4 @@
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
-const { QuickDB } = require('quick.db');
-const db = new QuickDB({ filePath: "././database/database.sqlite" });
 const ms = require("ms");
 const emojis = require("./../config/emojis.json");
 const embeds = require("./../config/embed.json");
@@ -12,14 +10,22 @@ module.exports = {
 		.setDescription('🎁 collect your daily reward'),
                    
 	async execute(interaction, client) {
+
+const db = require("./../database/connect.js");
     
     await interaction.deferReply();
 
-const economy = db.table("economy");
+const currency = db.table("currency");
+
+const settings = db.table("settings");
+    
+const times = db.table("times");
+
+const counts = db.table("counts");
     
   let user = interaction.user;
 
-let register = await economy.get(`${user.id}.register`)
+let register = await settings.get(`${user.id}.register`)
 
 if (register === undefined) register = 'false';
     
@@ -31,7 +37,7 @@ return interaction.editReply(`${emojis.cross} Use /register To Register Your Acc
         let timeout = 86400000;
         let amount = 5000;
 
-        let daily = await economy.get(`${user.id}.daily`);
+        let daily = await times.get(`${user.id}.daily`);
 
         if (daily !== undefined && timeout - (Date.now() - daily) > 0) {
             let time = ms(timeout - (Date.now() - daily));
@@ -49,9 +55,10 @@ return interaction.editReply(`${emojis.cross} Use /register To Register Your Acc
             
 interaction.editReply({embeds: [embed2]})
 
-            await economy.add(`${user.id}.balance`, amount)
-            await economy.set(`${user.id}.daily`, Date.now())
+            await currency.add(`${user.id}.balance`, amount)
+            await times.set(`${user.id}.daily`, Date.now())
 
+await counts.add(`${user.id}.dailys`, 1)
 
               }
 

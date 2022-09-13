@@ -1,6 +1,4 @@
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
-const { QuickDB } = require('quick.db');
-const db = new QuickDB({ filePath: "././database/database.sqlite" });
 const ms = require("ms");
 const emojis = require("./../config/emojis.json");
 const embeds = require("./../config/embed.json");
@@ -14,17 +12,25 @@ module.exports = {
                    
 	async execute(interaction, client) {
 
-    await interaction.deferReply();
+const db = require("./../database/connect.js");
 
-const economy = db.table("economy");
+await interaction.deferReply();
+
+const currency = db.table("currency");
+
+const settings = db.table("settings");
     
+const times = db.table("times");
+
+const counts = db.table("counts");
+
 const JbegR = Jbeg[Math.floor(Math.random() * Jbeg.length)];
     
     const reward = Math.floor(Math.random() * (300 -  + 75)) + 75;
 
   let user = interaction.user;
 
-let register = await economy.get(`${user.id}.register`)
+let register = await settings.get(`${user.id}.register`)
 
 if (register === undefined) register = 'false';
     
@@ -36,7 +42,7 @@ return interaction.editReply(`${emojis.cross} Use /register To Register Your Acc
         let timeout = 60000;
         let amount = reward;
 
-        let beg = await economy.get(`${user.id}.beg`);
+        let beg = await times.get(`${user.id}.beg`);
 
         if (beg !== undefined && timeout - (Date.now() - beg) > 0) {
             let time = ms(timeout - (Date.now() - beg));
@@ -54,9 +60,9 @@ return interaction.editReply(`${emojis.cross} Use /register To Register Your Acc
             
 interaction.editReply({embeds: [embed2]})
 
-          await economy.add(`${user.id}.begs`, 1)
-            await economy.add(`${user.id}.balance`, amount)
-            await economy.set(`${user.id}.beg`, Date.now())
+          await counts.add(`${user.id}.begs`, 1)
+            await currency.add(`${user.id}.balance`, amount)
+            await times.set(`${user.id}.beg`, Date.now())
 
 
               }

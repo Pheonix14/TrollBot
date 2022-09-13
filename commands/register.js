@@ -1,6 +1,4 @@
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
-const { QuickDB } = require('quick.db');
-const db = new QuickDB({ filePath: "././database/database.sqlite" });
 const emojis = require("./../config/emojis.json");
 const embeds = require("./../config/embed.json");
 
@@ -12,14 +10,21 @@ module.exports = {
                    
 	async execute(interaction, client) {
 
+    const db = require("./../database/connect.js");
+
    await interaction.deferReply();
 
-const economy = db.table("economy");
+const currency = db.table("currency");
     
+const settings = db.table("settings");
+
+const times = db.table("times");
+
+
 const user = interaction.user;
     
     
-let register = await economy.get(`${user.id}.register`)
+let register = await settings.get(`${user.id}.register`)
 
 if (register === undefined) register = 'false';
     
@@ -29,11 +34,11 @@ return interaction.editReply(`${emojis.cross} You Are Already Registered In My D
 
 interaction.editReply(`Registering Your Account In My Database. Please Wait...`)
 
-await economy.set(`${user.id}.register`, 'true')
+await settings.set(`${user.id}.register`, 'true')
 
-await economy.set(`${user.id}.joined`, Date.now())
+await times.set(`${user.id}.joined`, Date.now())
     
-await economy.add(`${user.id}.bank_space`, 5000)
+await currency.add(`${user.id}.bank_space`, 5000)
 
 const embed = new EmbedBuilder()
   .setColor(embeds.color)

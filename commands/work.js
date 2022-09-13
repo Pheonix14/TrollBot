@@ -1,6 +1,4 @@
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
-const { QuickDB } = require('quick.db');
-const db = new QuickDB({ filePath: "././database/database.sqlite" });
 const ms = require("ms");
 const emojis = require("./../config/emojis.json");
 const embeds = require("./../config/embed.json");
@@ -13,9 +11,18 @@ module.exports = {
 		.setDescription('👷 work and earn troll coins'),
                    
 	async execute(interaction, client) {
+
+const db = require("./../database/connect.js");
+
 await interaction.deferReply();
 
-const economy = db.table("economy");
+const currency = db.table("currency");
+
+const settings =  db.table("settings");
+
+const times = db.table("times");
+
+const counts = db.table("counts");
 
     const JworkR = Jwork[Math.floor(Math.random() * Jwork.length)];
 
@@ -23,7 +30,7 @@ const economy = db.table("economy");
 
   let user = interaction.user;
 
-let register = await economy.get(`${user.id}.register`)
+let register = await settings.get(`${user.id}.register`)
 
 if (register === undefined) register = 'false';
     
@@ -34,7 +41,7 @@ return interaction.editReply(`${emojis.cross} Use /register To Register Your Acc
         let timeout = 3600000;
         let amount = reward;
 
-        let work = await economy.get(`${user.id}.work`);
+        let work = await times.get(`${user.id}.work`);
 
         if (work !== undefined && timeout - (Date.now() - work) > 0) {
             let time = ms(timeout - (Date.now() - work));
@@ -52,9 +59,9 @@ return interaction.editReply(`${emojis.cross} Use /register To Register Your Acc
             
 interaction.editReply({embeds: [embed2]})
 
-          await economy.add(`${user.id}.works`, 1)
-            await economy.add(`${user.id}.balance`, amount)
-            await economy.set(`${user.id}.work`, Date.now())
+          await counts.add(`${user.id}.works`, 1)
+            await currency.add(`${user.id}.balance`, amount)
+            await times.set(`${user.id}.work`, Date.now())
 
 
               }
