@@ -50,7 +50,7 @@ let bank_space2 = await currency.get(`${interaction.user.id}.bank_space`)
 if (bank_space2 === undefined) bank_space2 = 0;
 
 
-let net2 = bal2 + bank2 + invw2
+let net2 = bal2 + bank2 + invw2;
 
     
 const embed0 = new EmbedBuilder()
@@ -80,7 +80,7 @@ let bank_space = await currency.get(`${user.id}.bank_space`)
     
 if (bank_space === undefined) bank_space = 0;
     
-let net = bal + bank + invw
+let net = bal + bank + invw;
 
     const embed = new EmbedBuilder()
   .setColor(embeds.color)

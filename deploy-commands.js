@@ -17,5 +17,5 @@ for (const file of commandFiles) {
 const rest = new REST({ version: '9' }).setToken(token);
 
 rest.put(Routes.applicationGuildCommands(clientId, guildId), { body: commands })
-	.then(() => console.log('[cmd-deployer] Status: Successfully Registered Application Commands 🚀'))
+	.then(() => console.log('\x1b[32m','[cmd-deployer] Status: Successfully Registered Application Commands 🚀', '\x1b[0m'))
 	.catch(console.error);

@@ -208,7 +208,7 @@ let totalcom = values.common_fish * quantity;
 
   await items.sub(`${user.id}.common_fish`, quantity)
 
-  await currency.sub(`${user.id}.inventory_worth`, values.common_fiah)
+  await currency.sub(`${user.id}.inventory_worth`, values.common_fish)
 
 await currency.add(`${user.id}.balance`, totalcom)
   
