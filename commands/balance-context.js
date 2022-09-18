@@ -13,9 +13,20 @@ module.exports = {
 await interaction.deferReply();
     
     const currency = db.table("currency");
+
+const settings = db.table("settings")
     
     const user = interaction.targetUser;
 
+    let register = await settings.get(`${interaction.user.id}.register`)
+    
+if (register === undefined) register = 'false';
+    
+    if (register === 'false') {
+return interaction.editReply(`${emojis.cross} Use /register To Register Your Account In My Database`)
+    }
+
+    
 let bal = await currency.get(`${user.id}.balance`)
 
 if (bal === undefined) bal = 0;

@@ -20,7 +20,7 @@ const currency = db.table("currency");
 
   const times = db.table("times");
 
-const settings = db.table("settings")
+const settings = db.table("settings");
     
     const user = interaction.options.getUser('user');
 
