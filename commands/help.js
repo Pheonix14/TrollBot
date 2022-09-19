@@ -22,12 +22,6 @@ const row = new ActionRowBuilder()
  description: "Click here to see Info commands list",
  value: "first"
  },
- {
- label: "Images",
-  emoji: emojis.images,
- description: "Click here to see Images commands list", 
- value: "second"
- },
 {
  label: "Memes", 
   emoji: emojis.meme,
@@ -35,9 +29,9 @@ const row = new ActionRowBuilder()
  value: "third"
 },
 {
- label: "Economy (BETA)", 
+ label: "Currency Game (BETA)", 
   emoji: emojis.troll_coin,
- description: "Click here to see Economy Commands", 
+ description: "Click here to see Currency Game Commands", 
  value: "fourth"
 }
     ])
@@ -77,21 +71,16 @@ const embed2 = new EmbedBuilder()
     .setDescription("`/ping`, `/help`, `/support`, `/invite`, `/botinfo`, `/updates`, `/vote`")
   .setFooter({text: `${embeds.footer}`});
 
-const embed3 = new EmbedBuilder()
-    .setColor(embeds.color)
-  .setTitle(`${emojis.images} Images Commands`)
-    .setDescription("`/affect`, `/dab`, `/delete`, `/egg`, `/failure`, `/fakenews`, `/hitler`, `/jail`, `/trash`, `/ugly`")
-  .setFooter({text: `${embeds.footer}`});
 
     const embed4 = new EmbedBuilder()
     .setColor(embeds.color)
   .setTitle(`${emojis.meme} Memes Commands`)
-    .setDescription("`/meme`, `/abandon`, `/bed`, `/emergencymeeting`, `/facts`, `/note`, `/shit`, `/stonks`, `/comment`, `/tweet`, `/vr`")
+    .setDescription("`/meme`, `/abandon`, `/facts`, `/note`, `/stonks`, `/comment`, `/tweet`")
   .setFooter({text: `${embeds.footer}`});
 
   const embed5 = new EmbedBuilder()
     .setColor(embeds.color)
-  .setTitle(`${emojis.troll_coin} Economy Commands`)
+  .setTitle(`${emojis.troll_coin} Currency Game Commands`)
     .setDescription("`/balance`, `/deposit`, `/withdraw`, `/pay`, `/daily`, `/work`, `/beg`, `/coinflip`, `/store`, `/buy`, `/use`, `/register`, `/dig`, `/fish`, `/sell`, `/profile`")
   .setFooter({text: `${embeds.footer}`});
 
@@ -106,11 +95,6 @@ collector.on("collect", async (collected) => { const value = collected.values[0]
 if(value === "first") {
 
 collected.reply ({embeds: [embed2], ephemeral: true})
-}
-
-if(value === "second") {
-
-collected.reply ({embeds: [embed3], ephemeral: true})
 }
 
 if(value === "third") {

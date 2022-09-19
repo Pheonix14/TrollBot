@@ -20,9 +20,11 @@ const db = require("./../database/connect.js");
     
     await interaction.deferReply();
 
-const currency = db.table("economy");
+const currency = db.table("currency");
 
 const settings = db.table("settings");
+
+const times = db.table("times");
 
 const counts = db.table("counts");
 
@@ -39,6 +41,21 @@ if (register === undefined) register = 'false';
     if (register === 'false') {
 return interaction.editReply(`${emojis.cross} Use /register To Register Your Account In My Database`)
     }
+
+let timeout = 25000;
+
+        let coinflip = await times.get(`${user.id}.coinflip`);
+
+        if (coinflip !== undefined && timeout - (Date.now() - coinflip) > 0) {
+            let time = ms(timeout - (Date.now() - coinflip));
+
+            let embed1 = new EmbedBuilder()
+                .setColor(embeds.color)
+                .setDescription(`${emojis.cross} You Just Just Flip A Coin\n\nFlip Again In ${time}`)
+          .setFooter({text: `${embeds.footer}`})
+          return interaction.editReply({embeds: [embed1]})
+        } 
+
     
         let amount = bet;
     let balance = await currency.get(`${user.id}.balance`);
@@ -68,6 +85,22 @@ if (amount > 150000) {
                 return interaction.editReply({content: `${emojis.cross} You Can't Bet Higher Than 150000`, ephemeral: true});
 }
     
+
+if (choose !== coins[coinb]) {
+            let embed2 = new EmbedBuilder()
+                .setColor(embeds.color)
+                .setDescription(`You Spend ${emojis.troll_coin} ${bet} And Choose ${choose}
+The Coin Spins... ${coins[coinb]} And You Lost It All`)
+          .setFooter({text: `${embeds.footer}`});
+            
+interaction.editReply({embeds: [embed2]})
+
+          await counts.add(`${user.id}.flips`, 1)
+            await currency.sub(`${user.id}.balance`, amount)
+await times.set(`${user.id}.coinflip`, Date.now())
+}
+
+
    if (choose === coins[coinb]) {
 
             
@@ -81,20 +114,10 @@ interaction.editReply({embeds: [embed2]})
 
           await counts.add(`${user.id}.flips`, 1)
             await currency.add(`${user.id}.balance`, amount)
+     await times.set(`${user.id}.coinflip`, Date.now())
           } 
      
-else {
-            let embed2 = new EmbedBuilder()
-                .setColor(embeds.color)
-                .setDescription(`You Spend ${emojis.troll_coin} ${bet} And Choose ${choose}
-The Coin Spins... ${coins[coinb]} And You Lost It All`)
-          .setFooter({text: `${embeds.footer}`});
-            
-interaction.editReply({embeds: [embed2]})
 
-          await counts.add(`${user.id}.flips`, 1)
-            await currency.sub(`${user.id}.balance`, amount)
-}
 
     
 	},

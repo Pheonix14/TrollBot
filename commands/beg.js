@@ -26,7 +26,7 @@ const counts = db.table("counts");
 
 const JbegR = Jbeg[Math.floor(Math.random() * Jbeg.length)];
     
-    const reward = Math.floor(Math.random() * (300 -  + 75)) + 75;
+    const reward = Math.floor(Math.random() * (800 -  + 300)) + 300;
 
   let user = interaction.user;
 

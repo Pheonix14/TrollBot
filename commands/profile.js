@@ -39,6 +39,10 @@ if (!user) {
 let bal1 = await currency.get(`${user1.id}.balance`)
 
 if (bal1 === undefined) bal1 = 0;
+
+let bio1 = await settings.get(`${user1.id}.bio`)
+
+if (bio1 === undefined) bio1 = "ㅤ";
   
 let bank1 = await currency.get(`${user1.id}.bank`)
 
@@ -64,7 +68,10 @@ let embed1 = new EmbedBuilder()
                 .setColor(embeds.color)
 .setThumbnail(user1.displayAvatarURL())
   .setTitle(`${user1.username}'s Profile`)
-.setDescription(`**Joined** - ${joinedr1} Ago
+.setDescription(`
+${bio1}
+
+**Started** - ${joinedr1} Ago
 
 **Rank** - ${rank1}
 
@@ -86,6 +93,10 @@ let bal2 = await currency.get(`${user.id}.balance`)
 
 if (bal2 === undefined) bal2 = 0;
   
+let bio2 = await settings.get(`${user.id}.bio`)
+
+if (bio2 === undefined) bio2 = "ㅤ";
+
 let bank2 = await currency.get(`${user.id}.bank`)
 
 if (bank2 === undefined) bank2 = 0;
@@ -106,12 +117,16 @@ if (joined2 === undefined) joined2 = Date.now();
   
 let joinedr2 = ms(Date.now() - joined2, { long: true });
 
+if (joinedr2 === "0 ms") joinedr2 = "Not Started Yet";
   
 let embed2 = new EmbedBuilder()
                 .setColor(embeds.color)
 .setThumbnail(user.displayAvatarURL())
   .setTitle(`${user.username}'s Profile`)
-.setDescription(`**Joined** - ${joinedr2}
+.setDescription(`
+${bio2}
+
+**Started** - ${joinedr2}
 
 **Rank** - ${rank2}
 
