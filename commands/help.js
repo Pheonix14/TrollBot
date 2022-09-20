@@ -81,7 +81,7 @@ const embed2 = new EmbedBuilder()
   const embed5 = new EmbedBuilder()
     .setColor(embeds.color)
   .setTitle(`${emojis.troll_coin} Currency Game Commands`)
-    .setDescription("`/balance`, `/deposit`, `/withdraw`, `/pay`, `/daily`, `/work`, `/beg`, `/coinflip`, `/store`, `/buy`, `/use`, `/register`, `/dig`, `/fish`, `/sell`, `/profile`")
+    .setDescription("`/balance`, `/deposit`, `/withdraw`, `/pay`, `/daily`, `/work`, `/beg`, `/coinflip`, `/store`, `/buy`, `/use`, `/register`, `/dig`, `/fish`, `/sell`, `/profile`, `/rob`")
   .setFooter({text: `${embeds.footer}`});
 
 const collector = interaction.channel.createMessageComponentCollector({ 

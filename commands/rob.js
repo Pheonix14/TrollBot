@@ -1,7 +1,7 @@
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 const emojis = require("./../config/emojis.json");
 const embeds = require("./../config/embed.json");
-
+const ms = require('ms');
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -22,6 +22,8 @@ const settings = db.table("settings");
 const guild_settings = db.table("guild_settings");
 
 const times = db.table("times");
+
+const counts = db.table("counts")
 
 const user = interaction.options.getUser('user');
 
@@ -48,6 +50,10 @@ let timeout = 25000;
           .setFooter({text: `${embeds.footer}`})
           return interaction.editReply({embeds: [embed1]})
         }
+
+if (user1.id === user.id) {
+  return interaction.editReply("You Can't Rob Yourself.. Dumb")
+}
     
 
 let safe_mode1 = await settings.get(`${user1.id}.safe_mode`)
@@ -71,22 +77,89 @@ let rob_guild = await settings.get(`${interaction.guild.id}.rob`)
 if (rob_guild === undefined) rob_guild = 'true';
 
 if (rob_guild === "false") {
-  return interaction.editReply("Rob Is Not Allow In This Server")
+  return interaction.editReply("Rob Is Not Allowed In This Server")
 }
     
 let balance1 = await currency.get(`${user1.id}.balance`)
 
+if (balance1 === undefined) balance1 = 0;
+    
 let balance = await currency.get(`${user.id}.balance`)
 
+if (balance === undefined) balance = 0;
+    
 if (balance1 < 5000) {
-  return interaction.editReply(`You Need Atleast ${emojis.troll_coin} 5000 To Rob Someone`)
+  return interaction.editReply(`You Need Atleast ${emojis.troll_coin} 5000 In Your Pocket To Rob Someone`)
 }
     
 if (balance < 5000) {
   return interaction.editReply(`That Parson Didn't Have Atleast ${emojis.troll_coin} 5000. it's not worth it men`)
 }
 
+    
+const rob_success_list = ["Successful", "Unsuccessful", "75% chance to pass", "85% chance to pass"];
+    
+    let rob_result = Math.floor(Math.random() * rob_success_list.length);
+
+if (rob_success_list[rob_result] === "Unsuccessful") {
 
 
+  const rob_fail = Math.floor(Math.random() * (balance1 -  + 5000)) + 5000;
+  
+await counts.add(`${user1.id}.rob_fails`, 1)
+            await currency.sub(`${user1.id}.balance`, rob_fail)
+  await currency.add(`${user.id}.balance`, rob_fail)
+await times.set(`${user1.id}.rob`, Date.now())
+
+  
+let embed2 = new EmbedBuilder() 
+  
+  .setColor(embeds.color)
+          .setDescription(`You Tried To Rob ${user.tag} But You Failed And Lost ${emojis.troll_coin} ${rob_fail}`)
+          .setFooter({text: `${embeds.footer}`});
+            
+interaction.editReply({embeds: [embed2]})
+
+let embed5 = new EmbedBuilder() 
+  
+  .setColor(embeds.color)
+          .setDescription(`${user1.tag} Tried To Rob You In ${interaction.guild.name} But He Failed And You Got ${emojis.troll_coin} ${rob_fail}`)
+          .setFooter({text: `${embeds.footer}`});
+            
+user.send({embeds: [embed5]})
+
+  
+}
+ if (rob_success_list[rob_result] !== "Unsuccessful") {
+
+const rob_pass = Math.floor(Math.random() * (balance -  + 5000)) + 5000;
+
+   
+   await counts.add(`${user1.id}.rob_pass`, 1)
+            await currency.add(`${user1.id}.balance`, rob_pass)
+  await currency.sub(`${user.id}.balance`, rob_pass)
+await times.set(`${user1.id}.rob`, Date.now())
+   await currency.add(`${user1.id}.rob_worth`, rob_pass)
+  
+let embed3 = new EmbedBuilder() 
+  
+  .setColor(embeds.color)
+          .setDescription(`You Robbed ${user.tag} And Got ${emojis.troll_coin} ${rob_pass}`)
+          .setFooter({text: `${embeds.footer}`});
+            
+interaction.editReply({embeds: [embed3]})
+          
+
+let embed4 = new EmbedBuilder() 
+  
+  .setColor(embeds.color)
+          .setDescription(`You Got Robbed By ${user1.tag} In ${interaction.guild.name} And Lost ${emojis.troll_coin} ${rob_pass}`)
+          .setFooter({text: `${embeds.footer}`});
+            
+user.send({embeds: [embed4]})
+  
+}
+
+    
 	},
 }
