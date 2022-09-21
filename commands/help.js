@@ -26,33 +26,39 @@ const row = new ActionRowBuilder()
  label: "Memes", 
   emoji: emojis.meme,
  description: "Click here to see Memes Commands", 
- value: "third"
+ value: "second"
 },
 {
  label: "Currency Game (BETA)", 
   emoji: emojis.troll_coin,
  description: "Click here to see Currency Game Commands", 
+ value: "third"
+},
+{
+ label: "Game Settings (BETA)", 
+  emoji: emojis.settings,
+ description: "Click here to see Game Settings Commands", 
  value: "fourth"
-}
+      }
     ])
   )
     
 const embed1 = new EmbedBuilder()
   .setColor(embeds.color)
   .setTitle(`**Welcome To TrollBot**`)
-.setDescription(`__**🙋 My Features**__
+.setDescription(`__**My Features**__
 
-> **${emojis.info} 5+ Info Commands. ${emojis.images} Funny Image Gen With 10 Commands. ${emojis.meme} Funny Meme Gen With 10+ Commands.**
+> **${emojis.meme} 7+ Funny Meme Commands. ${emojis.troll_coin} 15+ Game Commands.**
 
-__**📈 My Stats**__
+__**My Stats**__
 
 > **${emojis.server} ${interaction.client.guilds.cache.size} Servers ${emojis.users} ${interaction.client.users.cache.size} Users ${emojis.channel} ${interaction.client.channels.cache.size} Channels**
 
-__**❗Note**__
+__**Note**__
 
 > **Check The Menu And Select Your Option To See Commands List.**
 
-__**📌 Links**__
+__**Links**__
 
 **${emojis.arrow} [Website](${links.website})
 
@@ -68,22 +74,29 @@ ${emojis.arrow} [Invite Me](${links.invite})**`)
 const embed2 = new EmbedBuilder()
     .setColor(embeds.color)
   .setTitle(`${emojis.info} Info Commands`)
-    .setDescription("`/ping`, `/help`, `/support`, `/invite`, `/botinfo`, `/updates`, `/vote`")
+    .setDescription("`/ping`, `/help`, `/support`, `/invite`, `/updates`, `/vote`")
   .setFooter({text: `${embeds.footer}`});
 
 
-    const embed4 = new EmbedBuilder()
+    const embed3 = new EmbedBuilder()
     .setColor(embeds.color)
   .setTitle(`${emojis.meme} Memes Commands`)
     .setDescription("`/meme`, `/abandon`, `/facts`, `/note`, `/stonks`, `/comment`, `/tweet`")
   .setFooter({text: `${embeds.footer}`});
 
-  const embed5 = new EmbedBuilder()
+  const embed4 = new EmbedBuilder()
     .setColor(embeds.color)
   .setTitle(`${emojis.troll_coin} Currency Game Commands`)
-    .setDescription("`/balance`, `/deposit`, `/withdraw`, `/pay`, `/daily`, `/work`, `/beg`, `/coinflip`, `/store`, `/buy`, `/use`, `/register`, `/dig`, `/fish`, `/sell`, `/profile`, `/rob`")
+    .setDescription("`/balance`, `/deposit`, `/withdraw`, `/pay`, `/daily`, `/work`, `/beg`, `/coinflip`, `/store`, `/buy`, `/use`, `/dig`, `/fish`, `/sell`, `/profile`, `/rob`")
   .setFooter({text: `${embeds.footer}`});
 
+const embed5 = new EmbedBuilder()
+    .setColor(embeds.color)
+  .setTitle(`${emojis.settings} Game Settings Commands`)
+    .setDescription("`/register`, `/settings-bio`")
+  .setFooter({text: `${embeds.footer}`});
+
+    
 const collector = interaction.channel.createMessageComponentCollector({ 
 ComponentType: "SELECT_MENU",
 customId: 'select',
@@ -97,15 +110,20 @@ if(value === "first") {
 collected.reply ({embeds: [embed2], ephemeral: true})
 }
 
+if(value === "second") {
+
+collected.reply ({embeds: [embed3], ephemeral: true})
+}
 if(value === "third") {
 
 collected.reply ({embeds: [embed4], ephemeral: true})
 }
+
 if(value === "fourth") {
 
 collected.reply ({embeds: [embed5], ephemeral: true})
-}
-
+  }
+             
    })
   }
 };
