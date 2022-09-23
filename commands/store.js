@@ -81,7 +81,7 @@ const embed3 = new EmbedBuilder()
 ${emojis.cool_meow} Cool Meow — ${emojis.troll_coin} ${prices.cool_meow}
 
 
-${emojis.golden_toilet_paper} Golden Toilet Paper — ${emojis.troll_coin} ${prices.golden_toilet_paper}
+${emojis.troll_sword} Troll Sword — ${emojis.troll_coin} ${prices.troll_sword}
 
 
 ${emojis.golden_troll_coin} Golden Troll Coin — ${emojis.troll_coin} ${prices.golden_troll_coin}

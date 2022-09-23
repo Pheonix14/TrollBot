@@ -17,7 +17,7 @@ module.exports = {
 { name: 'Bank Upgrader', value: 'bank' },
     { name: 'Toilet Paper', value: 'toilet_paper' },
     { name: 'Cool Meow', value: 'cool_meow' },
-    { name: 'Golden Toilet Paper', value: 'golden_toilet_paper' },
+    { name: 'Troll Sword', value: 'troll_sword' },
     { name: 'Golden Troll Coin', value: 'golden_troll_coin' },
     { name: 'Troll Crown', value: 'troll_crown' },
 ))
@@ -199,24 +199,24 @@ await currency.sub(`${user.id}.balance`, totalmeow)
   interaction.editReply({embeds: [embedmeow]})
 }
 
-if (item === 'golden_toilet_paper') {
+if (item === 'troll_sword') {
 
-let totalgtp = prices.golden_toilet_paper * quantity
+let totalts = prices.troll_sword * quantity
   
-if (balance < totalgtp) return interaction.editReply({content: "You didn't Have Enough Money To Buy It", ephemeral: true })
+if (balance < totalts) return interaction.editReply({content: "You didn't Have Enough Money To Buy It", ephemeral: true })
 
-  await items.add(`${user.id}.golden_toilet_paper`, quantity)
+  await items.add(`${user.id}.troll_sword`, quantity)
 
-await currency.add(`${user.id}.inventory_worth`, totalgtp)
+await currency.add(`${user.id}.inventory_worth`, totalts)
   
-await currency.sub(`${user.id}.balance`, totalgtp)
+await currency.sub(`${user.id}.balance`, totalts)
   
-  let embedgtp = new EmbedBuilder()
+  let embedts = new EmbedBuilder()
                 .setColor(embeds.color)
-.setDescription(`Purchased ${quantity}x Golden Toilet Paper ${emojis.golden_toilet_paper} For ${emojis.troll_coin} ${totalgtp}`)
+.setDescription(`Purchased ${quantity}x Troll Sword ${emojis.troll_sword} For ${emojis.troll_coin} ${totalts}`)
 .setFooter({text: `${embeds.footer}`});
 
-  interaction.editReply({embeds: [embedgtp]})
+  interaction.editReply({embeds: [embedts]})
 }
 
 

@@ -37,7 +37,7 @@ if (register === undefined) register = 'false';
 return interaction.editReply(`${emojis.cross} Use /register To Register Your Account In My Database`)
     }
 
-let timeout = 25000;
+let timeout = 300000;
 
         let rob = await times.get(`${user1.id}.rob`);
 
@@ -56,7 +56,7 @@ if (user1.id === user.id) {
 }
     
 
-let safe_mode1 = await settings.get(`${user1.id}.safe_mode`)
+let safe_mode1 = await settings.get(`${user1.id}.safemode`)
 
     if (safe_mode1 === undefined) safe_mode1 = 'false';
 
@@ -64,7 +64,7 @@ if (safe_mode1 === "true") {
   return interaction.editReply("You Can't Rob You Are In Safe Mode")
 }
     
-let safe_mode = await settings.get(`${user.id}.safe_mode`)
+let safe_mode = await settings.get(`${user.id}.safemode`)
 
 if (safe_mode === undefined) safe_mode = 'false';
 
@@ -72,7 +72,7 @@ if (safe_mode1 === "true") {
   return interaction.editReply("You Can't Rob That Parson In Safe Mode")
 }
 
-let rob_guild = await settings.get(`${interaction.guild.id}.rob`)
+let rob_guild = await guild_settings.get(`${interaction.guild.id}.rob`)
 
 if (rob_guild === undefined) rob_guild = 'true';
 
