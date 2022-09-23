@@ -21,6 +21,8 @@ const user = interaction.targetUser;
 
 const settings = db.table("settings");
 
+const counts = db.table("counts");
+
 let register = await settings.get(`${interaction.user.id}.register`)
 
 if (register === undefined) register = 'false';
@@ -57,26 +59,48 @@ if (joined2 === undefined) joined2 = Date.now();
   
 let joinedr2 = ms(Date.now() - joined2, { long: true });
 
+if (joinedr2 !== "0 ms") joinedr2 = `${joinedr2} Ago`;
+
 if (joinedr2 === "0 ms") joinedr2 = "Not Started Yet";
     
+let rob_pass2 = await counts.get(`${user.id}.rob_pass`)
+
+if (rob_pass2 === undefined) rob_pass2 = 0;
+  
+let rob_fail2 = await counts.get(`${user.id}.rob_fails`)
+
+if (rob_fail2 === undefined) rob_fail2 = 0;
+  
+let rob_worth2 = await currency.get(`${user.id}.rob_worth`)
+
+if (rob_worth2 === undefined) rob_worth2 = 0;
+  
+let rob_loss2 = await currency.get(`${user.id}.rob_loss`)
+
+if (rob_loss2 === undefined) rob_loss2 = 0;
+
 let embed2 = new EmbedBuilder()
                 .setColor(embeds.color)
 .setThumbnail(user.displayAvatarURL())
   .setTitle(`${user.username}'s Profile`)
-.setDescription(`
-${bio2}
+.setDescription(`${bio2}
 
-**Started** - ${joinedr2}
+**Info -**
+Started: ${joinedr2}
+Rank: ${rank2}
 
-**Rank** - ${rank2}
+**Currency Stats -**
+Balance: ${emojis.troll_coin} ${bal2}
+Bank: ${emojis.troll_coin} ${bank2}
+Inventory Worth: ${emojis.troll_coin} ${invw2}
+Net Worth: ${emojis.troll_coin} ${net2}
 
-**Balance** - ${bal2}
-
-**Bank** - ${bank2}
-
-**Inventory Worth** - ${invw2}
-
-**Net Worth** - ${net2}`)
+**Rob Stats -**
+Rob Pass: ${rob_pass2}
+Rob Fails: ${rob_fail2}
+Rob Worth: ${emojis.troll_coin} ${rob_worth2}
+Rob Loss: ${emojis.troll_coin} ${rob_loss2}
+`)
           .setFooter({text: `${embeds.footer}`})
             return interaction.editReply({embeds: [embed2]})
 

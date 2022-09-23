@@ -8,7 +8,7 @@ const desc = require("./../JSON/items-desc.json");
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('item')
-		.setDescription('📱 see your item')
+		.setDescription('📱 see your all item')
   .addStringOption(option => option.setName('item').setDescription('Give Me A Item To See').setRequired(true)
   .addChoices(
 				{ name: 'Phone', value: 'phone' },

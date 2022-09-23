@@ -87,7 +87,7 @@ const embed2 = new EmbedBuilder()
   const embed4 = new EmbedBuilder()
     .setColor(embeds.color)
   .setTitle(`${emojis.troll_coin} Currency Game Commands`)
-    .setDescription("`/balance`, `/deposit`, `/withdraw`, `/pay`, `/daily`, `/work`, `/beg`, `/coinflip`, `/store`, `/buy`, `/use`, `/dig`, `/fish`, `/sell`, `/profile`, `/rob`")
+    .setDescription("`/balance`, `/deposit`, `/withdraw`, `/pay`, `/daily`, `/work`, `/beg`, `/coinflip`, `/shop`, `/buy`, `/use`, `/dig`, `/fish`, `/sell`, `/profile`, `/rob`, `/item`")
   .setFooter({text: `${embeds.footer}`});
 
 const embed5 = new EmbedBuilder()

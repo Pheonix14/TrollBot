@@ -108,6 +108,7 @@ if (rob_success_list[rob_result] === "Unsuccessful") {
   
 await counts.add(`${user1.id}.rob_fails`, 1)
             await currency.sub(`${user1.id}.balance`, rob_fail)
+  await currency.add(`${user1.id}.rob_loss`, rob_fail)
   await currency.add(`${user.id}.balance`, rob_fail)
 await times.set(`${user1.id}.rob`, Date.now())
 
@@ -140,7 +141,9 @@ const rob_pass = Math.floor(Math.random() * (balance -  + 5000)) + 5000;
   await currency.sub(`${user.id}.balance`, rob_pass)
 await times.set(`${user1.id}.rob`, Date.now())
    await currency.add(`${user1.id}.rob_worth`, rob_pass)
-  
+await currency.add(`${user.id}.rob_loss`, rob_pass)
+
+   
 let embed3 = new EmbedBuilder() 
   
   .setColor(embeds.color)

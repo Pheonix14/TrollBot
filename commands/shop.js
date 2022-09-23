@@ -5,7 +5,7 @@ const prices = require("./../JSON/prices.json");
 
 module.exports = {
 	data: new SlashCommandBuilder()
-		.setName('store')
+		.setName('shop')
 		.setDescription('🏪 See Items To Buy'),
 	async execute(interaction, client) {
 await interaction.deferReply();
@@ -45,7 +45,7 @@ const row = new ActionRowBuilder()
     
 const embed1 = new EmbedBuilder()
   .setColor(embeds.color)
-  .setTitle(`**Welcome To TrollBot Store**`)
+  .setTitle(`**Welcome To TrollBot Shop**`)
 .setDescription(`__Here You Can Check Prices Of Items And You Can Buy Something Using /buy__
 
 **Click The Drop-down Menu To See Prices**`)
