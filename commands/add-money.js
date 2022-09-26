@@ -19,6 +19,8 @@ const db = require("./../database/connect.js");
   await interaction.deferReply();
 
 const currency = db.table("currency");
+
+const ban = db.table("ban");
     
     const user = interaction.options.getUser('user');
 

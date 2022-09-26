@@ -1,10 +1,12 @@
 const emojis = require("./../config/emojis.json");
-
+const { InteractionType } = require("discord.js");
 
 module.exports = client => {
 
 client.on('interactionCreate', async interaction => {
 
+if (!interaction.type === InteractionType.Modals) return;
+  
 const db = require("./../database/connect.js");
 
 const settings = db.table(`settings`)

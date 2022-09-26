@@ -3,12 +3,16 @@ const path = require('node:path');
 const { Client, Collection, GatewayIntentBits, Partials, InteractionType, ActivityType } = require('discord.js');
 const { token, activitystatus, activitystatus2 } = require('./config/config.json');
 const settings = require('./config/settings.json')
+require( 'console-stamp' )( console, {
+    format: ':date(yyyy/mm/dd HH:MM:ss).blue :label(1)'
+} );
+
 
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds], partials: [Partials.Channel]
 });
 
-//command handler
+//command collector
 
 client.commands = new Collection();
 const commandsPath = path.join(__dirname, 'commands');
@@ -36,26 +40,6 @@ for (const file of eventFiles) {
 }
 
 
-
-client.once('ready', () => {
-	console.log(`\x1b[32m`,'[system] Status: Ready ✅', `\x1b[0m`);
-});
-
-client.on('interactionCreate', async interaction => {
-	if (!interaction.type === InteractionType.ApplicationCommand) return;
-
-	const command = client.commands.get(interaction.commandName);
-
-	if (!command) return;
-
-	try {
-		await command.execute(interaction);
-	} catch (error) {
-		console.error(error);
-	await interaction.editReply({ content: 'There was an error while executing this command!', ephemeral: true });
-	}
-});
-
 //activity status
 
 client.on('ready', () => { 
@@ -77,10 +61,9 @@ client.on('ready', () => {
 });
 
 
-
 //antiCrash
 
-["modals", settings.antiCrash ? "antiCrash" : null, ]
+["modals", "commands", settings.antiCrash ? "antiCrash" : null, ]
     .filter(Boolean)
     .forEach(h => {
         require(`./handlers/${h}`)(client);

@@ -97,7 +97,7 @@ if (balance < 5000) {
 }
 
     
-const rob_success_list = ["Successful", "Unsuccessful", "75% chance to pass", "85% chance to pass"];
+const rob_success_list = ["Successful", "75% chance to pass", "85% chance to pass", "Unsuccessful"];
     
     let rob_result = Math.floor(Math.random() * rob_success_list.length);
 

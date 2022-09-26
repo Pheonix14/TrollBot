@@ -12,8 +12,8 @@
   "dependencies": {
     "@discordjs/rest": "^0.5.0",
     "common-tags": "^1.8.2",
+    "console-stamp": "^3.0.6",
     "cpu-stat": "^2.0.1",
-    "discord-api-types": "^0.36.3",
     "discord.js": "^14.4.0",
     "memer-api": "^4.0.2",
     "ms": "^2.1.3",

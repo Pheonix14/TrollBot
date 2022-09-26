@@ -6,11 +6,11 @@ const { QuickDB, MySQLDriver } = require('quick.db');
         password: 'G+P=i23Ohp5Wf^HtxT=6WcOM',
         database: 's2496_testing-db'
     });
-    
+
     await mysql.connect().then(() => {
-      console.log("\x1b[32m","[database] Status: Connected To MySQL Server","\x1b[0m")
+      console.log("Connected To Database")
     })
-.catch((err) => { console.log(err);
+.catch((err) => { console.error(err);
 
 });
 
