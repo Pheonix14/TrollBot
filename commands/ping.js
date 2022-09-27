@@ -12,8 +12,7 @@ module.exports = {
 		.setDescription("📶 Bot Latency"),
 	async execute(interaction, client) {
 
-    await interaction.deferReply();
-
+    
     let cpuLol;
   cpuStat.usagePercent(function(err, percent ) {
       if (err) {

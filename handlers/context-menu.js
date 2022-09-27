@@ -6,7 +6,7 @@ module.exports = client => {
 
   client.on('interactionCreate', async interaction => { 
 	
-  if (!interaction.isChatInputCommand()) return;
+  if (!interaction.isUserContextMenuCommand()) return;
         
 	const command = client.commands.get(interaction.commandName);
   

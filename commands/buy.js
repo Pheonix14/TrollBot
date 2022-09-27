@@ -28,7 +28,7 @@ const db = require("./../database/connect.js");
     
 const user = interaction.user;
 
-await interaction.deferReply();
+
 
     const currency = db.table("currency");
 

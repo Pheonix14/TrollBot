@@ -10,8 +10,7 @@ module.exports = {
 		.setDescription("👶 abandon. Meme Command")
 		.addStringOption(option => option.setName('text').setDescription('Give Me A Text').setRequired(true)),
 	async execute(interaction) {
-
-    await interaction.deferReply();
+    
     const text = interaction.options.getString('text');
 
 memer.abandon(text)

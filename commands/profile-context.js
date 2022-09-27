@@ -11,7 +11,6 @@ module.exports = {
 
     const db = require("./../database/connect.js");
     
-await interaction.deferReply();
 
 const user = interaction.targetUser;
     

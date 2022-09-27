@@ -8,7 +8,7 @@ module.exports = {
     .setName('support')
     .setDescription('Get Help Releted Me 📌'),
   async execute(interaction, client) {
-await interaction.deferReply();
+
     const row = new ActionRowBuilder()
       .addComponents(
         new ButtonBuilder()

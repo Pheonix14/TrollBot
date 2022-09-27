@@ -12,7 +12,6 @@ module.exports = {
 
     const db = require("./../database/connect.js");
 
-   await interaction.deferReply();
 
 const currency = db.table("currency");
     

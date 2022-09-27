@@ -1,17 +1,17 @@
 const emojis = require("./../config/emojis.json");
-const { InteractionType } = require("discord.js");
+
 
 module.exports = client => {
 
 client.on('interactionCreate', async interaction => {
 
-if (!interaction.type === InteractionType.Modals) return;
+  if (!interaction.isModalSubmit()) return;
   
 const db = require("./../database/connect.js");
 
 const settings = db.table(`settings`)
   
-	if (!interaction.isModalSubmit()) return;
+	
 	if (interaction.customId === 'myModal') {
 
 await interaction.deferReply();

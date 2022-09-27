@@ -33,7 +33,6 @@ const db = require("./../database/connect.js");
     
 const user = interaction.user;
 
-await interaction.deferReply();
 
 const items = db.table("items")
 

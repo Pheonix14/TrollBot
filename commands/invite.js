@@ -8,7 +8,8 @@ module.exports = {
     .setName('invite')
     .setDescription('Invite Me On Your Server ➕'),
   async execute(interaction, client) {
-await interaction.deferReply();
+
+    
     const row = new ActionRowBuilder()
       .addComponents(
         new ButtonBuilder()

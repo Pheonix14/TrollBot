@@ -8,7 +8,7 @@ module.exports = {
 		.setName('shop')
 		.setDescription('🏪 See Items To Buy'),
 	async execute(interaction, client) {
-await interaction.deferReply();
+
 
 const db = require("./../database/connect.js");
     

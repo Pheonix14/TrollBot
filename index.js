@@ -4,7 +4,7 @@ const { Client, Collection, GatewayIntentBits, Partials, InteractionType, Activi
 const { token, activitystatus, activitystatus2 } = require('./config/config.json');
 const settings = require('./config/settings.json')
 require( 'console-stamp' )( console, {
-    format: ':date(yyyy/mm/dd HH:MM:ss).blue :label(1)'
+    format: ':date(yyyy/mm/dd HH:MM:ss).yellow :label(1)'
 } );
 
 
@@ -63,7 +63,7 @@ client.on('ready', () => {
 
 //antiCrash
 
-["modals", "commands", settings.antiCrash ? "antiCrash" : null, ]
+["modals", "context-menu", "commands", settings.antiCrash ? "antiCrash" : null, ]
     .filter(Boolean)
     .forEach(h => {
         require(`./handlers/${h}`)(client);

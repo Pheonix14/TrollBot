@@ -8,7 +8,7 @@ module.exports = {
 		.setName('help')
 		.setDescription('Full Command List 📜'),
 	async execute(interaction, client) {
-await interaction.deferReply();
+
     
 const row = new ActionRowBuilder()
   .addComponents(

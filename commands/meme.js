@@ -9,7 +9,7 @@ module.exports = {
 		.setName('meme')
 		.setDescription('😂 Funny Memes'),
 	async execute(interaction, client) {
-await interaction.deferReply();
+
   let data = await fetch ("http://meme-api.herokuapp.com/gimme/meme").then(res => res.json())
 
 const embed = new EmbedBuilder()
