@@ -6,9 +6,10 @@ module.exports = client => {
 
 client.on('ready', () => {
 
-if (settings.maintanance === "true") {
-  return client.user.setPresence({ activities: [{ name: `Bot Under Maintenance`, type: ActivityType.Playing }], status: 'online' })
-}
+if (settings.maintenance === "true") {
+client.user.setPresence({ activities: [{ name: `Bot Under Maintenance`, type: ActivityType.Playing }], status: 'online' })
+
+} else {
   
 setInterval(() => {
 
@@ -21,6 +22,6 @@ setInterval(() => {
     }, 
 
             60000) 
-
+}
 })
 }
