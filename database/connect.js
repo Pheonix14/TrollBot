@@ -1,21 +1,17 @@
-const { QuickDB, MySQLDriver } = require('quick.db');
+const { QuickDB } = require('quick.db');
+const { MongoDriver } = require('quickmongo');
+
 (async () => {
-    const mysql = new MySQLDriver({
-        host:     'n1.artiom.host',
-        user:     'u2496_5lKM6PND5J',
-        password: 'G+P=i23Ohp5Wf^HtxT=6WcOM',
-        database: 's2496_testing-db'
-    });
 
-    await mysql.connect().then(() => {
-      console.log("Connected To Database")
-    })
-.catch((err) => { console.error(err);
+  const driver = new MongoDriver("mongodb+srv://trollbot:trollbot2635361@cluster0.1vltbiw.mongodb.net/?retryWrites=true&w=majority");
 
+driver.connect().then(() => {
+    console.log(`Connected to the database!`);
+    
 });
-
   
-module.exports = new QuickDB({ driver: mysql });
-
+await driver.connect();
+  
+module.exports = new QuickDB({ driver });
 
 })();

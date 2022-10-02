@@ -1,7 +1,7 @@
 const fs = require('node:fs');
 const path = require('node:path');
 const { Client, Collection, GatewayIntentBits, Partials, InteractionType, ActivityType } = require('discord.js');
-const { token, activitystatus, activitystatus2 } = require('./config/config.json');
+const { token } = require('./config/config.json');
 const settings = require('./config/settings.json')
 require( 'console-stamp' )( console, {
     format: ':date(yyyy/mm/dd HH:MM:ss).yellow :label(1)'
@@ -40,30 +40,10 @@ for (const file of eventFiles) {
 }
 
 
-//activity status
-
-client.on('ready', () => { 
-    setInterval(() => {
-
-        const statuses = [
-            `/help | ${client.guilds.cache.size} Servers ${client.users.cache.size} Users`, 
-          `${activitystatus}`, 
-
-     `${activitystatus2}`
-        ]
-
-        const status = statuses[Math.floor(Math.random() * statuses.length)] 
-        client.user.setPresence({ activities: [{ name: `${status}`, type: ActivityType.Playing }], status: 'online' }) 
-    }, 
-
-            40000) 
-
-});
-
 
 //antiCrash
 
-["modals", "context-menu", "commands", settings.antiCrash ? "antiCrash" : null, ]
+["modals", "context-menu", "presence", "commands", settings.antiCrash ? "antiCrash" : null, ]
     .filter(Boolean)
     .forEach(h => {
         require(`./handlers/${h}`)(client);

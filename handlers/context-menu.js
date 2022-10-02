@@ -1,6 +1,7 @@
 const { EmbedBuilder } = require("discord.js");
 const embeds = require("./../config/embed.json");
 const links = require("./../config/links.json");
+const settings = require("./../config/settings.json");
 
 module.exports = client => {
 

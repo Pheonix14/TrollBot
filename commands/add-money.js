@@ -1,5 +1,5 @@
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
-const { developers } = require("./../config/emojis.json");
+const settings = require("./../config/settings.json");
 const emojis = require("./../config/emojis.json");
 const embeds = require("./../config/embed.json");
 
@@ -23,7 +23,7 @@ const ban = db.table("ban");
     
     const user = interaction.options.getUser('user');
 
-if (user.id ==! developers) {
+if (user.id ==! settings.admins) {
   interaction.editReply(`You Are Not My Developer`)
 }
     

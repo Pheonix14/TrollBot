@@ -1,6 +1,7 @@
 const { EmbedBuilder } = require("discord.js");
 const embeds = require("./../config/embed.json");
 const links = require("./../config/links.json");
+const settings = require("./../config/settings.json");
 
 module.exports = client => {
 
@@ -13,6 +14,10 @@ module.exports = client => {
 	if (!command) return;
 
 await interaction.deferReply();
+
+if (settings.maintenance === "true") {
+return interaction.editReply(`Bot Is Under Maintenance. Please Try Again Leter`)
+}
     
 const db = require("./../database/connect.js");
     

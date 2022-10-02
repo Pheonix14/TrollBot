@@ -1,3 +1,8 @@
 {
-  "antiCrash": false
+  "antiCrash": false,
+  "maintenance": "false",
+  "presence": "trollbot.ml",
+  "presence2": "under development",
+  "owner": "674145228063768587",
+  "admins": ["756508455837237358"]
 }
