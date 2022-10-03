@@ -1,6 +1,8 @@
 { pkgs }: {
 	deps = [
-		pkgs.iproute2
+		pkgs.python39Full
+  pkgs.sudo
+  pkgs.iproute2
   pkgs.nodejs-16_x
         pkgs.nodePackages.typescript-language-server
         pkgs.yarn
