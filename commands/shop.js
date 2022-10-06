@@ -25,20 +25,20 @@ return interaction.editReply(`${emojis.cross} Use /register To Register Your Acc
 const row = new ActionRowBuilder()
   .addComponents(
     new SelectMenuBuilder()
-     .setCustomId("select")
+     .setCustomId("shop_select")
     .setPlaceholder("Select Your Option")
     .addOptions([
  {
  label: "Tools",
   emoji: emojis.phone,
  description: "Click Here To See All Tool Items",
- value: "first"
+ value: "shop_first"
  },
  {
  label: "Collectables",
   emoji: emojis.cool_meow,
  description: "Click Here To See All Collectable Items", 
- value: "second"
+ value: "shop_second"
  }
     ])
   )
@@ -93,18 +93,18 @@ ${emojis.troll_crown} Troll Crown — ${emojis.troll_coin} ${prices.troll_crown}
 
 const collector = interaction.channel.createMessageComponentCollector({ 
 ComponentType: "SELECT_MENU",
-customId: 'select',
+customId: 'shop_select',
 time: '60000'
 })
 
 collector.on("collect", async (collected) => { const value = collected.values[0]
 
-if(value === "first") {
+if(value === "shop_first") {
 
 collected.reply ({embeds: [embed2], ephemeral: true})
 }
 
-if(value === "second") {
+if(value === "shop_second") {
 
 collected.reply ({embeds: [embed3], ephemeral: true})
 }

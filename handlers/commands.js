@@ -1,7 +1,7 @@
 const { EmbedBuilder } = require("discord.js");
 const embeds = require("./../config/embed.json");
 const links = require("./../config/links.json");
-const { maintenance, admins } = require("./../config/settings.json");
+const { maintenance, admins, nonDeffer_cmd } = require("./../config/settings.json");
 
 module.exports = client => {
 
@@ -11,9 +11,21 @@ module.exports = client => {
         
 	const command = client.commands.get(interaction.commandName);
   
-	if (!command) return;
 
+	if (nonDeffer_cmd.includes(interaction.commandName)) {
 
+if (maintenance === "true") {
+if (!admins.includes(interaction.user.id)) return interaction.reply(`Bot Is Under Maintenance. Please Try Again Leter`)
+}
+    
+	  try {
+		await command.execute(interaction);
+	} catch (error) {
+		console.error(error);
+	await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
+    }
+	} else {
+	  
 await interaction.deferReply();
 
  
@@ -56,6 +68,7 @@ If You Believe You Got Banned By Mistake Go To [Appeal](${links.appeal}) And Sub
 		console.error(error);
 	await interaction.editReply({ content: 'There was an error while executing this command!', ephemeral: true });
 	}
+  }
 });
 
 }

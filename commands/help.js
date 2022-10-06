@@ -13,32 +13,32 @@ module.exports = {
 const row = new ActionRowBuilder()
   .addComponents(
     new SelectMenuBuilder()
-     .setCustomId("select")
+     .setCustomId("help_select")
     .setPlaceholder("Select Your Option")
     .addOptions([
  {
  label: "info",
   emoji: emojis.info,
  description: "Click here to see Info commands list",
- value: "first"
+ value: "help_first"
  },
 {
  label: "Memes", 
   emoji: emojis.meme,
  description: "Click here to see Memes Commands", 
- value: "second"
+ value: "help_second"
 },
 {
  label: "Currency Game (BETA)", 
   emoji: emojis.troll_coin,
  description: "Click here to see Currency Game Commands", 
- value: "third"
+ value: "help_third"
 },
 {
  label: "Game Settings (BETA)", 
   emoji: emojis.settings,
  description: "Click here to see Game Settings Commands", 
- value: "fourth"
+ value: "help_fourth"
       }
     ])
   )
@@ -99,27 +99,27 @@ const embed5 = new EmbedBuilder()
     
 const collector = interaction.channel.createMessageComponentCollector({ 
 ComponentType: "SELECT_MENU",
-customId: 'select',
+customId: 'help_select',
 time: '60000'
 })
 
 collector.on("collect", async (collected) => { const value = collected.values[0]
 
-if(value === "first") {
+if(value === "help_first") {
 
 collected.reply ({embeds: [embed2], ephemeral: true})
 }
 
-if(value === "second") {
+if(value === "help_second") {
 
 collected.reply ({embeds: [embed3], ephemeral: true})
 }
-if(value === "third") {
+if(value === "help_third") {
 
 collected.reply ({embeds: [embed4], ephemeral: true})
 }
 
-if(value === "fourth") {
+if(value === "help_fourth") {
 
 collected.reply ({embeds: [embed5], ephemeral: true})
   }

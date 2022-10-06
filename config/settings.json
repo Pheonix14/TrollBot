@@ -1,8 +1,9 @@
 {
   "antiCrash": false,
-  "maintenance": "false",
+  "maintenance": "true",
   "presence": "trollbot.ml",
   "presence2": "under development",
   "owner": "",
-  "admins": ["756508455837237358", "674145228063768587"]
+  "admins": ["756508455837237358", "674145228063768587"],
+  "nonDeffer_cmd": ["settings-bio"]
 }

@@ -51,4 +51,6 @@ for (const file of eventFiles) {
 
 require('./database/connect.js');
 
+require('./deploy-commands.js');
+
 client.login(token);

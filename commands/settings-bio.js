@@ -3,30 +3,30 @@ const emojis = require("./../config/emojis.json");
 const embeds = require("./../config/embed.json");
 
 module.exports = {
-	data: new SlashCommandBuilder()
-		.setName('settings-bio')
-		.setDescription('⚙️ change profile bio'),
+    data: new SlashCommandBuilder()
+        .setName('settings-bio')
+        .setDescription('⚙️ change profile bio'),
                    
-	async execute(interaction, client) {
-	
+    async execute(interaction, client) {
+    
     const modal = new ModalBuilder()
-			.setCustomId('myModal')
-			.setTitle('Profile Bio');
+            .setCustomId('myModal')
+            .setTitle('Profile Bio');
 
-		
-		const bio = new TextInputBuilder()
+        
+        const bio = new TextInputBuilder()
 .setCustomId('bio')
 .setLabel("Text")
 .setStyle(TextInputStyle.Short)
 .setRequired(true);
 
-		
-		const firstActionRow = new ActionRowBuilder().addComponents(bio);
+        
+        const firstActionRow = new ActionRowBuilder().addComponents(bio);
 
-		modal.addComponents(firstActionRow);
+        modal.addComponents(firstActionRow);
 
-		
-		await interaction.showModal(modal);
+        
+        await interaction.showModal(modal);
     
-	},
-}
+    },
+} 
