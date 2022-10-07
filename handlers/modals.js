@@ -11,7 +11,9 @@ await interaction.deferReply();
 
 const db = require("./../database/connect.js");
   
-const settings = db.table(`settings`)
+const settings = db.table(`settings`);
+
+const items = db.table(`items`);
 
 let register = await settings.get(`${interaction.user.id}.register`)
 
@@ -49,6 +51,15 @@ If You Believe You Got Banned By Mistake Go To [Appeal](${links.appeal}) And Sub
 
 	
 	if (interaction.customId === 'myModal') {
+
+
+let phone = await items.get(`${interaction.user.id}.phone`)
+
+  if (phone === undefined) phone = 0;
+
+if (phone === 0) {
+  return interaction.editReply("You Need A Phone To Use This Command. Tip: use /shop and /buy to buy a phone")
+}
     
 const submitted_bio = interaction.fields.getTextInputValue('bio');
 

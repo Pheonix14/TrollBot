@@ -22,6 +22,7 @@ const user = interaction.user;
     
 const settings = db.table("settings");
 
+ const items = db.table("items");
 
 let register = await settings.get(`${user.id}.register`)
 
@@ -33,6 +34,15 @@ return interaction.editReply(`${emojis.cross} Use /register To Register Your Acc
     
 const sm_settings = interaction.options.getString('setting');
 
+let phone = await items.get(`${user.id}.phone`)
+
+  if (phone === undefined) phone = 0;
+
+
+if (phone === 0) {
+  return interaction.editReply("You Need A Phone To Use This Command. Tip: use /shop and /buy to buy a phone")
+}
+    
 if (sm_settings === "enable") {
 
 let check_sm = await settings.get(`${user.id}.safemode`)
@@ -58,7 +68,7 @@ let check_sm = await settings.get(`${user.id}.safemode`)
 
   if (check_sm === undefined) check_sm = "disable";
 
-if (check_sm === "disable") return interaction.editReply( "safemode is already disabled 🔓")
+if (check_sm === "disable") return interaction.editReply("safemode is already disabled 🔓")
 
 await settings.set(`${user.id}.safemode`, sm_settings)
 

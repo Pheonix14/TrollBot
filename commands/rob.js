@@ -72,11 +72,11 @@ if (safe_mode1 === "true") {
   return interaction.editReply("You Can't Rob That Parson In Safe Mode")
 }
 
-let rob_guild = await guild_settings.get(`${interaction.guild.id}.rob`)
+let rob_guild = await guild_settings.get(`${interaction.guild.id}.rob_setting`)
 
-if (rob_guild === undefined) rob_guild = 'true';
+if (rob_guild === undefined) rob_guild = 'enable';
 
-if (rob_guild === "false") {
+if (rob_guild === "disable") {
   return interaction.editReply("Rob Is Not Allowed In This Server")
 }
     

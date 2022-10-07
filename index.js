@@ -9,7 +9,7 @@ require( 'console-stamp' )( console, {
 
 
 
-const client = new Client({ intents: [GatewayIntentBits.Guilds], partials: [Partials.Channel]
+const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMembers], partials: [Partials.Channel]
 });
 
 //command collector
