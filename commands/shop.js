@@ -46,7 +46,7 @@ const row = new ActionRowBuilder()
 const embed1 = new EmbedBuilder()
   .setColor(embeds.color)
   .setTitle(`**Welcome To TrollBot Shop**`)
-.setDescription(`__Here You Can Check Prices Of Items And You Can Buy Something Using /buy__
+.setDescription(`Here You Can Check Prices Of Items And You Can Buy Something Using /buy
 
 **Click The Drop-down Menu To See Prices**`)
 .setFooter({text: `${embeds.footer}`});
@@ -57,37 +57,29 @@ const embed1 = new EmbedBuilder()
 const embed2 = new EmbedBuilder()
     .setColor(embeds.color)
   .setTitle(`Tool Items`)
-    .setDescription(`${emojis.phone} Phone — ${emojis.troll_coin} ${prices.phone}
+    .setDescription(`${emojis.phone} Phone: ${emojis.troll_coin} ${prices.phone}
 
+${emojis.laptop} Laptop: ${emojis.troll_coin} ${prices.laptop}
 
-${emojis.laptop} Laptop — ${emojis.troll_coin} ${prices.laptop}
+${emojis.shovel} Shovel: ${emojis.troll_coin} ${prices.shovel}
 
+${emojis.fishing_rod} Fishing Rod: ${emojis.troll_coin} ${prices.fishing_rod}
 
-${emojis.shovel} Shovel — ${emojis.troll_coin} ${prices.shovel}
-
-
-${emojis.fishing_rod} Fishing Rod — ${emojis.troll_coin} ${prices.fishing_rod}
-
-
-${emojis.bank_upgrader} Bank Upgrade — ${emojis.troll_coin} ${prices.bank_upgrader}`)
+${emojis.bank_upgrader} Bank Upgrade: ${emojis.troll_coin} ${prices.bank_upgrader}`)
   .setFooter({text: `${embeds.footer}`});
 
 const embed3 = new EmbedBuilder()
     .setColor(embeds.color)
   .setTitle(`Collectable Items`)
-    .setDescription(`${emojis.toilet_paper} Toilet Paper — ${emojis.troll_coin} ${prices.toilet_paper}
+    .setDescription(`${emojis.toilet_paper} Toilet Paper: ${emojis.troll_coin} ${prices.toilet_paper}
     
-    
-${emojis.cool_meow} Cool Meow — ${emojis.troll_coin} ${prices.cool_meow}
+${emojis.cool_meow} Cool Meow: ${emojis.troll_coin} ${prices.cool_meow}
 
+${emojis.troll_sword} Troll Sword: ${emojis.troll_coin} ${prices.troll_sword}
 
-${emojis.troll_sword} Troll Sword — ${emojis.troll_coin} ${prices.troll_sword}
+${emojis.golden_troll_coin} Golden Troll Coin: ${emojis.troll_coin} ${prices.golden_troll_coin}
 
-
-${emojis.golden_troll_coin} Golden Troll Coin — ${emojis.troll_coin} ${prices.golden_troll_coin}
-
-
-${emojis.troll_crown} Troll Crown — ${emojis.troll_coin} ${prices.troll_crown}`)
+${emojis.troll_crown} Troll Crown: ${emojis.troll_coin} ${prices.troll_crown}`)
   .setFooter({text: `${embeds.footer}`});
 
 

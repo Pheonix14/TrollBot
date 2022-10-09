@@ -6,7 +6,7 @@ module.exports = client => {
 client.on('interactionCreate', async interaction => {
 
   if (!interaction.isModalSubmit()) return;
-
+  
 await interaction.deferReply();
 
 const db = require("./../database/connect.js");

@@ -87,13 +87,13 @@ const embed2 = new EmbedBuilder()
   const embed4 = new EmbedBuilder()
     .setColor(embeds.color)
   .setTitle(`${emojis.troll_coin} Currency Game Commands`)
-    .setDescription("`/balance`, `/deposit`, `/withdraw`, `/pay`, `/daily`, `/work`, `/beg`, `/coinflip`, `/shop`, `/buy`, `/use`, `/dig`, `/fish`, `/sell`, `/profile`, `/rob`, `/item`")
+    .setDescription("`/balance`, `/deposit`, `/withdraw`, `/pay`, `/daily`, `/work`, `/beg`, `/coinflip`, `/shop`, `/buy`, `/use`, `/dig`, `/fish`, `/sell`, `/profile`, `/rob`, `/item`, `/slot`")
   .setFooter({text: `${embeds.footer}`});
 
 const embed5 = new EmbedBuilder()
     .setColor(embeds.color)
   .setTitle(`${emojis.settings} Game Settings Commands`)
-    .setDescription("`/register`, `/settings-bio`, `/settings-safemode`")
+    .setDescription("`/register`, `/settings-bio`, `/settings-safemode,` `/settings-rob`")
   .setFooter({text: `${embeds.footer}`});
 
     

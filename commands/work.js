@@ -26,7 +26,7 @@ const counts = db.table("counts");
 
     const JworkR = Jwork[Math.floor(Math.random() * Jwork.length)];
 
-    const reward = Math.floor(Math.random() * (5000 -  + 1500)) + 1500;
+    const reward = Math.floor(Math.random() * (3000 -  + 2000)) + 2000;
 
   let user = interaction.user;
 

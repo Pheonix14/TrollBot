@@ -1,8 +1,8 @@
 {
   "phone": 500,
-  "laptop": 1000,
-  "shovel": 500,
-  "fishing_rod": 500,
+  "laptop": 5000,
+  "shovel": 2500,
+  "fishing_rod": 2500,
   "bank_upgrader": 50000,
   "junk": 100,
   "common_fish": 200,
