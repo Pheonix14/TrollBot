@@ -55,7 +55,7 @@ let fishingrod = await items.get(`${user.id}.fishing_rod`)
             return interaction.editReply({embeds: [embed1]})
         } 
 
-const fishes = ["Junk", "Common Fish", "Uncommon Fish", "Rare Fish", "Legendary Fish"];
+const fishes = ["Junk", "Common Fish", "Uncommon Fish", "Rare Fish", "Legendary Fish", "Nothing"];
 
     let result = Math.floor(Math.random() * fishes.length);
 
@@ -156,6 +156,26 @@ let embed6 = new EmbedBuilder()
       .setDescription(`You Got A ${emojis.legendary_fish} Legendary Fish While Fishing`)
           .setFooter({text: `${embeds.footer}`})
             return interaction.editReply({embeds: [embed6]}) 
+
+
+}
+
+if (fishes[result] === 'Nothing') {
+  
+
+await counts.add(`${user.id}.fishes`, 1)
+
+await items.sub(`${user.id}.fishing_rod`, 1)
+await currency.sub(`${user.id}.inventory_worth`, values.fishing_rod)
+      
+await times.set(`${user.id}.fish`, Date.now())
+  
+      
+let embed7 = new EmbedBuilder()
+                .setColor(embeds.color)
+      .setDescription(`You Got Nothing And Your Fishing Rod While Fishing`)
+          .setFooter({text: `${embeds.footer}`})
+            return interaction.editReply({embeds: [embed7]}) 
 
 
 }

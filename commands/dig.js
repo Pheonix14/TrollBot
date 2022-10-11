@@ -55,7 +55,7 @@ let shovel = await items.get(`${user.id}.shovel`)
             return interaction.editReply({embeds: [embed1]})
         } 
 
-const item = ["Dirt", "Sand", "Worm", "Iron", "Fossil"];
+const item = ["Dirt", "Sand", "Worm", "Iron", "Fossil", "Nothing"];
 
     let result = Math.floor(Math.random() * item.length);
 
@@ -156,6 +156,25 @@ let embed6 = new EmbedBuilder()
       .setDescription(`You Got A ${emojis.fossil} Fossil While Digging`)
           .setFooter({text: `${embeds.footer}`})
             return interaction.editReply({embeds: [embed6]}) 
+
+
+}
+
+if (item[result] === 'Nothing') {
+  
+
+await counts.add(`${user.id}.digs`, 1)
+await items.sub(`${user.id}.shovel`, 1)
+await currency.sub(`${user.id}.inventory_worth`, values.shovel)
+  
+await times.set(`${user.id}.dig`, Date.now())
+  
+
+let embed7 = new EmbedBuilder()
+                .setColor(embeds.color)
+      .setDescription(`You Got Nothing And Your Shovel Broke While Digging`)
+          .setFooter({text: `${embeds.footer}`})
+            return interaction.editReply({embeds: [embed7]}) 
 
 
 }
