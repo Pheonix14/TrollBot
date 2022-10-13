@@ -18,7 +18,7 @@ const db = require("./../database/connect.js");
 
 
 const currency = db.table("currency");
-
+const items = db.table("items");
 const ban = db.table("ban");
     
     const user = interaction.options.getUser('user');
@@ -29,7 +29,7 @@ if (user.id ==! settings.admins) {
     
     const ammount = interaction.options.getNumber('ammount');
     
-    await currency.add(`${user.id}.balance`, ammount)
+    await items.add(`${user.id}.starter_kit`, 1)
     
 let bal = await currency.get(`${user.id}.balance`)
 

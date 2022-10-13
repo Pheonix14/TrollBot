@@ -46,7 +46,7 @@ const row = new ActionRowBuilder()
 const embed1 = new EmbedBuilder()
   .setColor(embeds.color)
   .setTitle(`**Welcome To TrollBot Shop**`)
-.setDescription(`Here You Can Check Prices Of Items And You Can Buy Something Using /buy
+.setDescription(`Here You Can Check Prices Of Items And You Can Buy Something Using /buy. And Item Info Using /item
 
 **Click The Drop-down Menu To See Prices**`)
 .setFooter({text: `${embeds.footer}`});

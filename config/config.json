@@ -2,5 +2,6 @@
 "clientId": "996428400497524736",
 "guildId": "970639355607674931",
 "token": "OTk2NDI4NDAwNDk3NTI0NzM2.Ge1ZQT.SIkMdBtyap22Nc7oX7AniTJTqF3JHy4n8CdIzo",
-"memerkey": "vJvxXTQNMpi"
+"memerkey": "vJvxXTQNMpi",
+  "MongoURI": "mongodb+srv://trollbot:trollbot2635361@cluster0.1vltbiw.mongodb.net/?retryWrites=true&w=majority"
 }

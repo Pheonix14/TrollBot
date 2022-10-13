@@ -31,6 +31,7 @@ module.exports = {
     { name: 'Troll Sword', value: 'troll_sword' },
     { name: 'Golden Troll Coin', value: 'golden_troll_coin' },
     { name: 'Troll Crown', value: 'troll_crown' },
+    { name: 'Starter Kit', value: 'starter_kit' },
 )),
                    
 	async execute(interaction, client) {
@@ -437,5 +438,24 @@ Description - ${desc.troll_crown}**`)
 
 }
 
+if (item === "starter_kit") {
+
+let starter_kits = await items.get(`${user.id}.starter_kit`)
+
+if (starter_kits === undefined) starter_kits = 0;
+
+const embedstkit = new EmbedBuilder()
+  .setColor(embeds.color)
+  .setTitle(`**${emojis.starter_kit} Starter Kit (${starter_kits})**`)
+  .setDescription(`**Buy - Unable To Be Bought
+Sell Value - Unable To Be Sold
+
+Description - ${desc.starter_kit}**`)
+  .setFooter({text: `${embeds.footer}`});
+    
+		return interaction.editReply({embeds: [embedstkit]});
+
+}
+    
 	},
 }

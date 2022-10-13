@@ -173,7 +173,7 @@ await times.set(`${user.id}.fish`, Date.now())
       
 let embed7 = new EmbedBuilder()
                 .setColor(embeds.color)
-      .setDescription(`You Got Nothing And Your Fishing Rod While Fishing`)
+      .setDescription(`You Got Nothing And Your Fishing Rod Broke While Fishing`)
           .setFooter({text: `${embeds.footer}`})
             return interaction.editReply({embeds: [embed7]}) 
 

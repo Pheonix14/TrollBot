@@ -2,7 +2,7 @@ const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 const emojis = require("./../config/emojis.json");
 const embeds = require("./../config/embed.json");
 const prices = require("./../JSON/prices.json");
-
+const ms = require('ms');
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('settings-safemode')
@@ -21,6 +21,8 @@ const db = require("./../database/connect.js");
 const user = interaction.user;
     
 const settings = db.table("settings");
+
+const times = db.table("times");
 
  const items = db.table("items");
 
@@ -42,6 +44,21 @@ let phone = await items.get(`${user.id}.phone`)
 if (phone === 0) {
   return interaction.editReply("You Need A Phone To Use This Command. Tip: use /shop and /buy to buy a phone")
 }
+
+let timeout = 86400000;
+
+        let sm_timeout = await times.get(`${user.id}.sm_timeout`);
+
+        if (sm_timeout !== undefined && timeout - (Date.now() - sm_timeout) > 0) {
+            let time = ms(timeout - (Date.now() - sm_timeout));
+
+            let embedtimeout = new EmbedBuilder()
+                .setColor(embeds.color)
+                .setDescription(`${emojis.cross} You Can Use This Command Only 1 Time Everyday\n\nUse It Again In ${time}`)
+          .setFooter({text: `${embeds.footer}`})
+          return interaction.editReply({embeds: [embedtimeout]})
+        }
+
     
 if (sm_settings === "enable") {
 
@@ -53,6 +70,8 @@ if (check_sm === "enable") return interaction.editReply( "safemode is already en
 
 await settings.set(`${user.id}.safemode`, sm_settings)
 
+await times.set(`${user.id}.sm_timeout`, Date.now())
+  
 const embed = new EmbedBuilder()
       .setColor(embeds.color)
       .setDescription(`Safemode Enabled Sucessfully 🔒`)
@@ -72,6 +91,8 @@ if (check_sm === "disable") return interaction.editReply("safemode is already di
 
 await settings.set(`${user.id}.safemode`, sm_settings)
 
+await times.set(`${user.id}.sm_timeout`, Date.now())
+  
 const embed = new EmbedBuilder()
       .setColor(embeds.color)
       .setDescription(`Safemode Disabled Sucessfully 🔓`)

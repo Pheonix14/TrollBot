@@ -29,13 +29,13 @@ const row = new ActionRowBuilder()
  value: "help_second"
 },
 {
- label: "Currency Game (BETA)", 
+ label: "Currency Game", 
   emoji: emojis.troll_coin,
  description: "Click here to see Currency Game Commands", 
  value: "help_third"
 },
 {
- label: "Game Settings (BETA)", 
+ label: "Game Settings", 
   emoji: emojis.settings,
  description: "Click here to see Game Settings Commands", 
  value: "help_fourth"
@@ -87,7 +87,7 @@ const embed2 = new EmbedBuilder()
   const embed4 = new EmbedBuilder()
     .setColor(embeds.color)
   .setTitle(`${emojis.troll_coin} Currency Game Commands`)
-    .setDescription("`/balance`, `/deposit`, `/withdraw`, `/pay`, `/daily`, `/work`, `/beg`, `/coinflip`, `/shop`, `/buy`, `/use`, `/dig`, `/fish`, `/sell`, `/profile`, `/rob`, `/item`, `/slot`")
+    .setDescription("`/balance`, `/deposit`, `/withdraw`, `/pay`, `/daily`, `/work`, `/beg`, `/coinflip`, `/shop`, `/buy`, `/use`, `/dig`, `/fish`, `/sell`, `/profile`, `/rob`, `/item`, `/slot`, `/crime`")
   .setFooter({text: `${embeds.footer}`});
 
 const embed5 = new EmbedBuilder()

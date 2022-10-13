@@ -1,9 +1,10 @@
 const { QuickDB } = require('quick.db');
 const { MongoDriver } = require('quickmongo');
+const config = require("./../config/config.json");
 
 (async () => {
 
-  const driver = new MongoDriver("mongodb+srv://trollbot:trollbot2635361@cluster0.1vltbiw.mongodb.net/?retryWrites=true&w=majority");
+  const driver = new MongoDriver(config.MongoURI);
 
 driver.connect().then(() => {
     console.log(`Connected to the database!`);
