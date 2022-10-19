@@ -11,17 +11,15 @@ module.exports = {
   const embed = new EmbedBuilder()
   .setColor(embeds.color)
     .setTitle(`**TrollBot Updates**`)
-.setDescription(`**Version - 1.1.1
+.setDescription(`**Version - 2.0.0
 
-- Improvements In Some Commands
+- Full Bot Revamped
 
-- Ping Issue Fixed
+- Currency Game Added
 
-- Crash Issue Fixed
+- Some Commands Removed
 
 - Bug Fixes
-
-- Performance Optimised
 
 Thank You!
 - TrollBot Development

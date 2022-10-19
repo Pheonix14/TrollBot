@@ -53,4 +53,17 @@ require('./database/connect.js');
 
 require('./deploy-commands.js');
 
+
+const express = require('express')
+const app = express()
+const port = 3432
+
+app.get('/', (req, res) => {
+  res.send('Webpage Created')
+})
+
+app.listen(port, () => {
+  console.log(`Ready To host at : ${port}`)
+});
+
 client.login(token);
