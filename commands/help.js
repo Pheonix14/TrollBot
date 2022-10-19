@@ -29,10 +29,16 @@ const row = new ActionRowBuilder()
  value: "help_second"
 },
 {
- label: "Currency Game", 
+ label: "Currency", 
   emoji: emojis.troll_coin,
- description: "Click here to see Currency Game Commands", 
+ description: "Click here to see Currency Commands", 
  value: "help_third"
+},
+{
+ label: "Earning", 
+  emoji: emojis.fishing_rod,
+ description: "Click here to see Earning Commands", 
+ value: "help_fifth"
 },
 {
  label: "Game Settings", 
@@ -86,10 +92,16 @@ const embed2 = new EmbedBuilder()
 
   const embed4 = new EmbedBuilder()
     .setColor(embeds.color)
-  .setTitle(`${emojis.troll_coin} Currency Game Commands`)
-    .setDescription("`/balance`, `/deposit`, `/withdraw`, `/pay`, `/daily`, `/work`, `/beg`, `/coinflip`, `/shop`, `/buy`, `/use`, `/dig`, `/fish`, `/sell`, `/profile`, `/rob`, `/item`, `/slot`, `/crime`")
+  .setTitle(`${emojis.troll_coin} Currency Commands`)
+    .setDescription("`/balance`, `/deposit`, `/withdraw`, `/pay`, `/shop`, `/buy`, `/use`, `/profile`, `/item`")
   .setFooter({text: `${embeds.footer}`});
 
+const embed6 = new EmbedBuilder()
+    .setColor(embeds.color)
+  .setTitle(`${emojis.fishing_rod} Earning Commands`)
+    .setDescription("`/daily`, `/work`, `/beg`, `/coinflip`, `/dig`, `/fish`, `/sell`, `/rob`, `/slot`, `/crime`")
+  .setFooter({text: `${embeds.footer}`});
+  
 const embed5 = new EmbedBuilder()
     .setColor(embeds.color)
   .setTitle(`${emojis.settings} Game Settings Commands`)
@@ -123,7 +135,11 @@ if(value === "help_fourth") {
 
 collected.reply ({embeds: [embed5], ephemeral: true})
   }
-             
+
+   if(value === "help_fifth") {
+
+collected.reply ({embeds: [embed6], ephemeral: true})
+   }
    })
   }
 };

@@ -46,7 +46,7 @@ let timeout = 300000;
 
             let embed1 = new EmbedBuilder()
                 .setColor(embeds.color)
-                .setDescription(`${emojis.cross} You Just Robbed A Person\n\nRob Again In ${time}`)
+                .setDescription(`${emojis.cross} You Just Robbed A Parson\n\nRob Again In ${time}`)
           .setFooter({text: `${embeds.footer}`})
           return interaction.editReply({embeds: [embed1]})
         }

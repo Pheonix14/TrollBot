@@ -1,13 +1,16 @@
-const { InteractionType } = require("discord.js");
 
 module.exports = {
 	name: 'interactionCreate',
 	execute(interaction) {
     
 if (interaction.isChatInputCommand()) {
-console.log(`${interaction.user.tag} (${interaction.user.id}) Triggered ${interaction.commandName} In ${interaction.guild.name} (${interaction.guild.id})`);
+console.log(`${interaction.user.tag} (${interaction.user.id}) Triggered /${interaction.commandName} In ${interaction.guild.name} (${interaction.guild.id})`);
   
 }
+    if (interaction.isUserContextMenuCommand()) {
+console.log(`${interaction.user.tag} (${interaction.user.id}) Triggered ${interaction.commandName} In ${interaction.guild.name} (${interaction.guild.id})`);
+  
+    }
 
 if (interaction.isSelectMenu()) {
   

@@ -74,7 +74,7 @@ if (bank === undefined) bank = 0;
 
 let invw = await currency.get(`${user.id}.inventory_worth`)
     
-if (invw === undefined) invw2 = 0;
+if (invw === undefined) invw = 0;
 
 let bank_space = await currency.get(`${user.id}.bank_space`)
     
