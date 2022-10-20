@@ -247,6 +247,10 @@ let totalcrown = prices.troll_crown * quantity
   
 if (balance < totalcrown) return interaction.editReply({content: "You didn't Have Enough Money To Buy It", ephemeral: true })
 
+let crowns = await items.get(`${user.id}.troll_crown`)
+
+if (crowns > 10) return interaction.editReply({content: "You Cannot Buy More Then 10 Crowns", ephemeral: true })
+      
   await items.add(`${user.id}.troll_crown`, quantity)
 
 await currency.add(`${user.id}.inventory_worth`, totalcrown)

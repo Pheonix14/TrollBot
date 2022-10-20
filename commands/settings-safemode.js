@@ -1,8 +1,8 @@
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 const emojis = require("./../config/emojis.json");
 const embeds = require("./../config/embed.json");
-const prices = require("./../JSON/prices.json");
 const ms = require('ms');
+
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('settings-safemode')
@@ -104,4 +104,4 @@ interaction.editReply({embeds: [embed]})
     
     
 	},
-}
+  }

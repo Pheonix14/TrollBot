@@ -121,6 +121,12 @@ let embed2 = new EmbedBuilder()
             
 interaction.editReply({embeds: [embed2]})
 
+let check_noti = await settings.get(`${user.id}.notification`)
+
+  if (check_noti === undefined) check_noti = "enable";
+
+if (check_noti === "disable") return;
+  
 let embed5 = new EmbedBuilder() 
   
   .setColor(embeds.color)
@@ -152,7 +158,12 @@ let embed3 = new EmbedBuilder()
             
 interaction.editReply({embeds: [embed3]})
           
+let check_noti = await settings.get(`${user.id}.notification`)
 
+  if (check_noti === undefined) check_noti = "enable";
+
+if (check_noti === "disable") return;
+   
 let embed4 = new EmbedBuilder() 
   
   .setColor(embeds.color)

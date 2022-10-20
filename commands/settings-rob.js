@@ -1,4 +1,4 @@
-const { SlashCommandBuilder, EmbedBuilder, PermissionsBitField } = require('discord.js');
+const { SlashCommandBuilder, EmbedBuilder, PermissionFlagsBits } = require('discord.js');
 const emojis = require("./../config/emojis.json");
 const embeds = require("./../config/embed.json");
 const prices = require("./../JSON/prices.json");
@@ -6,12 +6,13 @@ const prices = require("./../JSON/prices.json");
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('settings-rob')
-		.setDescription('💰 enable/disable rob on a guild')
+		.setDescription('💰 enable/disable rob on a guild (admin only)')
    .addStringOption(option => option.setName('setting').setDescription('choose a option').setRequired(true)
   .addChoices(
 { name: 'enable', value: 'enable' },
     { name: 'disable', value: 'disable' },
-)),
+))
+.setDefaultMemberPermissions(PermissionFlagsBits.Administrator),
 	async execute(interaction, client) {
 
 const db = require("./../database/connect.js");
@@ -24,8 +25,6 @@ const guild_settings = db.table("guild_settings");
     
 const rob_setting = interaction.options.getString('setting');
 
-
-if (!interaction.member.permissions.has(PermissionsBitField.Flags.Administrator)) return interaction.editReply(`This Command Only For Admins`)
     
 if (rob_setting === "enable") {
 
