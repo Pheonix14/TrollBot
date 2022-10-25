@@ -6,7 +6,8 @@ const prices = require("./../JSON/prices.json");
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('shop')
-		.setDescription('🏪 See Items To Buy'),
+		.setDescription('🏪 See Items To Buy')
+  .setDMPermission(false),
 	async execute(interaction, client) {
 
 
@@ -86,7 +87,8 @@ ${emojis.troll_crown} Troll Crown: ${emojis.troll_coin} ${prices.troll_crown}`)
 const collector = interaction.channel.createMessageComponentCollector({ 
 ComponentType: "SELECT_MENU",
 customId: 'shop_select',
-time: '60000'
+time: '60000',
+  max: 2
 })
 
 collector.on("collect", async (collected) => { const value = collected.values[0]

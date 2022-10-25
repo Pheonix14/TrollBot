@@ -8,7 +8,8 @@ const Jbeg = require('./../JSON/begs.json');
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('beg')
-		.setDescription('🥺 beg and earn troll coins'),
+		.setDescription('🥺 beg and earn troll coins')
+  ,
                    
 	async execute(interaction, client) {
 

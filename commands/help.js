@@ -6,7 +6,8 @@ const links = require("./../config/links.json");
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('help')
-		.setDescription('Full Command List 📜'),
+		.setDescription('Full Command List 📜')
+  .setDMPermission(false),
 	async execute(interaction, client) {
 
     
@@ -105,14 +106,15 @@ const embed6 = new EmbedBuilder()
 const embed5 = new EmbedBuilder()
     .setColor(embeds.color)
   .setTitle(`${emojis.settings} Game Settings Commands`)
-    .setDescription("`/register`, `/settings-bio`, `/settings-safemode,` `/settings-rob`")
+    .setDescription("`/register`, `/settings-bio`, `/settings-safemode,` `/settings-rob`, `/settings-notify`")
   .setFooter({text: `${embeds.footer}`});
 
     
 const collector = interaction.channel.createMessageComponentCollector({ 
 ComponentType: "SELECT_MENU",
 customId: 'help_select',
-time: '60000'
+time: '60000',
+max: 5
 })
 
 collector.on("collect", async (collected) => { const value = collected.values[0]

@@ -8,7 +8,8 @@ module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('comment')
 		.setDescription("💬 comment. Meme Command")
-		.addStringOption(option => option.setName('text').setDescription('Give Me A Text').setRequired(true)),
+		.addStringOption(option => option.setName('text').setDescription('Give Me A Text').setRequired(true))
+  ,
 	async execute(interaction) {
 
 		

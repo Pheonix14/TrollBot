@@ -1,7 +1,6 @@
 const { SlashCommandBuilder, EmbedBuilder, PermissionFlagsBits } = require('discord.js');
 const emojis = require("./../config/emojis.json");
 const embeds = require("./../config/embed.json");
-const prices = require("./../JSON/prices.json");
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -12,7 +11,8 @@ module.exports = {
 { name: 'enable', value: 'enable' },
     { name: 'disable', value: 'disable' },
 ))
-.setDefaultMemberPermissions(PermissionFlagsBits.Administrator),
+.setDefaultMemberPermissions(PermissionFlagsBits.Administrator)
+  .setDMPermission(false),
 	async execute(interaction, client) {
 
 const db = require("./../database/connect.js");

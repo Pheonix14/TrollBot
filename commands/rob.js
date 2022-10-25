@@ -7,7 +7,8 @@ module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('rob')
 		.setDescription('🥷 rob someone')
-  .addUserOption(option => option.setName('user').setDescription('Give Me A User To Rob').setRequired(true)),
+  .addUserOption(option => option.setName('user').setDescription('Give Me A User To Rob').setRequired(true))
+  .setDMPermission(false),
                    
 	async execute(interaction, client) {
 

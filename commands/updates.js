@@ -11,13 +11,11 @@ module.exports = {
   const embed = new EmbedBuilder()
   .setColor(embeds.color)
     .setTitle(`**TrollBot Updates**`)
-.setDescription(`**Version - 2.0.0
+.setDescription(`**Version - 2.1.0
 
-- Full Bot Revamped
+- Added a new command /settings-notify
 
-- Currency Game Added
-
-- Some Commands Removed
+- Added More Security On /settings-rob command
 
 - Bug Fixes
 
