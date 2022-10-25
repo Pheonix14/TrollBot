@@ -63,7 +63,6 @@ app.get('/', (req, res) => {
 })
 
 app.listen(port, () => {
-  console.log(`Ready To host at : ${port}`)
 });
 
 client.login(token);
