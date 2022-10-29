@@ -7,7 +7,7 @@ module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('help')
 		.setDescription('Full Command List 📜')
-  .setDMPermission(false),
+  ,
 	async execute(interaction, client) {
 
     
@@ -113,8 +113,7 @@ const embed5 = new EmbedBuilder()
 const collector = interaction.channel.createMessageComponentCollector({ 
 ComponentType: "SELECT_MENU",
 customId: 'help_select',
-time: '60000',
-max: 5
+time: '60000'
 })
 
 collector.on("collect", async (collected) => { const value = collected.values[0]
@@ -143,5 +142,8 @@ collected.reply ({embeds: [embed5], ephemeral: true})
 collected.reply ({embeds: [embed6], ephemeral: true})
    }
    })
+
+collector.on('end', collected => console.log(`Collected ${collected.size} items`));
+    
   }
 };

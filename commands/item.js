@@ -32,6 +32,7 @@ module.exports = {
     { name: 'Golden Troll Coin', value: 'golden_troll_coin' },
     { name: 'Troll Crown', value: 'troll_crown' },
     { name: 'Starter Kit', value: 'starter_kit' },
+{ name: "Jack-o'-lantern", value: "jacko" },
 )),
                    
 	async execute(interaction, client) {
@@ -454,6 +455,25 @@ Description - ${desc.starter_kit}**`)
   .setFooter({text: `${embeds.footer}`});
     
 		return interaction.editReply({embeds: [embedstkit]});
+
+}
+
+if (item === "jacko") {
+
+let jacko = await items.get(`${user.id}.Jacko_lantern`)
+
+if (jacko === undefined) jacko = 0;
+
+const embedjacko = new EmbedBuilder()
+  .setColor(embeds.color)
+  .setTitle(`**${emojis.jacko} Jack-o'-lantern (${jacko})**`)
+  .setDescription(`**Buy - Unable To Be Bought
+Sell Value - ${emojis.troll_coin} ${values.jacko}
+
+Description - ${desc.jacko}**`)
+  .setFooter({text: `${embeds.footer}`});
+    
+		return interaction.editReply({embeds: [embedjacko]});
 
 }
     

@@ -13,11 +13,15 @@ module.exports = {
     .setTitle(`**TrollBot Updates**`)
 .setDescription(`**Version - 2.1.0
 
-- Added a new command /settings-notify
+- Added Command /settings-notify
 
 - Added More Security On /settings-rob command
 
+- Added Most Of Slash Commands In Dms
+
 - Bug Fixes
+
+- Added Item ${emojis.jacko} Jack-o'-lantern
 
 Thank You!
 - TrollBot Development

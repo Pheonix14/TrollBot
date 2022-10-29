@@ -1,13 +1,13 @@
 const fs = require('node:fs');
 const path = require('node:path');
-const { Client, Collection, GatewayIntentBits, Partials, InteractionType, ActivityType } = require('discord.js');
+const { Client, Collection, GatewayIntentBits, Partials } = require('discord.js');
 const { token } = require('./config/config.json');
 const settings = require('./config/settings.json')
 require( 'console-stamp' )( console, {
     format: ':date(yyyy/mm/dd HH:MM:ss).yellow :label(1)'
 } );
 
-
+// Gateway Intent Bits
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMembers], partials: [Partials.Channel]
 });
@@ -39,9 +39,7 @@ for (const file of eventFiles) {
 	}
 }
 
-
-
-//antiCrash
+// handler manager
 
 ["modals", "context-menu", "presence", "commands", settings.antiCrash ? "antiCrash" : null, ]
     .filter(Boolean)
@@ -49,11 +47,13 @@ for (const file of eventFiles) {
         require(`./handlers/${h}`)(client);
     })
 
+// database connection
 require('./database/connect.js');
 
+// refresh commands
 require('./deploy-commands.js');
 
-
+// webpage creator for down notify
 const express = require('express')
 const app = express()
 const port = 3432
@@ -64,5 +64,7 @@ app.get('/', (req, res) => {
 
 app.listen(port, () => {
 });
+
+// login to the bot
 
 client.login(token);

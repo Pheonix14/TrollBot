@@ -9,7 +9,8 @@ module.exports = {
 		.setName('pay')
 		.setDescription('💳 pay money to someone')
   .addUserOption(option => option.setName('user').setDescription('Give Me A User To Pay').setRequired(true))
-  .addNumberOption(option => option.setName('ammount').setDescription('Give Me A Amount To Pay').setRequired(true)),
+  .addNumberOption(option => option.setName('ammount').setDescription('Give Me A Amount To Pay').setRequired(true))
+  .setDMPermission(false),
                    
 	async execute(interaction, client) {
 

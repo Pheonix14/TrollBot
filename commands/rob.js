@@ -59,17 +59,17 @@ if (user1.id === user.id) {
 
 let safe_mode1 = await settings.get(`${user1.id}.safemode`)
 
-    if (safe_mode1 === undefined) safe_mode1 = 'false';
+    if (safe_mode1 === undefined) safe_mode1 = 'disable';
 
-if (safe_mode1 === "true") {
+if (safe_mode1 === "enable") {
   return interaction.editReply("You Can't Rob You Are In Safe Mode")
 }
     
 let safe_mode = await settings.get(`${user.id}.safemode`)
 
-if (safe_mode === undefined) safe_mode = 'false';
+if (safe_mode === undefined) safe_mode = 'disable';
 
-if (safe_mode1 === "true") {
+if (safe_mode1 === "enable") {
   return interaction.editReply("You Can't Rob That Parson In Safe Mode")
 }
 

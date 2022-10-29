@@ -7,7 +7,7 @@ module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('shop')
 		.setDescription('🏪 See Items To Buy')
-  .setDMPermission(false),
+  ,
 	async execute(interaction, client) {
 
 
@@ -87,8 +87,7 @@ ${emojis.troll_crown} Troll Crown: ${emojis.troll_coin} ${prices.troll_crown}`)
 const collector = interaction.channel.createMessageComponentCollector({ 
 ComponentType: "SELECT_MENU",
 customId: 'shop_select',
-time: '60000',
-  max: 2
+time: '60000'
 })
 
 collector.on("collect", async (collected) => { const value = collected.values[0]
@@ -102,8 +101,9 @@ if(value === "shop_second") {
 
 collected.reply ({embeds: [embed3], ephemeral: true})
 }
-
-
    })
+
+collector.on('end', collected => console.log(`Collected ${collected.size} items`));
+    
   }
 }

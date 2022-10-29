@@ -2,8 +2,8 @@
   "antiCrash": true,
   "maintenance": "false",
   "presence": "trollbot.ml",
-  "presence2": "under testing",
-  "owner": "",
+  "presence2": "Made By TrollBot Development",
+  "owner": "674145228063768587",
   "admins": ["756508455837237358", "674145228063768587"],
   "nonDeffer_cmd": ["settings-bio"]
 }

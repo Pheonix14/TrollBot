@@ -25,6 +25,7 @@ module.exports = {
     { name: 'Worm', value: 'worm' },
     { name: 'Iron', value: 'iron' },
     { name: 'Fossil', value: 'fossil' },
+    { name: "Jack-o'-lantern", value: 'jacko' },
 ))
   .addNumberOption(option => option.setName('quantity').setDescription('A Quantity You Want To Sell')),
 	async execute(interaction, client) {
@@ -396,5 +397,27 @@ await currency.add(`${user.id}.balance`, totalfossil)
   interaction.editReply({embeds: [embedfossil]})
 }
 
+if (item === 'jacko') {
+
+  let jacko = await items.get(`${user.id}.Jacko_lantern`)
+  
+if (jacko < quantity) return interaction.editReply({content: "You didn't Have That Much Jack-o'-lantern To Sell", ephemeral: true })
+
+let totaljacko = values.jacko * quantity;
+
+  await items.sub(`${user.id}.Jacko_lantern`, quantity)
+
+  await currency.sub(`${user.id}.inventory_worth`, values.jacko)
+
+await currency.add(`${user.id}.balance`, totaljacko)
+  
+  let embedjacko = new EmbedBuilder()
+                .setColor(embeds.color)
+.setDescription(`Selled ${quantity}x Jack-o'-lantern ${emojis.jacko} For ${emojis.troll_coin} ${totaljacko}`)
+.setFooter({text: `${embeds.footer}`});
+
+  interaction.editReply({embeds: [embedjacko]})
+}
+     
 	},
 }
