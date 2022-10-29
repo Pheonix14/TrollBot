@@ -1,7 +1,7 @@
 {
-"clientId": "996428400497524736",
-"guildId": "970639355607674931",
-"token": "OTk2NDI4NDAwNDk3NTI0NzM2.Gh1ZSx.wf_ePsENoktJpspYJo-OCC9hE3Wef2oGTqtilE",
+"clientId": "",
+"guildId": "",
+"token": "",
 "memerkey": "vJvxXTQNMpi",
-  "MongoURI": "mongodb+srv://trollbot-testing:SeqWYGQxt1PDwK0s@cluster0.syrwpjr.mongodb.net/?retryWrites=true&w=majority"
+  "MongoURI": ""
 }
