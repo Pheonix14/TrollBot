@@ -36,7 +36,7 @@ if (bal2 === undefined) bal2 = 0;
   
 let bio2 = await settings.get(`${user.id}.bio`)
 
-if (bio2 === undefined) bio2 = "ㅤ";
+if (bio2 === undefined) bio2 = "";
     
 let bank2 = await currency.get(`${user.id}.bank`)
 
@@ -48,9 +48,9 @@ if (invw2 === undefined) invw2 = 0;
 
 let net2 = bal2 + bank2 + invw2;
 
-let rank2 = await settings.get(`${user.id}.rank`)
+let title2 = await settings.get(`${user.id}.title`)
  
-if (rank2 === undefined) rank2 = 'None';
+if (title2 === undefined) title2 = 'None';
 
 let joined2 = await times.get(`${user.id}.joined`)
 
@@ -86,7 +86,7 @@ let embed2 = new EmbedBuilder()
 
 **Info -**
 Started: ${joinedr2}
-Rank: ${rank2}
+Title: ${title2}
 
 **Currency Stats -**
 Balance: ${emojis.troll_coin} ${bal2}

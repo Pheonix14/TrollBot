@@ -24,6 +24,8 @@ const times = db.table("times");
 
 const counts = db.table("counts");
 
+const titles = db.table("titles");
+
 const JbegR = Jbeg[Math.floor(Math.random() * Jbeg.length)];
     
     const reward = Math.floor(Math.random() * (500 -  + 300)) + 300;
@@ -64,6 +66,22 @@ interaction.editReply({embeds: [embed2]})
             await currency.add(`${user.id}.balance`, amount)
             await times.set(`${user.id}.beg`, Date.now())
 
+          let title_beggar = await titles.get(`${user.id}.beggar`)
+  
+if (title_beggar === undefined) title_beggar = "false";
+
+if (title_beggar === 'false') {
+  await titles.set(`${user1.id}.beggar`, 'true')
+
+let embedtit = new EmbedBuilder() 
+  
+  .setColor(embeds.color)
+          .setTitle(`**Title Unlocked ⭐**`)
+          .setDescription(`You Got **Poor Beggar** title`)
+          .setFooter({text: `tips: use /settings-title to equip it.`});
+
+interaction.followUp({embeds: [embedtit], ephemeral: true}) 
+}
 
               }
 

@@ -55,9 +55,9 @@ if (invw1 === undefined) invw1 = 0;
 
 let net1 = bal1 + bank1 + invw1;
 
-let rank1 = await settings.get(`${user1.id}.rank`)
+let title1 = await settings.get(`${user1.id}.title`)
  
-if (rank1 === undefined) rank1 = 'None';
+if (title1 === undefined) title1 = 'None';
 
 let joined1 = await times.get(`${user1.id}.joined`)
 
@@ -88,7 +88,7 @@ let embed1 = new EmbedBuilder()
 
 **Info -**
 Started: ${joinedr1}
-Rank: ${rank1}
+Title: ${title1}
 
 **Currency Stats -**
 Balance: ${emojis.troll_coin} ${bal1}
@@ -127,9 +127,9 @@ if (invw2 === undefined) invw2 = 0;
 
 let net2 = bal2 + bank2 + invw2;
 
-let rank2 = await settings.get(`${user.id}.rank`)
+let title2 = await settings.get(`${user.id}.title`)
  
-if (rank2 === undefined) rank2 = 'None';
+if (title2 === undefined) title2 = 'None';
 
 let joined2 = await times.get(`${user.id}.joined`)
 
@@ -165,7 +165,7 @@ let embed2 = new EmbedBuilder()
 
 **Info -**
 Started: ${joinedr2}
-Rank: ${rank2}
+Title: ${title2}
 
 **Currency Stats -**
 Balance: ${emojis.troll_coin} ${bal2}

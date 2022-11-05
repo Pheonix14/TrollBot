@@ -6,7 +6,7 @@ const embeds = require("./../config/embed.json");
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('slot')
-		.setDescription('🎰 Troll Slots | 4x - rare | 2x - common')
+		.setDescription('🎰 Troll Slots | 6x - rare | 4x - common')
   .addNumberOption(option => option.setName('bet').setDescription('Give Me A Amount You Want To Bet').setRequired(true)),
                    
 	async execute(interaction, client) {
@@ -73,10 +73,10 @@ let number = []
     for (let i = 0; i < 3; i++) { number[i] = Math.floor(Math.random() * slotItems.length); }
 
     if (number[0] == number[1] && number[1] == number[2])  { 
-        money *= 4
+        money *= 6
         win = true;
     } else if (number[0] == number[1] || number[0] == number[2] || number[1] == number[2]) { 
-        money *= 2
+        money *= 4
         win = true;
     }
 if (win) {
@@ -91,6 +91,24 @@ interaction.editReply({embeds: [embed] });
 await currency.add(`${user.id}.balance`, money)
 await times.set(`${user.id}.slot`, Date.now())
 await counts.add(`${user.id}.slots`, 1)
+
+let title_gambler = await titles.get(`${user.id}.gambler`)
+  
+if (title_gambler === undefined) title_gambler = "false";
+
+if (title_gambler === 'false') {
+  await titles.set(`${user.id}.gambler`, 'true')
+
+let embedtit = new EmbedBuilder() 
+  
+  .setColor(embeds.color)
+          .setTitle(`**Title Unlocked ⭐**`)
+          .setDescription(`You Got **Pro Gambler** title`)
+          .setFooter({text: `tips: use /settings-title to equip it.`});
+
+interaction.followUp({embeds: [embedtit], ephemeral: true}) 
+}
+
 } else {
   const embed2 = new EmbedBuilder()
   .setColor(embeds.color)

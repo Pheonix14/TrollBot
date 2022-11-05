@@ -36,6 +36,8 @@ const items = db.table("items");
 
 const settings = db.table("settings");
 
+const titles = db.table("titles");
+    
 let register = await settings.get(`${user.id}.register`)
 
 if (register === undefined) register = 'false';
@@ -217,6 +219,24 @@ await currency.sub(`${user.id}.balance`, totalts)
 .setFooter({text: `${embeds.footer}`});
 
   interaction.editReply({embeds: [embedts]})
+
+let title_warrior = await titles.get(`${user.id}.warrior`)
+  
+if (title_warrior === undefined) title_warrior = "false";
+
+if (title_warrior === 'false') {
+  await titles.set(`${user1.id}.warrior`, 'true')
+
+let embedtit = new EmbedBuilder() 
+  
+  .setColor(embeds.color)
+          .setTitle(`**Title Unlocked ⭐**`)
+          .setDescription(`You Got **A Warrior** title`)
+          .setFooter({text: `tips: use /settings-title to equip it.`});
+
+interaction.followUp({embeds: [embedtit], ephemeral: true}) 
+}
+  
 }
 
 
@@ -238,6 +258,24 @@ await currency.sub(`${user.id}.balance`, totalgtc)
 .setFooter({text: `${embeds.footer}`});
 
   interaction.editReply({embeds: [embedgtc]})
+
+let title_gold_invest = await titles.get(`${user.id}.gold_invest`)
+  
+if (title_gold_invest === undefined) title_gold_invest = "false";
+
+if (title_gold_invest === 'false') {
+  await titles.set(`${user1.id}.gold_invest`, 'true')
+
+let embedtit = new EmbedBuilder() 
+  
+  .setColor(embeds.color)
+          .setTitle(`**Title Unlocked ⭐**`)
+          .setDescription(`You Got **Gold Investor** title`)
+          .setFooter({text: `tips: use /settings-title to equip it.`});
+
+interaction.followUp({embeds: [embedtit], ephemeral: true}) 
+}
+  
 }
 
 
@@ -263,6 +301,24 @@ await currency.sub(`${user.id}.balance`, totalcrown)
 .setFooter({text: `${embeds.footer}`});
 
   interaction.editReply({embeds: [embedcrown]})
+
+let title_king = await titles.get(`${user.id}.king`)
+  
+if (title_king === undefined) title_king = "false";
+
+if (title_king === 'false') {
+  await titles.set(`${user1.id}.king`, 'true')
+
+let embedtit = new EmbedBuilder() 
+  
+  .setColor(embeds.color)
+          .setTitle(`**Title Unlocked ⭐**`)
+          .setDescription(`You Got **The King** title`)
+          .setFooter({text: `tips: use /settings-title to equip it.`});
+
+interaction.followUp({embeds: [embedtit], ephemeral: true}) 
+}
+
     }
 
 	},

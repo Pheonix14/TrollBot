@@ -27,6 +27,8 @@ const times = db.table("times");
 
 const counts = db.table("counts");
 
+const titles = db.table("titles");
+
     const bet = interaction.options.getNumber('bet');
 
 let choose = interaction.options.getString('choose');
@@ -114,6 +116,24 @@ interaction.editReply({embeds: [embed2]})
           await counts.add(`${user.id}.flips`, 1)
             await currency.add(`${user.id}.balance`, amount)
      await times.set(`${user.id}.coinflip`, Date.now())
+
+let title_gambler = await titles.get(`${user.id}.gambler`)
+  
+if (title_gambler === undefined) title_gambler = "false";
+
+if (title_gambler === 'false') {
+  await titles.set(`${user.id}.gambler`, 'true')
+
+let embedtit = new EmbedBuilder() 
+  
+  .setColor(embeds.color)
+          .setTitle(`**Title Unlocked ⭐**`)
+          .setDescription(`You Got **Pro Gambler** title`)
+          .setFooter({text: `tips: use /settings-title to equip it.`});
+
+interaction.followUp({embeds: [embedtit], ephemeral: true}) 
+}
+
           } 
      
 

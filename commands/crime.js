@@ -14,6 +14,7 @@ module.exports = {
 
 const db = require("./../database/connect.js");
 
+    const titles = db.table("titles");
 
 const currency = db.table("currency");
 
@@ -63,6 +64,22 @@ interaction.editReply({embeds: [embed2]})
             await currency.add(`${user.id}.balance`, amount)
             await times.set(`${user.id}.crime`, Date.now())
 
+let title_criminal = await titles.get(`${user.id}.criminal`)
+  
+if (title_criminal === undefined) title_criminal = "false";
+
+if (title_criminal === 'false') {
+  await titles.set(`${user.id}.criminal`, 'true')
+
+let embedtit = new EmbedBuilder() 
+  
+  .setColor(embeds.color)
+          .setTitle(`**Title Unlocked ⭐**`)
+          .setDescription(`You Got **Top Criminal** title`)
+          .setFooter({text: `tips: use /settings-title to equip it.`});
+
+interaction.followUp({embeds: [embedtit], ephemeral: true}) 
+}
 
               }
 

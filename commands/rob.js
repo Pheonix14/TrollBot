@@ -26,6 +26,8 @@ const times = db.table("times");
 
 const counts = db.table("counts")
 
+const titles = db.table("titles")
+    
 const user = interaction.options.getUser('user');
 
 const user1 = interaction.user;
@@ -137,8 +139,7 @@ let embed5 = new EmbedBuilder()
 user.send({embeds: [embed5]})
 
   
-}
- if (rob_success_list[rob_result] !== "Unsuccessful") {
+} else {
 
 const rob_pass = Math.floor(Math.random() * (balance -  + 5000)) + 5000;
 
@@ -158,7 +159,23 @@ let embed3 = new EmbedBuilder()
           .setFooter({text: `${embeds.footer}`});
             
 interaction.editReply({embeds: [embed3]})
-          
+
+let title_robber = await titles.get(`${user1.id}.robber`)
+  
+if (title_robber === undefined) title_robber = "false";
+
+if (title_robber === 'false') {
+  await titles.set(`${user1.id}.robber`, 'true')
+
+let embedtit = new EmbedBuilder() 
+  
+  .setColor(embeds.color)
+          .setTitle(`**Title Unlocked ⭐**`)
+          .setDescription(`You Got **Robber** title`)
+          .setFooter({text: `tips: use /settings-title to equip it.`});
+
+interaction.followUp({embeds: [embedtit], ephemeral: true}) 
+    }
 let check_noti = await settings.get(`${user.id}.notification`)
 
   if (check_noti === undefined) check_noti = "enable";
@@ -172,7 +189,7 @@ let embed4 = new EmbedBuilder()
           .setFooter({text: `${embeds.footer}`});
             
 user.send({embeds: [embed4]})
-  
+
 }
 
     

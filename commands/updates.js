@@ -11,17 +11,11 @@ module.exports = {
   const embed = new EmbedBuilder()
   .setColor(embeds.color)
     .setTitle(`**TrollBot Updates**`)
-.setDescription(`**Version - 2.1.0
+.setDescription(`**Version - 2.2.0
 
-- Added Command /settings-notify
+- Added New Titles System. It's Looks Cool On Your Profile.
 
-- Added More Security On /settings-rob command
-
-- Added Most Of Slash Commands In Dms
-
-- Bug Fixes
-
-- Added Item ${emojis.jacko} Jack-o'-lantern
+- Changed Slots Win Prizes. Now Common 4x And Rare 6x.
 
 Thank You!
 - TrollBot Development
