@@ -5,7 +5,7 @@ const { admins } = require("./../config/settings.json");
 
 module.exports = {
 	data: new SlashCommandBuilder()
-		.setName('settings-title')
+		.setName('settings-titles')
 		.setDescription('💎 set a cool title on your profile')
    .addStringOption(option => option.setName('title').setDescription('choose a option').setRequired(true)
   .addChoices(

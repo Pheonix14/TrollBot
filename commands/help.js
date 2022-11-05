@@ -106,7 +106,7 @@ const embed6 = new EmbedBuilder()
 const embed5 = new EmbedBuilder()
     .setColor(embeds.color)
   .setTitle(`${emojis.settings} Game Settings Commands`)
-    .setDescription("`/register`, `/settings-bio`, `/settings-safemode,` `/settings-rob`, `/settings-notify`")
+    .setDescription("`/register`, `/settings-bio`, `/settings-safemode,` `/settings-rob`, `/settings-notify`, `/settings-titles`")
   .setFooter({text: `${embeds.footer}`});
 
     

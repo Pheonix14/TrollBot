@@ -13,7 +13,7 @@ module.exports = {
     .setTitle(`**TrollBot Updates**`)
 .setDescription(`**Version - 2.2.0
 
-- Added New Titles System. It's Looks Cool On Your Profile.
+- Added New Titles System And /settings-titles. It's Looks Cool On Your Profile.
 
 - Changed Slots Win Prizes. Now Common 4x And Rare 6x.
 
