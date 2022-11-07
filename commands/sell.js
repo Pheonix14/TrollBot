@@ -26,6 +26,11 @@ module.exports = {
     { name: 'Iron', value: 'iron' },
     { name: 'Fossil', value: 'fossil' },
     { name: "Jack-o'-lantern", value: 'jacko' },
+    { name: 'Toilet Paper', value: 'toilet_paper' },
+    { name: 'Cool Meow', value: 'cool_meow' },
+    { name: 'Troll Sword', value: 'troll_sword' },
+    { name: 'Golden Troll Coin', value: 'golden_troll_coin' },
+    { name: 'Troll Crown', value: 'troll_crown' },
 ))
   .addNumberOption(option => option.setName('quantity').setDescription('A Quantity You Want To Sell')),
 	async execute(interaction, client) {
@@ -418,6 +423,116 @@ await currency.add(`${user.id}.balance`, totaljacko)
 
   interaction.editReply({embeds: [embedjacko]})
 }
-     
+
+if (item === 'toilet_paper') {
+
+  let toilet_paper = await items.get(`${user.id}.toilet_paper`)
+  
+if (toilet_paper < quantity) return interaction.editReply({content: "You didn't Have That Much Toilet Paper To Sell", ephemeral: true })
+
+let totalpaper = values.toilet_paper * quantity;
+
+  await items.sub(`${user.id}.toilet_paper`, quantity)
+
+  await currency.sub(`${user.id}.inventory_worth`, values.toilet_paper)
+
+await currency.add(`${user.id}.balance`, totalpaper)
+  
+  let embedpaper = new EmbedBuilder()
+                .setColor(embeds.color)
+.setDescription(`Selled ${quantity}x Toilet Paper ${emojis.toilet_paper} For ${emojis.troll_coin} ${totalpaper}`)
+.setFooter({text: `${embeds.footer}`});
+
+  interaction.editReply({embeds: [embedpaper]})
+}
+
+  if (item === 'cool_meow') {
+
+  let cool_meow = await items.get(`${user.id}.cool_meow`)
+  
+if (cool_meow < quantity) return interaction.editReply({content: "You didn't Have That Much Cool Meow To Sell", ephemeral: true })
+
+let totalmeow = values.cool_meow * quantity;
+
+  await items.sub(`${user.id}.cool_meow`, quantity)
+
+  await currency.sub(`${user.id}.inventory_worth`, values.cool_meow)
+
+await currency.add(`${user.id}.balance`, totalmeow)
+  
+  let embedmeow = new EmbedBuilder()
+                .setColor(embeds.color)
+.setDescription(`Selled ${quantity}x Cool Meow ${emojis.cool_meow} For ${emojis.troll_coin} ${totalmeow}`)
+.setFooter({text: `${embeds.footer}`});
+
+  interaction.editReply({embeds: [embedmeow]})
+  }
+
+if (item === 'troll_sword') {
+
+  let troll_sword = await items.get(`${user.id}.troll_sword`)
+  
+if (troll_sword < quantity) return interaction.editReply({content: "You didn't Have That Much Troll Sword To Sell", ephemeral: true })
+
+let totalsword = values.troll_sword * quantity;
+
+  await items.sub(`${user.id}.troll_sword`, quantity)
+
+  await currency.sub(`${user.id}.inventory_worth`, values.troll_sword)
+
+await currency.add(`${user.id}.balance`, totalsword)
+  
+  let embedsword = new EmbedBuilder()
+                .setColor(embeds.color)
+.setDescription(`Selled ${quantity}x Troll Sword ${emojis.troll_sword} For ${emojis.troll_coin} ${totalsword}`)
+.setFooter({text: `${embeds.footer}`});
+
+  interaction.editReply({embeds: [embedsword]})
+}
+
+if (item === 'golden_troll_coin') {
+
+  let golden_troll_coin = await items.get(`${user.id}.golden_troll_coin`)
+  
+if (golden_troll_coin < quantity) return interaction.editReply({content: "You didn't Have That Much Golden Troll Coin To Sell", ephemeral: true })
+
+let totalcoin = values.golden_troll_coin * quantity;
+
+  await items.sub(`${user.id}.golden_troll_coin`, quantity)
+
+  await currency.sub(`${user.id}.inventory_worth`, values.golden_troll_coin)
+
+await currency.add(`${user.id}.balance`, totalcoin)
+  
+  let embedcoin = new EmbedBuilder()
+                .setColor(embeds.color)
+.setDescription(`Selled ${quantity}x Golden Troll Coin ${emojis.golden_troll_coin} For ${emojis.troll_coin} ${totalcoin}`)
+.setFooter({text: `${embeds.footer}`});
+
+  interaction.editReply({embeds: [embedcoin]})
+}
+
+if (item === 'troll_crown') {
+
+  let troll_crown = await items.get(`${user.id}.troll_crown`)
+  
+if (troll_crown < quantity) return interaction.editReply({content: "You didn't Have That Much Troll Crown To Sell", ephemeral: true })
+
+let totalcrown = values.troll_crown * quantity;
+
+  await items.sub(`${user.id}.troll_crown`, quantity)
+
+  await currency.sub(`${user.id}.inventory_worth`, values.troll_crown)
+
+await currency.add(`${user.id}.balance`, totalcrown)
+  
+  let embedcrown = new EmbedBuilder()
+                .setColor(embeds.color)
+.setDescription(`Selled ${quantity}x Troll Crown ${emojis.troll_crown} For ${emojis.troll_coin} ${totalcrown}`)
+.setFooter({text: `${embeds.footer}`});
+
+  interaction.editReply({embeds: [embedcrown]})
+    }
+    
 	},
 }

@@ -354,7 +354,7 @@ const embedtp = new EmbedBuilder()
   .setColor(embeds.color)
   .setTitle(`**${emojis.toilet_paper} Toilet Paper (${toilets})**`)
   .setDescription(`**Buy - ${emojis.troll_coin} ${prices.toilet_paper}
-Sell Value - Unable To Be Sold
+Sell Value - ${emojis.troll_coin} ${values.toilet_paper}
 
 Description - ${desc.toilet_paper}**`)
   .setFooter({text: `${embeds.footer}`});
@@ -373,7 +373,7 @@ const embedcool = new EmbedBuilder()
   .setColor(embeds.color)
   .setTitle(`**${emojis.cool_meow} Cool Meow (${cools})**`)
   .setDescription(`**Buy - ${emojis.troll_coin} ${prices.cool_meow}
-Sell Value - Unable To Be Sold
+Sell Value - ${emojis.troll_coin} ${values.cool_meow}
 
 Description - ${desc.cool_meow}**`)
   .setFooter({text: `${embeds.footer}`});
@@ -392,7 +392,7 @@ const embedsword = new EmbedBuilder()
   .setColor(embeds.color)
   .setTitle(`**${emojis.troll_sword} Troll Sword (${swords})**`)
   .setDescription(`**Buy - ${emojis.troll_coin} ${prices.troll_sword}
-Sell Value - Unable To Be Sold
+Sell Value - ${emojis.troll_coin} ${values.troll_sword}
 
 Description - ${desc.troll_sword}**`)
   .setFooter({text: `${embeds.footer}`});
@@ -411,7 +411,7 @@ const embedgtc = new EmbedBuilder()
   .setColor(embeds.color)
   .setTitle(`**${emojis.golden_troll_coin} Golden Troll Coin (${gcoins})**`)
   .setDescription(`**Buy - ${emojis.troll_coin} ${prices.golden_troll_coin}
-Sell Value - Unable To Be Sold
+Sell Value - ${emojis.troll_coin} ${values.golden_troll_coin}
 
 Description - ${desc.golden_troll_coin}**`)
   .setFooter({text: `${embeds.footer}`});
@@ -430,7 +430,7 @@ const embedcrown = new EmbedBuilder()
   .setColor(embeds.color)
   .setTitle(`**${emojis.troll_crown} Troll Crown (${crowns})**`)
   .setDescription(`**Buy - ${emojis.troll_coin} ${prices.troll_crown}
-Sell Value - Unable To Be Sold
+Sell Value - ${emojis.troll_coin} ${values.troll_crown}
 
 Description - ${desc.troll_crown}**`)
   .setFooter({text: `${embeds.footer}`});
