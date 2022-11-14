@@ -32,14 +32,14 @@ let register = await settings.get(`${user.id}.register`)
 if (register === undefined) register = 'false';
     
     if (register === 'false') {
-return interaction.editReply(`${emojis.cross} Use /register To Register Your Account In My Database`)
+return interaction.editReply(`**${emojis.cross} Use /register To Register Your Account In My Database**`)
     }
 
     
 let shovel = await items.get(`${user.id}.shovel`)
 
     if (shovel === undefined) {
-      return interaction.editReply(`${emojis.cross} You Didn't Have A Shovel`)
+      return interaction.editReply(`**You Didn't Have A Shovel**`)
     }
 
         let timeout = 20000;
@@ -50,7 +50,7 @@ let shovel = await items.get(`${user.id}.shovel`)
 
             let embed1 = new EmbedBuilder()
                 .setColor(embeds.color)
-                .setDescription(`${emojis.cross} You've Already Dig And Collected Reward\n\nDig Again In ${time}`)
+                .setDescription(`**You've Already Dig And Collected Reward\n\nDig Again In ${time}**`)
           .setFooter({text: `${embeds.footer}`})
             return interaction.editReply({embeds: [embed1]})
         } 
@@ -72,7 +72,7 @@ await times.set(`${user.id}.dig`, Date.now())
 
 let embed2 = new EmbedBuilder()
                 .setColor(embeds.color)
-      .setDescription(`You Got ${emojis.dirt} Dirt While Digging`)
+      .setDescription(`**You Got ${emojis.dirt} Dirt While Digging**`)
           .setFooter({text: `${embeds.footer}`})
             return interaction.editReply({embeds: [embed2]}) 
 
@@ -93,7 +93,7 @@ await times.set(`${user.id}.dig`, Date.now())
 
 let embed3 = new EmbedBuilder()
                 .setColor(embeds.color)
-      .setDescription(`You Got ${emojis.sand} Sand While Digging`)
+      .setDescription(`**You Got ${emojis.sand} Sand While Digging**`)
           .setFooter({text: `${embeds.footer}`})
             return interaction.editReply({embeds: [embed3]}) 
 
@@ -114,7 +114,7 @@ await times.set(`${user.id}.dig`, Date.now())
 
 let embed4 = new EmbedBuilder()
                 .setColor(embeds.color)
-      .setDescription(`You Got A ${emojis.worm} Worm While Digging`)
+      .setDescription(`**You Got A ${emojis.worm} Worm While Digging**`)
           .setFooter({text: `${embeds.footer}`})
             return interaction.editReply({embeds: [embed4]}) 
 
@@ -133,7 +133,7 @@ await times.set(`${user.id}.dig`, Date.now())
 
 let embed5 = new EmbedBuilder()
                 .setColor(embeds.color)
-      .setDescription(`You Got A ${emojis.iron} Iron While Digging`)
+      .setDescription(`**You Got A ${emojis.iron} Iron While Digging**`)
           .setFooter({text: `${embeds.footer}`})
             return interaction.editReply({embeds: [embed5]}) 
 
@@ -153,7 +153,7 @@ await times.set(`${user.id}.dig`, Date.now())
       
 let embed6 = new EmbedBuilder()
                 .setColor(embeds.color)
-      .setDescription(`You Got A ${emojis.fossil} Fossil While Digging`)
+      .setDescription(`**You Got A ${emojis.fossil} Fossil While Digging**`)
           .setFooter({text: `${embeds.footer}`})
             return interaction.editReply({embeds: [embed6]}) 
 
@@ -172,7 +172,7 @@ await times.set(`${user.id}.dig`, Date.now())
 
 let embed7 = new EmbedBuilder()
                 .setColor(embeds.color)
-      .setDescription(`You Got Nothing And Your Shovel Broke While Digging`)
+      .setDescription(`**You Got Nothing And Your Shovel Broke While Digging**`)
           .setFooter({text: `${embeds.footer}`})
             return interaction.editReply({embeds: [embed7]}) 
 

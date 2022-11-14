@@ -15,14 +15,14 @@ module.exports = client => {
 	if (nonDeffer_cmd.includes(interaction.commandName)) {
 
 if (maintenance === "true") {
-if (!admins.includes(interaction.user.id)) return interaction.reply(`Bot Is Under Maintenance. Please Try Again Leter`)
+if (!admins.includes(interaction.user.id)) return interaction.reply(`**Bot Is Under Maintenance. Please Try Again Leter**`)
 }
     
 	  try {
 		await command.execute(interaction);
 	} catch (error) {
 		console.error(error);
-	await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
+	await interaction.reply({ content: '**There was an error while executing this command!**', ephemeral: true });
     }
 	} else {
 	  
@@ -30,7 +30,7 @@ await interaction.deferReply();
 
  
   if (maintenance === "true") {
-if (!admins.includes(interaction.user.id)) return interaction.editReply(`Bot Is Under Maintenance. Please Try Again Leter`)
+if (!admins.includes(interaction.user.id)) return interaction.editReply(`**Bot Is Under Maintenance. Please Try Again Leter**`);
 }
     
 const db = require("./../database/connect.js");
@@ -49,12 +49,12 @@ if (ban_reason === undefined) ban_reason = "Reason Not Provided";
 
 const embed = new EmbedBuilder()
   .setColor(embeds.color)
-    .setTitle(`TrollBot Suspension`)
-.setDescription(`You Are Banned From Using TrollBot Due To Breaking Our ToS.
+    .setTitle(`**TrollBot Suspension**`)
+.setDescription(`**You Are Banned From Using TrollBot Due To Breaking Our ToS.
 
 Reason: ${ban_reason}
 
-If You Believe You Got Banned By Mistake Go To [Appeal](${links.appeal}) And Submit The Form.`)
+If You Believe You Got Banned By Mistake Go To [Appeal](${links.appeal}) And Submit The Form.**`)
   .setFooter({text: `${embeds.footer}`});
 
 	return interaction.editReply({embeds: [embed] });
@@ -66,7 +66,7 @@ If You Believe You Got Banned By Mistake Go To [Appeal](${links.appeal}) And Sub
 		await command.execute(interaction);
 	} catch (error) {
 		console.error(error);
-	await interaction.editReply({ content: 'There was an error while executing this command!', ephemeral: true });
+	await interaction.editReply({ content: '**There was an error while executing this command!**', ephemeral: true });
 	}
   }
 });

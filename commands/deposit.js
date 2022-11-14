@@ -1,6 +1,6 @@
-const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
-const emojis = require("./../config/emojis.json");
-const embeds = require("./../config/embed.json");
+const { SlashCommandBuilder, EmbedBuilder } = require('discord.js')
+const emojis = require("./../config/emojis.json")
+const embeds = require("./../config/embed.json")
 
 
 module.exports = {
@@ -26,7 +26,7 @@ let register = await settings.get(`${user.id}.register`)
 if (register === undefined) register = 'false';
     
     if (register === 'false') {
-return interaction.editReply(`${emojis.cross} Use /register To Register Your Account In My Database`)
+return interaction.editReply(`**${emojis.cross} Use /register To Register Your Account In My Database**`)
     }
 
     
@@ -46,11 +46,11 @@ if (bank === undefined) bank = 0;
 let total = ammount + bank;
     
     if (balance < ammount) {
-                return interaction.editReply({content: `${emojis.cross} You Don't Have That Much Money On Your Pocket`, ephemeral: true});
+                return interaction.editReply({content: `**You Don't Have That Much Money On Your Pocket**`, ephemeral: true});
     }
 
 if (bank_space < total) {
-                return interaction.editReply({content: `${emojis.cross} You Don't Have That Much Bank Space. Use Bank Upgrader To Increase It`, ephemeral: true});
+                return interaction.editReply({content: `**You Don't Have That Much Bank Space. Use Bank Upgrader To Increase It**`, ephemeral: true});
     }
 
     
@@ -61,8 +61,8 @@ if (bank_space < total) {
 
     const embed2 = new EmbedBuilder()
   .setColor(embeds.color)
-.setDescription(`You Have Deposited 
-${emojis.troll_coin} ${ammount} Troll Coins Into Your Bank`)
+.setDescription(`**You Have Deposited 
+${emojis.troll_coin} ${ammount} Troll Coins Into Your Bank**`)
 .setFooter({text: `${embeds.footer}`});
 
     

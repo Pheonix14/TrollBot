@@ -35,7 +35,7 @@ let register = await settings.get(`${user.id}.register`)
 if (register === undefined) register = 'false';
     
     if (register === 'false') {
-return interaction.editReply(`${emojis.cross} Use /register To Register Your Account In My Database`)
+return interaction.editReply(`**${emojis.cross} Use /register To Register Your Account In My Database**`)
     }
     
         let timeout = 3600000;
@@ -48,13 +48,13 @@ return interaction.editReply(`${emojis.cross} Use /register To Register Your Acc
 
             let embed1 = new EmbedBuilder()
                 .setColor(embeds.color)
-                .setDescription(`${emojis.cross} You've Already Worked And Collected Reward\n\nWork Again In ${time}`)
+                .setDescription(`**You've Already Worked And Collected Reward\n\nWork Again In ${time}**`)
           .setFooter({text: `${embeds.footer}`})
             interaction.editReply({embeds: [embed1]})
         } else {
             let embed2 = new EmbedBuilder()
                 .setColor(embeds.color)
-                .setDescription(`${JworkR} ${emojis.troll_coin} ${amount}`)
+                .setDescription(`**${JworkR} ${emojis.troll_coin} ${amount}**`)
           .setFooter({text: `${embeds.footer}`});
             
 interaction.editReply({embeds: [embed2]})

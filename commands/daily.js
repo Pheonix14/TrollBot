@@ -29,7 +29,7 @@ let register = await settings.get(`${user.id}.register`)
 if (register === undefined) register = 'false';
     
     if (register === 'false') {
-return interaction.editReply(`${emojis.cross} Use /register To Register Your Account In My Database`)
+return interaction.editReply(`**${emojis.cross} Use /register To Register Your Account In My Database**`)
     }
     
 
@@ -43,13 +43,13 @@ return interaction.editReply(`${emojis.cross} Use /register To Register Your Acc
 
             let embed1 = new EmbedBuilder()
                 .setColor(embeds.color)
-                .setDescription(`${emojis.cross} You've Already Collected Your Daily Reward\n\nCollect It Again In ${time}`)
+                .setDescription(`**${emojis.cross} You've Already Collected Your Daily Reward\n\nCollect It Again In ${time}**`)
           .setFooter({text: `${embeds.footer}`})
             interaction.editReply({embeds: [embed1]})
         } else {
             let embed2 = new EmbedBuilder()
                 .setColor(embeds.color)
-                .setDescription(`You've Collected Your Daily Reward Of ${emojis.troll_coin} ${amount} Troll Coins`)
+                .setDescription(`**You've Collected Your Daily Reward Of ${emojis.troll_coin} ${amount} Troll Coins**`)
           .setFooter({text: `${embeds.footer}`});
             
 interaction.editReply({embeds: [embed2]})

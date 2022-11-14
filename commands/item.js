@@ -53,7 +53,7 @@ let register = await settings.get(`${user.id}.register`)
 if (register === undefined) register = 'false';
     
     if (register === 'false') {
-return interaction.editReply(`${emojis.cross} Use /register To Register Your Account In My Database`)
+return interaction.editReply(`**${emojis.cross} Use /register To Register Your Account In My Database**`);
     }
 
 const item = interaction.options.getString('item');

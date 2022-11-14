@@ -31,7 +31,7 @@ let register = await settings.get(`${user.id}.register`)
 if (register === undefined) register = 'false';
     
     if (register === 'false') {
-return interaction.editReply(`${emojis.cross} Use /register To Register Your Account In My Database`)
+return interaction.editReply(`**${emojis.cross} Use /register To Register Your Account In My Database**`)
     }
     
 const sm_settings = interaction.options.getString('setting');
@@ -42,7 +42,7 @@ let phone = await items.get(`${user.id}.phone`)
 
 
 if (phone === 0) {
-  return interaction.editReply("You Need A Phone To Use This Command. Tip: use /shop and /buy to buy a phone")
+  return interaction.editReply("**You Need A Phone To Use This Command. Tip: use /shop and /buy to buy a phone**")
 }
 
 let timeout = 86400000;
@@ -54,7 +54,7 @@ let timeout = 86400000;
 
             let embedtimeout = new EmbedBuilder()
                 .setColor(embeds.color)
-                .setDescription(`${emojis.cross} You Can Use This Command Only 1 Time Everyday\n\nUse It Again In ${time}`)
+                .setDescription(`**You Can Use This Command Only 1 Time Everyday\n\nUse It Again In ${time}**`)
           .setFooter({text: `${embeds.footer}`})
           return interaction.editReply({embeds: [embedtimeout]})
         }
@@ -66,7 +66,7 @@ let check_sm = await settings.get(`${user.id}.safemode`)
 
   if (check_sm === undefined) check_sm = "disable";
 
-if (check_sm === "enable") return interaction.editReply( "safemode is already enabled 🔒")
+if (check_sm === "enable") return interaction.editReply("**safemode is already enabled 🔒**")
 
 await settings.set(`${user.id}.safemode`, sm_settings)
 
@@ -74,7 +74,7 @@ await times.set(`${user.id}.sm_timeout`, Date.now())
   
 const embed = new EmbedBuilder()
       .setColor(embeds.color)
-      .setDescription(`Safemode Enabled Sucessfully 🔒`)
+      .setDescription(`**Safemode Enabled Sucessfully 🔒**`)
       .setFooter({ text: `${embeds.footer}` });
 
 interaction.editReply({embeds: [embed]})
@@ -87,7 +87,7 @@ let check_sm = await settings.get(`${user.id}.safemode`)
 
   if (check_sm === undefined) check_sm = "disable";
 
-if (check_sm === "disable") return interaction.editReply("safemode is already disabled 🔓")
+if (check_sm === "disable") return interaction.editReply("**safemode is already disabled 🔓**")
 
 await settings.set(`${user.id}.safemode`, sm_settings)
 
@@ -95,7 +95,7 @@ await times.set(`${user.id}.sm_timeout`, Date.now())
   
 const embed = new EmbedBuilder()
       .setColor(embeds.color)
-      .setDescription(`Safemode Disabled Sucessfully 🔓`)
+      .setDescription(`**Safemode Disabled Sucessfully 🔓**`)
       .setFooter({ text: `${embeds.footer}` });
 
 interaction.editReply({embeds: [embed]})

@@ -17,6 +17,8 @@ module.exports = {
 
 - Changed Slots Win Prizes. Now Common 4x And Rare 6x.
 
+- Changed Font Of The Bot.
+
 Thank You!
 - TrollBot Development
 **`)

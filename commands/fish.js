@@ -32,14 +32,14 @@ let register = await settings.get(`${user.id}.register`)
 if (register === undefined) register = 'false';
     
     if (register === 'false') {
-return interaction.editReply(`${emojis.cross} Use /register To Register Your Account In My Database`)
+return interaction.editReply(`**${emojis.cross} Use /register To Register Your Account In My Database**`)
     }
 
     
 let fishingrod = await items.get(`${user.id}.fishing_rod`)
 
     if (fishingrod === undefined) {
-      return interaction.editReply(`${emojis.cross} You Didn't Have A Fishing Rod`)
+      return interaction.editReply(`**You Didn't Have A Fishing Rod**`)
     }
 
         let timeout = 20000;
@@ -50,7 +50,7 @@ let fishingrod = await items.get(`${user.id}.fishing_rod`)
 
             let embed1 = new EmbedBuilder()
                 .setColor(embeds.color)
-                .setDescription(`${emojis.cross} You've Already Fish And Collected Reward\n\nFish Again In ${time}`)
+                .setDescription(`**You've Already Fish And Collected Reward\n\nFish Again In ${time}**`)
           .setFooter({text: `${embeds.footer}`})
             return interaction.editReply({embeds: [embed1]})
         } 
@@ -72,7 +72,7 @@ await times.set(`${user.id}.fish`, Date.now())
 
 let embed2 = new EmbedBuilder()
                 .setColor(embeds.color)
-      .setDescription(`You Got A ${emojis.junk} Junk While Fishing`)
+      .setDescription(`**You Got A ${emojis.junk} Junk While Fishing**`)
           .setFooter({text: `${embeds.footer}`})
             return interaction.editReply({embeds: [embed2]}) 
 
@@ -93,7 +93,7 @@ await times.set(`${user.id}.fish`, Date.now())
 
 let embed3 = new EmbedBuilder()
                 .setColor(embeds.color)
-      .setDescription(`You Got A ${emojis.common_fish} Common Fish While Fishing`)
+      .setDescription(`**You Got A ${emojis.common_fish} Common Fish While Fishing**`)
           .setFooter({text: `${embeds.footer}`})
             return interaction.editReply({embeds: [embed3]}) 
 
@@ -114,7 +114,7 @@ await times.set(`${user.id}.fish`, Date.now())
 
 let embed4 = new EmbedBuilder()
                 .setColor(embeds.color)
-      .setDescription(`You Got A ${emojis.uncommon_fish} Uncommon Fish While Fishing`)
+      .setDescription(`**You Got A ${emojis.uncommon_fish} Uncommon Fish While Fishing**`)
           .setFooter({text: `${embeds.footer}`})
             return interaction.editReply({embeds: [embed4]}) 
 
@@ -133,7 +133,7 @@ await times.set(`${user.id}.fish`, Date.now())
 
 let embed5 = new EmbedBuilder()
                 .setColor(embeds.color)
-      .setDescription(`You Got A ${emojis.rare_fish} Rare Fish While Fishing`)
+      .setDescription(`**You Got A ${emojis.rare_fish} Rare Fish While Fishing**`)
           .setFooter({text: `${embeds.footer}`})
             return interaction.editReply({embeds: [embed5]}) 
 
@@ -153,7 +153,7 @@ await times.set(`${user.id}.fish`, Date.now())
       
 let embed6 = new EmbedBuilder()
                 .setColor(embeds.color)
-      .setDescription(`You Got A ${emojis.legendary_fish} Legendary Fish While Fishing`)
+      .setDescription(`**You Got A ${emojis.legendary_fish} Legendary Fish While Fishing**`)
           .setFooter({text: `${embeds.footer}`})
             return interaction.editReply({embeds: [embed6]}) 
 
@@ -173,7 +173,7 @@ await times.set(`${user.id}.fish`, Date.now())
       
 let embed7 = new EmbedBuilder()
                 .setColor(embeds.color)
-      .setDescription(`You Got Nothing And Your Fishing Rod Broke While Fishing`)
+      .setDescription(`**You Got Nothing And Your Fishing Rod Broke While Fishing**`)
           .setFooter({text: `${embeds.footer}`})
             return interaction.editReply({embeds: [embed7]}) 
 

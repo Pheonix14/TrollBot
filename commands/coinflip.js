@@ -40,7 +40,7 @@ let register = await settings.get(`${user.id}.register`)
 if (register === undefined) register = 'false';
     
     if (register === 'false') {
-return interaction.editReply(`${emojis.cross} Use /register To Register Your Account In My Database`)
+return interaction.editReply(`**${emojis.cross} Use /register To Register Your Account In My Database**`)
     }
 
 let timeout = 25000;
@@ -52,7 +52,7 @@ let timeout = 25000;
 
             let embed1 = new EmbedBuilder()
                 .setColor(embeds.color)
-                .setDescription(`${emojis.cross} You Just Just Flip A Coin\n\nFlip Again In ${time}`)
+                .setDescription(`**${emojis.cross} You Just Just Flip A Coin\n\nFlip Again In ${time}**`)
           .setFooter({text: `${embeds.footer}`})
           return interaction.editReply({embeds: [embed1]})
         } 
@@ -75,23 +75,23 @@ if (choose === null) choose = coins[coinc];
 
     
     if (balance < amount) {
-                return interaction.editReply({content: `${emojis.cross} You Don't Have That Much Money To Bet`, ephemeral: true});
+                return interaction.editReply({content: `**You Don't Have That Much Money To Bet**`, ephemeral: true});
     }
 
     if (amount < 1000) {
-                return interaction.editReply({content: `${emojis.cross} You Can't Bet Lower Than 1000`, ephemeral: true});
+                return interaction.editReply({content: `**You Can't Bet Lower Than 1000**`, ephemeral: true});
     }
 
 if (amount > 150000) {
-                return interaction.editReply({content: `${emojis.cross} You Can't Bet Higher Than 150000`, ephemeral: true});
+                return interaction.editReply({content: `**You Can't Bet Higher Than 150000**`, ephemeral: true});
 }
     
 
 if (choose !== coins[coinb]) {
             let embed2 = new EmbedBuilder()
                 .setColor(embeds.color)
-                .setDescription(`You Spend ${emojis.troll_coin} ${bet} And Choose ${choose}
-The Coin Spins... ${coins[coinb]} And You Lost It All`)
+                .setDescription(`**You Spend ${emojis.troll_coin} ${bet} And Choose ${choose}
+The Coin Spins... ${coins[coinb]} And You Lost It All**`)
           .setFooter({text: `${embeds.footer}`});
             
 interaction.editReply({embeds: [embed2]})
@@ -99,16 +99,13 @@ interaction.editReply({embeds: [embed2]})
           await counts.add(`${user.id}.flips`, 1)
             await currency.sub(`${user.id}.balance`, amount)
 await times.set(`${user.id}.coinflip`, Date.now())
-}
-
-
-   if (choose === coins[coinb]) {
+} else {
 
             
             let embed2 = new EmbedBuilder()
                 .setColor(embeds.color)
-                .setDescription(`You Spend ${emojis.troll_coin} ${bet} And Choose ${choose}
-The Coin Spins... ${coins[coinb]} And You Won ${emojis.troll_coin} ${betw}`)
+                .setDescription(`**You Spend ${emojis.troll_coin} ${bet} And Choose ${choose}
+The Coin Spins... ${coins[coinb]} And You Won ${emojis.troll_coin} ${betw}**`)
           .setFooter({text: `${embeds.footer}`});
             
 interaction.editReply({embeds: [embed2]})
@@ -128,7 +125,7 @@ let embedtit = new EmbedBuilder()
   
   .setColor(embeds.color)
           .setTitle(`**Title Unlocked ⭐**`)
-          .setDescription(`You Got **Pro Gambler** title`)
+          .setDescription(`**You Got** ***Pro Gambler*** **title**`)
           .setFooter({text: `tips: use /settings-title to equip it.`});
 
 interaction.followUp({embeds: [embedtit], ephemeral: true}) 

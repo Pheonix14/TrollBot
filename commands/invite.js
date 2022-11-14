@@ -21,7 +21,7 @@ module.exports = {
 
     const embed = new EmbedBuilder()
       .setColor(embeds.color)
-      .setDescription(`Click The Button Below To Invite TrollBot To Your Servers!`)
+      .setDescription(`**Click The Button Below To Invite TrollBot To Your Servers!**`)
       .setFooter({ text: `${embeds.footer}` });
 
     return interaction.editReply({ embeds: [embed], components: [row] });

@@ -30,7 +30,7 @@ let register = await settings.get(`${interaction.user.id}.register`)
 if (register === undefined) register = 'false';
     
     if (register === 'false') {
-return interaction.editReply(`${emojis.cross} Use /register To Register Your Account In My Database`)
+return interaction.editReply(`**${emojis.cross} Use /register To Register Your Account In My Database**`)
     }
     
 const item = interaction.options.getString('item');
@@ -47,7 +47,7 @@ let bank_upgrader = await items.get(`${interaction.user.id}.bank_upgrader`)
 
 if (bank_upgrader === undefined) bank_upgrader = 0;
   
-if (bank_upgrader < quantity) return interaction.editReply({content: "You didn't Have That Much Bank Upgrader To Use", ephemeral: true })
+if (bank_upgrader < quantity) return interaction.editReply({content: "**You didn't Have That Much Bank Upgrader To Use**", ephemeral: true })
 
 const random = Math.floor(Math.random() * (110000 -  + 80000)) + 80000;
 
@@ -62,7 +62,7 @@ await items.sub(`${interaction.user.id}.bank_upgrader`, quantity)
   
   let embed1 = new EmbedBuilder()
                 .setColor(embeds.color)
-.setDescription(`You Used ${quantity}x Bank Upgrader ${emojis.bank_upgrader} And Got ${emojis.troll_coin} ${totalbank} Bank Space`)
+.setDescription(`**You Used ${quantity}x Bank Upgrader ${emojis.bank_upgrader} And Got ${emojis.troll_coin} ${totalbank} Bank Space**`)
 .setFooter({text: `${embeds.footer}`});
 
   interaction.editReply({embeds: [embed1]})
@@ -74,7 +74,7 @@ let starter_kit = await items.get(`${interaction.user.id}.starter_kit`)
 
 if (starter_kit === undefined) starter_kit = 0;
   
-if (starter_kit < quantity) return interaction.editReply({content: "You didn't Have That Much Starter Kit To Use", ephemeral: true })
+if (starter_kit < quantity) return interaction.editReply({content: "**You didn't Have That Much Starter Kit To Use**", ephemeral: true })
 
   let totalbal = 50000 * quantity;
 
@@ -90,12 +90,12 @@ await items.add(`${interaction.user.id}.phone`, quantity)
   
   let embed2 = new EmbedBuilder()
                 .setColor(embeds.color)
-.setDescription(`You Used ${quantity}x Starter Kit ${emojis.starter_kit} And Got
+.setDescription(`**You Used ${quantity}x Starter Kit ${emojis.starter_kit} And Got
 
 + ${emojis.troll_coin} ${totalbal}
 + x${quantity} ${emojis.shovel} Shovel
 + x${quantity} ${emojis.fishing_rod} Fishing Rod
-+ x${quantity} ${emojis.phone} Phone`)
++ x${quantity} ${emojis.phone} Phone**`)
 .setFooter({text: `${embeds.footer}`});
 
   interaction.editReply({embeds: [embed2]})

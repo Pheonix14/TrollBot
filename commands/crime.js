@@ -35,7 +35,7 @@ let register = await settings.get(`${user.id}.register`)
 if (register === undefined) register = 'false';
     
     if (register === 'false') {
-return interaction.editReply(`${emojis.cross} Use /register To Register Your Account In My Database`)
+return interaction.editReply(`**${emojis.cross} Use /register To Register Your Account In My Database**`);
     }
 
     
@@ -49,13 +49,13 @@ return interaction.editReply(`${emojis.cross} Use /register To Register Your Acc
 
             let embed1 = new EmbedBuilder()
                 .setColor(embeds.color)
-                .setDescription(`${emojis.cross} You Just Commit A Crime And Earned Some Money\n\nCrime Again In ${time}`)
+                .setDescription(`**${emojis.cross} You Just Commit A Crime And Earned Some Money\n\nCrime Again In ${time}**`)
           .setFooter({text: `${embeds.footer}`})
             interaction.editReply({embeds: [embed1]})
         } else {
             let embed2 = new EmbedBuilder()
                 .setColor(embeds.color)
-                .setDescription(`${JcrimeR} ${emojis.troll_coin} ${amount}`)
+                .setDescription(`**${JcrimeR} ${emojis.troll_coin} ${amount}**`)
           .setFooter({text: `${embeds.footer}`});
             
 interaction.editReply({embeds: [embed2]})
@@ -75,7 +75,7 @@ let embedtit = new EmbedBuilder()
   
   .setColor(embeds.color)
           .setTitle(`**Title Unlocked ⭐**`)
-          .setDescription(`You Got **Top Criminal** title`)
+          .setDescription(`**You Got** ***Top Criminal*** **title**`)
           .setFooter({text: `tips: use /settings-title to equip it.`});
 
 interaction.followUp({embeds: [embedtit], ephemeral: true}) 

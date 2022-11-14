@@ -26,7 +26,7 @@ module.exports = {
  const embed = new EmbedBuilder()
   .setColor(embeds.color)
     .setTitle(`TrollBot Status:`)
-.setDescription(`${emojis.online} Shard [0]:
+.setDescription(`**${emojis.online} Shard [0]:
 
 ${emojis.wifi} Latency: ${interaction.client.ws.ping}ms
 
@@ -34,7 +34,7 @@ ${emojis.bot} Uptime: ${uptime_calc}
 
 ${emojis.ram} RAM Usage: ${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB
 
-${emojis.cpu} CPU Usage: ${percent.toFixed(2)}%`)
+${emojis.cpu} CPU Usage: ${percent.toFixed(2)}%**`)
   .setFooter({text: `${embeds.footer}`});
 
 	return interaction.editReply({embeds: [embed] });

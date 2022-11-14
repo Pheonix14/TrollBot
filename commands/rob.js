@@ -37,7 +37,7 @@ let register = await settings.get(`${user1.id}.register`)
 if (register === undefined) register = 'false';
     
     if (register === 'false') {
-return interaction.editReply(`${emojis.cross} Use /register To Register Your Account In My Database`)
+return interaction.editReply(`**${emojis.cross} Use /register To Register Your Account In My Database**`);
     }
 
 let timeout = 300000;
@@ -49,13 +49,13 @@ let timeout = 300000;
 
             let embed1 = new EmbedBuilder()
                 .setColor(embeds.color)
-                .setDescription(`${emojis.cross} You Just Robbed A Parson\n\nRob Again In ${time}`)
+                .setDescription(`**You Just Robbed A Parson\n\nRob Again In ${time}**`)
           .setFooter({text: `${embeds.footer}`})
           return interaction.editReply({embeds: [embed1]})
         }
 
 if (user1.id === user.id) {
-  return interaction.editReply("You Can't Rob Yourself.. Dumb")
+  return interaction.editReply("**You Can't Rob Yourself.. Dumb**")
 }
     
 
@@ -64,7 +64,7 @@ let safe_mode1 = await settings.get(`${user1.id}.safemode`)
     if (safe_mode1 === undefined) safe_mode1 = 'disable';
 
 if (safe_mode1 === "enable") {
-  return interaction.editReply("You Can't Rob You Are In Safe Mode")
+  return interaction.editReply("**You Can't Rob You Are In Safe Mode**")
 }
     
 let safe_mode = await settings.get(`${user.id}.safemode`)
@@ -72,7 +72,7 @@ let safe_mode = await settings.get(`${user.id}.safemode`)
 if (safe_mode === undefined) safe_mode = 'disable';
 
 if (safe_mode1 === "enable") {
-  return interaction.editReply("You Can't Rob That Parson In Safe Mode")
+  return interaction.editReply("**You Can't Rob That Parson In Safe Mode**")
 }
 
 let rob_guild = await guild_settings.get(`${interaction.guild.id}.rob_setting`)
@@ -80,7 +80,7 @@ let rob_guild = await guild_settings.get(`${interaction.guild.id}.rob_setting`)
 if (rob_guild === undefined) rob_guild = 'enable';
 
 if (rob_guild === "disable") {
-  return interaction.editReply("Rob Is Not Allowed In This Server")
+  return interaction.editReply("**Rob Is Not Allowed In This Server**")
 }
     
 let balance1 = await currency.get(`${user1.id}.balance`)
@@ -92,11 +92,11 @@ let balance = await currency.get(`${user.id}.balance`)
 if (balance === undefined) balance = 0;
     
 if (balance1 < 5000) {
-  return interaction.editReply(`You Need Atleast ${emojis.troll_coin} 5000 In Your Pocket To Rob Someone`)
+  return interaction.editReply(`**You Need Atleast ${emojis.troll_coin} 5000 In Your Pocket To Rob Someone**`)
 }
     
 if (balance < 5000) {
-  return interaction.editReply(`That Parson Didn't Have Atleast ${emojis.troll_coin} 5000. it's not worth it men`)
+  return interaction.editReply(`**That Parson Didn't Have Atleast ${emojis.troll_coin} 5000. it's not worth it men**`)
 }
 
     
@@ -119,7 +119,7 @@ await times.set(`${user1.id}.rob`, Date.now())
 let embed2 = new EmbedBuilder() 
   
   .setColor(embeds.color)
-          .setDescription(`You Tried To Rob ${user.tag} But You Failed And Lost ${emojis.troll_coin} ${rob_fail}`)
+          .setDescription(`**You Tried To Rob ${user.tag} But You Failed And Lost ${emojis.troll_coin} ${rob_fail}**`)
           .setFooter({text: `${embeds.footer}`});
             
 interaction.editReply({embeds: [embed2]})
@@ -133,7 +133,7 @@ if (check_noti === "disable") return;
 let embed5 = new EmbedBuilder() 
   
   .setColor(embeds.color)
-          .setDescription(`${user1.tag} Tried To Rob You In ${interaction.guild.name} But He Failed And You Got ${emojis.troll_coin} ${rob_fail}`)
+          .setDescription(`**${user1.tag} Tried To Rob You In ${interaction.guild.name} But He Failed And You Got ${emojis.troll_coin} ${rob_fail}**`)
           .setFooter({text: `${embeds.footer}`});
             
 user.send({embeds: [embed5]})
@@ -155,7 +155,7 @@ await currency.add(`${user.id}.rob_loss`, rob_pass)
 let embed3 = new EmbedBuilder() 
   
   .setColor(embeds.color)
-          .setDescription(`You Robbed ${user.tag} And Got ${emojis.troll_coin} ${rob_pass}`)
+          .setDescription(`**You Robbed ${user.tag} And Got ${emojis.troll_coin} ${rob_pass}**`)
           .setFooter({text: `${embeds.footer}`});
             
 interaction.editReply({embeds: [embed3]})
@@ -171,7 +171,7 @@ let embedtit = new EmbedBuilder()
   
   .setColor(embeds.color)
           .setTitle(`**Title Unlocked ⭐**`)
-          .setDescription(`You Got **Robber** title`)
+          .setDescription(`**You Got** ***Robber*** **title**`)
           .setFooter({text: `tips: use /settings-title to equip it.`});
 
 interaction.followUp({embeds: [embedtit], ephemeral: true}) 
@@ -185,7 +185,7 @@ if (check_noti === "disable") return;
 let embed4 = new EmbedBuilder() 
   
   .setColor(embeds.color)
-          .setDescription(`You Got Robbed By ${user1.tag} In ${interaction.guild.name} And Lost ${emojis.troll_coin} ${rob_pass}`)
+          .setDescription(`**You Got Robbed By ${user1.tag} In ${interaction.guild.name} And Lost ${emojis.troll_coin} ${rob_pass}**`)
           .setFooter({text: `${embeds.footer}`});
             
 user.send({embeds: [embed4]})

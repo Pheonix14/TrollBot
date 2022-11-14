@@ -66,7 +66,7 @@ const submitted_bio = interaction.fields.getTextInputValue('bio');
 
 await settings.set(`${interaction.user.id}.bio`, submitted_bio)
     
-		await interaction.editReply({ content: `Your Profile Bio Changed To **${submitted_bio}** Successfully!` });
+		await interaction.editReply({ content: `**Your Profile Bio Changed To** ***${submitted_bio}*** **Successfully!**` });
 	}
 });
 }

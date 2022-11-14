@@ -28,7 +28,7 @@ let register = await settings.get(`${user.id}.register`)
 if (register === undefined) register = 'false';
     
     if (register === 'false') {
-return interaction.editReply(`${emojis.cross} Use /register To Register Your Account In My Database`)
+return interaction.editReply(`**${emojis.cross} Use /register To Register Your Account In My Database**`)
     }
     
 let bank = await currency.get(`${user.id}.bank`)
@@ -36,7 +36,7 @@ let bank = await currency.get(`${user.id}.bank`)
     if (bank === undefined) bank = 0;
 
     if (bank < ammount) {
-                return interaction.editReply({content: `${emojis.cross} You Don't Have That Much Money On Your Bank`, ephemeral: true});
+                return interaction.editReply({content: `**You Don't Have That Much Money On Your Bank**`, ephemeral: true});
     }
 
     await currency.add(`${user.id}.balance`, ammount)
@@ -46,8 +46,8 @@ let bank = await currency.get(`${user.id}.bank`)
 
     const embed2 = new EmbedBuilder()
   .setColor(embeds.color)
-.setDescription(`You Have Withdrawal 
-${emojis.troll_coin} ${ammount} Troll Coins From Your Bank`)
+.setDescription(`**You Have Withdrawal 
+${emojis.troll_coin} ${ammount} Troll Coins From Your Bank**`)
 .setFooter({text: `${embeds.footer}`});
 
     

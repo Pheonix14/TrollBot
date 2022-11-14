@@ -27,7 +27,7 @@ let register = await settings.get(`${user.id}.register`)
 if (register === undefined) register = 'false';
     
     if (register === 'false') {
-return interaction.editReply(`${emojis.cross} Use /register To Register Your Account In My Database`)
+return interaction.editReply(`**${emojis.cross} Use /register To Register Your Account In My Database**`)
     }
     
 const noti_settings = interaction.options.getString('setting');
@@ -38,7 +38,7 @@ const noti_settings = interaction.options.getString('setting');
 
 
 if (phone === 0) {
-  return interaction.editReply("You Need A Phone To Use This Command. Tip: use /shop and /buy to buy a phone")
+  return interaction.editReply("**You Need A Phone To Use This Command. Tip: use /shop and /buy to buy a phone**")
 }
 
   if (noti_settings === "enable") {
@@ -47,14 +47,14 @@ let check_noti = await settings.get(`${user.id}.notification`)
 
   if (check_noti === undefined) check_noti = "enable";
 
-if (check_noti === "enable") return interaction.editReply( "Dm notification is already enabled 🔔")
+if (check_noti === "enable") return interaction.editReply("**Dm notification is already enabled 🔔**")
 
 await settings.set(`${user.id}.notification`, noti_settings)
 
   
 const embed = new EmbedBuilder()
       .setColor(embeds.color)
-      .setDescription(`Dm Notification Enabled Sucessfully 🔔`)
+      .setDescription(`**Dm Notification Enabled Sucessfully 🔔**`)
       .setFooter({ text: `${embeds.footer}` });
 
 interaction.editReply({embeds: [embed]})
@@ -67,14 +67,14 @@ let check_noti = await settings.get(`${user.id}.notification`)
 
   if (check_noti === undefined) check_noti = "enable";
 
-if (check_noti === "disable") return interaction.editReply("Dm notification is already disabled 🔕")
+if (check_noti === "disable") return interaction.editReply("**Dm notification is already disabled 🔕**")
 
 await settings.set(`${user.id}.notification`, noti_settings)
 
   
 const embed = new EmbedBuilder()
       .setColor(embeds.color)
-      .setDescription(`Dm Notification Disabled Sucessfully 🔕`)
+      .setDescription(`**Dm Notification Disabled Sucessfully 🔕**`)
       .setFooter({ text: `${embeds.footer}` });
 
 interaction.editReply({embeds: [embed]})

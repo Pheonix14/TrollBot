@@ -32,13 +32,13 @@ let check_rob = await guild_settings.get(`${interaction.guild.id}.rob_setting`)
 
   if (check_rob === undefined) check_rob = "enable";
 
-if (check_rob === "enable") return interaction.editReply( "rob is already enabled 🔓")
+if (check_rob === "enable") return interaction.editReply("**rob is already enabled 🔓**")
 
 await guild_settings.set(`${interaction.guild.id}.rob_setting`, rob_setting)
 
 const embed = new EmbedBuilder()
       .setColor(embeds.color)
-      .setDescription(`Rob Enabled Sucessfully 🔓`)
+      .setDescription(`**Rob Enabled Sucessfully 🔓**`)
       .setFooter({ text: `${embeds.footer}` });
 
 interaction.editReply({embeds: [embed]})
@@ -51,13 +51,13 @@ let check_rob = await guild_settings.get(`${interaction.guild.id}.rob_setting`)
 
   if (check_rob === undefined) check_rob = "enable";
 
-if (check_rob === "disable") return interaction.editReply("rob is already disabled 🔒")
+if (check_rob === "disable") return interaction.editReply("**rob is already disabled 🔒**")
 
 await guild_settings.set(`${interaction.guild.id}.rob_setting`, rob_setting)
 
 const embed = new EmbedBuilder()
       .setColor(embeds.color)
-      .setDescription(`Rob Disabled Sucessfully 🔒`)
+      .setDescription(`**Rob Disabled Sucessfully 🔒**`)
       .setFooter({ text: `${embeds.footer}` });
 
 interaction.editReply({embeds: [embed]})
