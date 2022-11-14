@@ -30,8 +30,15 @@ module.exports = {
 const embed = new EmbedBuilder()
   .setColor(embeds.color)
   .setTitle(`${emojis.vote} TrollBot Vote`)
-.setDescription(`**If You Using Our Bot And Want To Support Our Development Then Please Vote To Our Bot**`)
-  
+.setDescription(`**If You Using TrollBot And Want To Support Our Development Then Please Vote To TrollBot
+
+Vote Rewards:
+
+${emojis.troll_coin} 50,000 Troll Coins
+
+x2 ${emojis.bank_upgrader} Bank Upgraders
+
+Note: You Only Get Reward For Voting On Top.gg**`)
   
 .setFooter({text: `${embeds.footer}`});
 
