@@ -1,20 +1,26 @@
-const { SlashCommandBuilder, EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
-const ms = require("ms");
 const emojis = require("./../config/emojis.json");
-const embeds = require("./../config/embed.json");
 const values = require("./../JSON/values.json");
+const embeds = require("./../config/embed.json");
+const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
+const ms = require('ms');
 
+module.exports = client => {
 
-module.exports = {
-	data: new SlashCommandBuilder()
-		.setName('fish')
-		.setDescription('🎣 Fish And Catch Some Fishes'),
-                   
-	async execute(interaction, client) {
+  client.on('interactionCreate', async interaction => { 
+
+if (!interaction.isButton()) return;
 
 const db = require("./../database/connect.js");
     
-
+const row = new ActionRowBuilder()
+			.addComponents(
+				new ButtonBuilder()
+					.setCustomId('fishbutton')
+					.setLabel('Fish Again')
+					.setEmoji(emojis.fishing_rod)
+        .setStyle(ButtonStyle.Secondary),
+			);
+    
 const currency = db.table("currency");
 
 const settings = db.table("settings")
@@ -25,6 +31,10 @@ const times = db.table("times");
 
 const counts = db.table("counts");
     
+if (interaction.customId === 'fishbutton') {
+
+await interaction.deferUpdate();
+  
   let user = interaction.user;
 
 let register = await settings.get(`${user.id}.register`)
@@ -32,16 +42,16 @@ let register = await settings.get(`${user.id}.register`)
 if (register === undefined) register = 'false';
     
     if (register === 'false') {
-return interaction.editReply(`**${emojis.cross} Use /register To Register Your Account In My Database**`)
+return interaction.followUp({content: `**${emojis.cross} Use /register To Register Your Account In My Database**`, ephemeral: true})
     }
 
     
 let fishingrod = await items.get(`${user.id}.fishing_rod`)
 
 if (fishingrod === undefined) fishingrod = 0;
-    
+  
     if (fishingrod === 0) {
-      return interaction.editReply(`**You Didn't Have A Fishing Rod**`)
+      return interaction.followUp({content: "**You Didn't Have A Fishing Rod**", ephemeral: true })
     }
 
         let timeout = 20000;
@@ -53,18 +63,10 @@ if (fishingrod === undefined) fishingrod = 0;
             let embed1 = new EmbedBuilder()
                 .setColor(embeds.color)
                 .setDescription(`**You've Already Fish And Collected Reward\n\nFish Again In ${time}**`)
-          .setFooter({text: `${embeds.footer}`})
-            return interaction.editReply({embeds: [embed1]})
+          .setFooter({text: `${user.tag}`})
+            return interaction.followUp({embeds: [embed1], ephemeral: true})
         } 
 
-const row = new ActionRowBuilder()
-			.addComponents(
-				new ButtonBuilder()
-					.setCustomId('fishbutton')
-					.setLabel('Fish Again')
-					.setEmoji(emojis.fishing_rod)
-        .setStyle(ButtonStyle.Secondary),
-			);
   
 const fishes = ["Junk", "Common Fish", "Uncommon Fish", "Rare Fish", "Legendary Fish", "Nothing"];
 
@@ -84,8 +86,8 @@ await times.set(`${user.id}.fish`, Date.now())
 let embed2 = new EmbedBuilder()
                 .setColor(embeds.color)
       .setDescription(`**You Got A ${emojis.junk} Junk While Fishing**`)
-          .setFooter({text: `${embeds.footer}`})
-            return interaction.editReply({embeds: [embed2], components: [row]}) 
+          .setFooter({text: `${user.tag}`})
+            return interaction.followUp({embeds: [embed2], components: [row]}) 
 
 
 }
@@ -105,8 +107,8 @@ await times.set(`${user.id}.fish`, Date.now())
 let embed3 = new EmbedBuilder()
                 .setColor(embeds.color)
       .setDescription(`**You Got A ${emojis.common_fish} Common Fish While Fishing**`)
-          .setFooter({text: `${embeds.footer}`})
-            return interaction.editReply({embeds: [embed3], components: [row]}) 
+          .setFooter({text: `${user.tag}`})
+            return interaction.followUp({embeds: [embed3], components: [row]}) 
 
 
 }
@@ -126,8 +128,8 @@ await times.set(`${user.id}.fish`, Date.now())
 let embed4 = new EmbedBuilder()
                 .setColor(embeds.color)
       .setDescription(`**You Got A ${emojis.uncommon_fish} Uncommon Fish While Fishing**`)
-          .setFooter({text: `${embeds.footer}`})
-            return interaction.editReply({embeds: [embed4], components: [row]}) 
+          .setFooter({text: `${user.tag}`})
+            return interaction.followUp({embeds: [embed4], components: [row]}) 
 
 
   }
@@ -145,8 +147,8 @@ await times.set(`${user.id}.fish`, Date.now())
 let embed5 = new EmbedBuilder()
                 .setColor(embeds.color)
       .setDescription(`**You Got A ${emojis.rare_fish} Rare Fish While Fishing**`)
-          .setFooter({text: `${embeds.footer}`})
-            return interaction.editReply({embeds: [embed5], components: [row]}) 
+          .setFooter({text: `${user.tag}`})
+            return interaction.followUp({embeds: [embed5], components: [row]}) 
 
   
 }
@@ -165,8 +167,8 @@ await times.set(`${user.id}.fish`, Date.now())
 let embed6 = new EmbedBuilder()
                 .setColor(embeds.color)
       .setDescription(`**You Got A ${emojis.legendary_fish} Legendary Fish While Fishing**`)
-          .setFooter({text: `${embeds.footer}`})
-            return interaction.editReply({embeds: [embed6], components: [row]}) 
+          .setFooter({text: `${user.tag}`})
+            return interaction.followUp({embeds: [embed6], components: [row]}) 
 
 
 }
@@ -185,13 +187,13 @@ await times.set(`${user.id}.fish`, Date.now())
 let embed7 = new EmbedBuilder()
                 .setColor(embeds.color)
       .setDescription(`**You Got Nothing And Your Fishing Rod Broke While Fishing**`)
-          .setFooter({text: `${embeds.footer}`})
-            return interaction.editReply({embeds: [embed7], components: [row]}) 
+          .setFooter({text: `${user.tag}`})
+            return interaction.followUp({embeds: [embed7], components: [row]}) 
 
 
 }
-
-module.exports = row;
+}
     
-	},
-   }
+      });
+
+}

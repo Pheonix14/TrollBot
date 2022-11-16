@@ -23,6 +23,11 @@ if (interaction.isModalSubmit()) {
 console.log(`${interaction.user.tag} (${interaction.user.id}) Submitted Modal`);
   
 }
+
+if (interaction.isButton()) {
+  
+console.log(`${interaction.user.tag} (${interaction.user.id}) Used Button`);
+}
     
 	},
 };

@@ -19,6 +19,10 @@ module.exports = {
 
 - Changed Font Of The Bot.
 
+- Added Vote Rewarding System.
+
+- Added Button Grinding System For /fish and /dig.
+
 Thank You!
 - TrollBot Development
 **`)

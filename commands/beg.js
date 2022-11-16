@@ -55,6 +55,7 @@ return interaction.editReply(`**${emojis.cross} Use /register To Register Your A
           .setFooter({text: `${embeds.footer}`})
             interaction.editReply({embeds: [embed1]})
         } else {
+          
             let embed2 = new EmbedBuilder()
                 .setColor(embeds.color)
                 .setDescription(`**${JbegR} ${emojis.troll_coin} ${amount}**`)

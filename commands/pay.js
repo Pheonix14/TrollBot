@@ -36,7 +36,7 @@ if (register === undefined) register = 'false';
 return interaction.editReply(`**${emojis.cross} Use /register To Register Your Account In My Database**`)
     }
     
-let safe_mode1 = await settings.get(`${user1.id}.safemode`)
+let safe_mode1 = await settings.get(`${user2.id}.safemode`)
 
     if (safe_mode1 === undefined) safe_mode1 = 'false';
 
@@ -49,7 +49,7 @@ let safe_mode = await settings.get(`${user.id}.safemode`)
 if (safe_mode === undefined) safe_mode = 'false';
 
 if (safe_mode1 === "true") {
-  return interaction.editReply("**You Can't Pay That Parson In Safe Mode**")
+  return interaction.editReply("**You Can't Pay That Parson He Is In Safe Mode**")
 }
     
 let balance = await currency.get(`${user2.id}.balance`);

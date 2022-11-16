@@ -39,31 +39,26 @@ for (const file of eventFiles) {
 	}
 }
 
-// handler manager
-
-["modals", "context-menu", "presence", "commands", settings.antiCrash ? "antiCrash" : null, ]
-    .filter(Boolean)
-    .forEach(h => {
-        require(`./handlers/${h}`)(client);
-    })
-
 // database connection
 require('./database/connect.js');
 
 // refresh commands
 require('./deploy-commands.js');
 
-// webpage creator for down notify
-const express = require('express')
-const app = express()
-const port = 3432
+// handler manager
 
-app.get('/', (req, res) => {
-  res.send('Webpage Created')
-})
+["modals", "context-menu", "presence", "commands", settings.antiCrash ? "antiCrash" : null, ]
+    .filter(Boolean)
+    .forEach(h => {
+        require(`./handlers/${h}`)(client);
+    });
 
-app.listen(port, () => {
-});
+
+["dig", "fish"]
+    .filter(Boolean)
+    .forEach(g => {
+        require(`./Grinders/${g}`)(client);
+    });
 
 // login to the bot
 
