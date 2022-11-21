@@ -28,7 +28,7 @@ const titles = db.table("titles");
 
 const JbegR = Jbeg[Math.floor(Math.random() * Jbeg.length)];
     
-    const reward = Math.floor(Math.random() * (500 -  + 300)) + 300;
+    const reward = Math.floor(Math.random() * (5000 -  + 3000)) + 3000;
 
   let user = interaction.user;
 

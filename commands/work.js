@@ -24,11 +24,19 @@ const times = db.table("times");
 
 const counts = db.table("counts");
 
+const items = db.table("items");
+    
     const JworkR = Jwork[Math.floor(Math.random() * Jwork.length)];
 
-    const reward = Math.floor(Math.random() * (3000 -  + 2000)) + 2000;
+    const reward = Math.floor(Math.random() * (10000 -  + 30000)) + 30000;
 
   let user = interaction.user;
+
+let laptop = await items.get(`${user.id}.laptol`)
+
+if (laptop === undefined) laptop = 0;
+
+if (laptop === 0) return interaction.editReply(`you need laptop to work`);
 
 let register = await settings.get(`${user.id}.register`)
 

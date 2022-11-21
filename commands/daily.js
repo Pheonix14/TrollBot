@@ -34,7 +34,7 @@ return interaction.editReply(`**${emojis.cross} Use /register To Register Your A
     
 
         let timeout = 86400000;
-        let amount = 15000;
+        let amount = 50000;
 
         let daily = await times.get(`${user.id}.daily`);
 

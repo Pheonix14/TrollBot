@@ -26,7 +26,7 @@ const counts = db.table("counts");
 
 const JcrimeR = Jcrime[Math.floor(Math.random() * Jcrime.length)];
     
-    const reward = Math.floor(Math.random() * (500 -  + 300)) + 300;
+    const reward = Math.floor(Math.random() * (5000 -  + 3000)) + 3000;
 
   let user = interaction.user;
 

@@ -17,6 +17,7 @@ module.exports = {
     { name: 'The King', value: 'king' },
     { name: 'A Warrior', value: 'warrior' },
     { name: 'Gold Investor', value: 'gold_invest' },
+    { name: 'Beta Tester', value: 'beta_tester' },
 )),
 	async execute(interaction, client) {
 
@@ -179,5 +180,23 @@ if (gold_invest === 'false') {
     
 }
     
+
+if (title === "beta_tester") {
+    
+let beta_tester = await titles.get(`${user.id}.beta_tester`)
+
+if (beta_tester === undefined) beta_tester = 'false';
+
+if (beta_tester === 'false') {
+  interaction.editReply("**you didn't have this title**")
+} else {
+  await settings.set(`${user.id}.title`, 'Beta Tester')
+ interaction.editReply("**Successfully Set** ***Beta Tester*** **Title**")
+
+}
+    
+}
+
+
 	},
 }

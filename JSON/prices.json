@@ -1,12 +1,12 @@
 {
   "phone": 1000,
-  "laptop": 10000,
-  "shovel": 5000,
-  "fishing_rod": 5000,
-  "bank_upgrader": 70000,
+  "laptop": 5000,
+  "shovel": 2000,
+  "fishing_rod": 2000,
+  "bank_upgrader": 50000,
   "toilet_paper": 30000,
-  "cool_meow": 70000,
-  "troll_sword": 1000000,
-  "golden_troll_coin": 5000000,
-  "troll_crown": 15000000
+  "cool_meow": 100000,
+  "troll_sword": 5000000,
+  "golden_troll_coin": 8000000,
+  "troll_crown": 10000000
 }

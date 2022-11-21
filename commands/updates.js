@@ -17,11 +17,21 @@ module.exports = {
 
 - Changed Slots Win Prizes. Now Common 4x And Rare 6x.
 
+- Added Sell Values For All Collectables
+
 - Changed Font Of The Bot.
 
 - Added Vote Rewarding System.
 
 - Added Button Grinding System For /fish and /dig.
+
+- Added Laptop Usage.
+
+- Changes In Buy And Sell Values
+
+- Heavily Changes In Pricing and Earning.
+
+- Earning Is More Eaiser Now.
 
 Thank You!
 - TrollBot Development
