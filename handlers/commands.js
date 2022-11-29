@@ -61,7 +61,7 @@ If You Believe You Got Banned By Mistake Go To [Appeal](${links.appeal}) And Sub
 
 
 }
-
+    
 	try {
 		await command.execute(interaction);
 	} catch (error) {
