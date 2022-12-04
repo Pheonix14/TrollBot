@@ -33,6 +33,8 @@ module.exports = {
 
 - Earning Is More Eaiser Now.
 
+- Added Winter/Christmas Event.
+
 Thank You!
 - TrollBot Development
 **`)

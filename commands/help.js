@@ -1,4 +1,4 @@
-const { EmbedBuilder, ActionRowBuilder, SelectMenuBuilder, SlashCommandBuilder } = require("discord.js");
+const { EmbedBuilder, ActionRowBuilder, StringSelectMenuBuilder, SlashCommandBuilder } = require("discord.js");
 const embeds = require("./../config/embed.json");
 const emojis = require("./../config/emojis.json");
 const links = require("./../config/links.json");
@@ -13,7 +13,7 @@ module.exports = {
     
 const row = new ActionRowBuilder()
   .addComponents(
-    new SelectMenuBuilder()
+    new StringSelectMenuBuilder()
      .setCustomId("help_select")
     .setPlaceholder("Select Your Option")
     .addOptions([

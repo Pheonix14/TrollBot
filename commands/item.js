@@ -33,6 +33,7 @@ module.exports = {
     { name: 'Troll Crown', value: 'troll_crown' },
     { name: 'Starter Kit', value: 'starter_kit' },
 { name: "Jack-o'-lantern", value: "jacko" },
+    { name: "Gift Box", value: "giftbox" },
 )),
                    
 	async execute(interaction, client) {
@@ -474,6 +475,25 @@ Description - ${desc.jacko}**`)
   .setFooter({text: `${embeds.footer}`});
     
 		return interaction.editReply({embeds: [embedjacko]});
+
+}
+
+if (item === "giftbox") {
+
+let giftbox = await items.get(`${user.id}.giftbox`)
+
+if (giftbox === undefined) giftbox = 0;
+
+const embedgiftbox = new EmbedBuilder()
+  .setColor(embeds.color)
+  .setTitle(`**${emojis.giftbox} Gift Box (${giftbox})**`)
+  .setDescription(`**Buy - Unable To Be Bought
+Sell Value - Unable To Be Sold
+
+Description - ${desc.giftbox}**`)
+  .setFooter({text: `${embeds.footer}`});
+    
+		return interaction.editReply({embeds: [embedgiftbox]});
 
 }
     

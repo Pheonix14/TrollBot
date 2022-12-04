@@ -1,7 +1,9 @@
 const { EmbedBuilder } = require("discord.js");
 const embeds = require("./../config/embed.json");
+const emojis = require("./../config/emojis.json");
 const links = require("./../config/links.json");
 const { maintenance, admins, nonDeffer_cmd } = require("./../config/settings.json");
+const wait = require('node:timers/promises').setTimeout;
 
 module.exports = client => {
 
@@ -37,6 +39,8 @@ const db = require("./../database/connect.js");
     
 const ban = db.table("ban");
 
+const items = db.table("items");
+    
 let banned = await ban.get(`${interaction.user.id}.ban`)
     
 if (banned === undefined) bal2 = "false";
@@ -59,9 +63,26 @@ If You Believe You Got Banned By Mistake Go To [Appeal](${links.appeal}) And Sub
 
 	return interaction.editReply({embeds: [embed] });
 
-
 }
+const giftbox = ["noob", "lol", "get", "pro", "op"];
     
+let giftbox_random = Math.floor(Math.random() * giftbox.length);
+   
+if (giftbox[giftbox_random] === "get") {
+  
+await items.add(`${interaction.user.id}.giftbox`, 1)
+
+const giftembed = new EmbedBuilder()
+  .setColor(embeds.color)
+  .setTitle(`**Santa's Gift**`)
+.setDescription(`**You Got x1 ${emojis.giftbox} Gift Box With Some Good Luck**`)
+  .setFooter({text: `${embeds.footer}`});
+  
+await interaction.editReply({ embeds: [giftembed] });
+
+await wait(5000);
+}
+
 	try {
 		await command.execute(interaction);
 	} catch (error) {

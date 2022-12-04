@@ -72,7 +72,7 @@ interaction.editReply({embeds: [embed2]})
 if (title_beggar === undefined) title_beggar = "false";
 
 if (title_beggar === 'false') {
-  await titles.set(`${user1.id}.beggar`, 'true')
+  await titles.set(`${user.id}.beggar`, 'true')
 
 let embedtit = new EmbedBuilder() 
   

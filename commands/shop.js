@@ -1,4 +1,4 @@
-const { EmbedBuilder, ActionRowBuilder, SelectMenuBuilder, SlashCommandBuilder } = require("discord.js");
+const { EmbedBuilder, ActionRowBuilder, StringSelectMenuBuilder, SlashCommandBuilder } = require("discord.js");
 const embeds = require("./../config/embed.json");
 const emojis = require("./../config/emojis.json");
 const prices = require("./../JSON/prices.json");
@@ -25,7 +25,7 @@ return interaction.editReply(`**${emojis.cross} Use /register To Register Your A
     
 const row = new ActionRowBuilder()
   .addComponents(
-    new SelectMenuBuilder()
+    new StringSelectMenuBuilder()
      .setCustomId("shop_select")
     .setPlaceholder("Select A Catagory")
     .addOptions([

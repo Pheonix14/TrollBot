@@ -12,7 +12,7 @@ console.log(`${interaction.user.tag} (${interaction.user.id}) Triggered`);
   
     }
 
-if (interaction.isSelectMenu()) {
+if (interaction.isStringSelectMenu()) {
   
 console.log(`${interaction.user.tag} (${interaction.user.id}) Used Select Menu`);
 

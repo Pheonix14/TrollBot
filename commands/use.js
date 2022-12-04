@@ -10,7 +10,7 @@ module.exports = {
    .addStringOption(option => option.setName('item').setDescription('Give Me A Item To use').setRequired(true)
   .addChoices({ name: 'Bank Upgrader', value: 'bank' },
               { name: 'Starter Kit', value: 'starter_kit' },
-
+ { name: 'Gift Box', value: 'giftbox' },
 ))
   .addNumberOption(option => option.setName('quantity').setDescription('A Quantity You Want To Use')),
 	async execute(interaction, client) {
@@ -102,5 +102,37 @@ await items.add(`${interaction.user.id}.phone`, quantity)
 }
 
     
+if (item === 'giftbox') {
+
+let giftbox = await items.get(`${interaction.user.id}.giftbox`)
+
+if (giftbox === undefined) giftbox = 0;
+  
+if (giftbox < quantity) return interaction.editReply({content: "**You didn't Have That Much Gift Box To Use**", ephemeral: true })
+
+  let totalbal2 = 10000 * quantity;
+
+await items.sub(`${interaction.user.id}.giftbox`, quantity)
+  
+  await currency.add(`${interaction.user.id}.balance`, totalbal2)
+
+await items.add(`${interaction.user.id}.bank_upgrader`, quantity)
+
+await items.add(`${interaction.user.id}.cool_meow`, quantity)
+  
+  let embed3 = new EmbedBuilder()
+                .setColor(embeds.color)
+.setDescription(`**You Used ${quantity}x Gift Box ${emojis.giftbox} And Got
+
++ ${emojis.troll_coin} ${totalbal2}
++ x${quantity} ${emojis.bank_upgrader} Bank Upgrader
++ x${quantity} ${emojis.cool_meow} Cool Meow**`)
+.setFooter({text: `${embeds.footer}`});
+
+  interaction.editReply({embeds: [embed3]})
+}
+
+
+
 	},
 }
