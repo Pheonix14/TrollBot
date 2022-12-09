@@ -117,8 +117,9 @@ await items.sub(`${interaction.user.id}.giftbox`, quantity)
   await currency.add(`${interaction.user.id}.balance`, totalbal2)
 
 await items.add(`${interaction.user.id}.bank_upgrader`, quantity)
-
+await currency.add(`${interaction.user.id}.inventory_worth`, prices.bank_upgrader)
 await items.add(`${interaction.user.id}.cool_meow`, quantity)
+  await currency.add(`${interaction.user.id}.inventory_worth`, prices.cool_meow)
   
   let embed3 = new EmbedBuilder()
                 .setColor(embeds.color)

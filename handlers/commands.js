@@ -75,7 +75,9 @@ await items.add(`${interaction.user.id}.giftbox`, 1)
 const giftembed = new EmbedBuilder()
   .setColor(embeds.color)
   .setTitle(`**Santa's Gift**`)
-.setDescription(`**You Got x1 ${emojis.giftbox} Gift Box With Some Good Luck**`)
+.setDescription(`**You Got x1 ${emojis.giftbox} Gift Box With Some Good Luck
+
+tip: use /use command to open the gift**`)
   .setFooter({text: `${embeds.footer}`});
   
 await interaction.editReply({ embeds: [giftembed] });

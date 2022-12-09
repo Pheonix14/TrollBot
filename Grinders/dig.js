@@ -63,7 +63,7 @@ if (shovel === undefined) shovel = 0;
             let embed1 = new EmbedBuilder()
                 .setColor(embeds.color)
                 .setDescription(`**You've Already Dig And Collected Reward\n\nDig Again In ${time}**`)
-          .setFooter({text: `${embeds.footer}`})
+          .setFooter({text: `${user.tag}`})
             return interaction.followUp({embeds: [embed1], ephemeral: true})
         } 
     
@@ -85,7 +85,7 @@ await times.set(`${user.id}.dig`, Date.now())
 let embed2 = new EmbedBuilder()
                 .setColor(embeds.color)
       .setDescription(`**You Got ${emojis.dirt} Dirt While Digging**`)
-          .setFooter({text: `${embeds.footer}`})
+          .setFooter({text: `${user.tag}`})
             return interaction.followUp({embeds: [embed2], components: [row]}) 
 
 
@@ -106,7 +106,7 @@ await times.set(`${user.id}.dig`, Date.now())
 let embed3 = new EmbedBuilder()
                 .setColor(embeds.color)
       .setDescription(`**You Got ${emojis.sand} Sand While Digging**`)
-          .setFooter({text: `${embeds.footer}`})
+          .setFooter({text: `${user.tag}`})
             return interaction.followUp({embeds: [embed3], components: [row]}) 
 
 
@@ -127,7 +127,7 @@ await times.set(`${user.id}.dig`, Date.now())
 let embed4 = new EmbedBuilder()
                 .setColor(embeds.color)
       .setDescription(`**You Got A ${emojis.worm} Worm While Digging**`)
-          .setFooter({text: `${embeds.footer}`})
+          .setFooter({text: `${user.tag}`})
             return interaction.followUp({embeds: [embed4], components: [row]}) 
 
 
@@ -146,7 +146,7 @@ await times.set(`${user.id}.dig`, Date.now())
 let embed5 = new EmbedBuilder()
                 .setColor(embeds.color)
       .setDescription(`**You Got A ${emojis.iron} Iron While Digging**`)
-          .setFooter({text: `${embeds.footer}`})
+          .setFooter({text: `${user.tag}`})
             return interaction.followUp({embeds: [embed5], components: [row]}) 
 
   
@@ -166,7 +166,7 @@ await times.set(`${user.id}.dig`, Date.now())
 let embed6 = new EmbedBuilder()
                 .setColor(embeds.color)
       .setDescription(`**You Got A ${emojis.fossil} Fossil While Digging**`)
-          .setFooter({text: `${embeds.footer}`})
+          .setFooter({text: `${user.tag}`})
             return interaction.followUp({embeds: [embed6], components: [row]}) 
 
 
@@ -185,7 +185,7 @@ await times.set(`${user.id}.dig`, Date.now())
 let embed7 = new EmbedBuilder()
                 .setColor(embeds.color)
       .setDescription(`**You Got Nothing And Your Shovel Broke While Digging**`)
-          .setFooter({text: `${embeds.footer}`})
+          .setFooter({text: `${user.tag}`})
             return interaction.followUp({embeds: [embed7], components: [row]}) 
 
 
