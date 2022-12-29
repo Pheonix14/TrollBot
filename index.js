@@ -3,32 +3,18 @@ const path = require('node:path');
 const { Client, Collection, GatewayIntentBits, Partials } = require('discord.js');
 const { token } = require('./config/config.json');
 const settings = require('./config/settings.json')
-require( 'console-stamp' )( console, {
-    format: ':date(yyyy/mm/dd HH:MM:ss).yellow :label(1)'
-} );
+
 
 // Gateway Intent Bits
 
-const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMembers], partials: [Partials.Channel]
+const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMembers]
 });
-
-//command collector
-
-client.commands = new Collection();
-const commandsPath = path.join(__dirname, 'commands');
-const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
-
-for (const file of commandFiles) {
-	const filePath = path.join(commandsPath, file);
-	const command = require(filePath);
-	client.commands.set(command.data.name, command);
-}
 
 //events handler
 
 const eventsPath = path.join(__dirname, 'events');
 const eventFiles = fs.readdirSync(eventsPath).filter(file => file.endsWith('.js'));
-
+console.log(`Loading Events...`);
 for (const file of eventFiles) {
 	const filePath = path.join(eventsPath, file);
 	const event = require(filePath);
@@ -37,29 +23,51 @@ for (const file of eventFiles) {
 	} else {
 		client.on(event.name, (...args) => event.execute(...args));
 	}
+  console.log(`➥ Loaded ${event.name} Event`)
 }
 
-// database connection
-require('./database/connect.js');
+//command collector
 
-// refresh commands
-require('./deploy-commands.js');
+client.commands = new Collection();
+
+console.log(`Loading Commands...`);
+
+const commandsPath = path.join(__dirname, 'commands');
+const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
+
+for (const file of commandFiles) {
+	const filePath = path.join(commandsPath, file);
+	const command = require(filePath);
+	client.commands.set(command.data.name, command);
+console.log(`➥ Loaded ${command.data.name} Command`)
+
+}
 
 // handler manager
-
+console.log(`Loading Handlers...`);
 ["modals", "context-menu", "presence", "commands", settings.antiCrash ? "antiCrash" : null, ]
     .filter(Boolean)
     .forEach(h => {
         require(`./handlers/${h}`)(client);
+      console.log(`➥ Loaded ${h} Handler`);
     });
 
-
+console.log(`Loading Component Handlers...`);
 ["dig", "fish"]
     .filter(Boolean)
-    .forEach(g => {
-        require(`./Grinders/${g}`)(client);
+    .forEach(c => {
+        require(`./component-handlers/${c}`)(client);
+      console.log(`➥ Loaded ${c} Component Handlers`);
     });
 
 // login to the bot
 
+console.log(`Logging Into To The Bot...`)
+
+// database connection
+require('./database/connect.js');
+
 client.login(token);
+
+// refresh commands
+require('./deploy-commands.js');

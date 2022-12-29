@@ -17,11 +17,14 @@ const rest = new REST({ version: '10' }).setToken(token);
 
 (async () => {
 	try {
-		console.log('Started refreshing application (/) commands.');
+		console.log(`Started Refreshing ${commands.length} Application (/) Commands...`);
 
-		await rest.put(Routes.applicationGuildCommands(clientId, guildId ), { body: commands })
+		const data = await rest.put(
+			Routes.applicationGuildCommands(clientId, guildId),
+			{ body: commands },
+		);
 
-		console.log('Successfully reloaded application (/) commands.');
+		console.log(`➥ Successfully Reloaded ${data.length} Application (/) Commands.`);
 	} catch (error) {
 		console.error(error);
 	}

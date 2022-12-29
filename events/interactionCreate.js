@@ -4,29 +4,29 @@ module.exports = {
 	execute(interaction) {
     
 if (interaction.isChatInputCommand()) {
-console.log(`${interaction.user.tag} (${interaction.user.id}) Triggered /${interaction.commandName}`);
+console.log(`➥ ${interaction.user.tag} Triggered /${interaction.commandName}`);
   
 }
     if (interaction.isUserContextMenuCommand()) {
-console.log(`${interaction.user.tag} (${interaction.user.id}) Triggered`);
+console.log(`➥ ${interaction.user.tag} Triggered ${interaction.commandName}`);
   
     }
 
 if (interaction.isStringSelectMenu()) {
   
-console.log(`${interaction.user.tag} (${interaction.user.id}) Used Select Menu`);
+console.log(`➥ ${interaction.user.tag} Used Select Menu (${interaction.customId})`);
 
 }
 
 if (interaction.isModalSubmit()) {
 
-console.log(`${interaction.user.tag} (${interaction.user.id}) Submitted Modal`);
+console.log(`➥ ${interaction.user.tag} Submitted Modal (${interaction.customId})`);
   
 }
 
 if (interaction.isButton()) {
   
-console.log(`${interaction.user.tag} (${interaction.user.id}) Used Button`);
+console.log(`➥ ${interaction.user.tag} Used Button (${interaction.customId})`);
 }
     
 	},

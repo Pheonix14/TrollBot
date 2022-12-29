@@ -5,13 +5,10 @@ const config = require("./../config/config.json");
 (async () => {
 
   const driver = new MongoDriver(config.MongoURI);
-
-driver.connect().then(() => {
-    console.log(`Connected to the database!`);
-    
-});
   
+console.log('Connecting To Database...')
 await driver.connect();
+console.log("➥ Connected To Database")
   
 module.exports = new QuickDB({ driver });
 
