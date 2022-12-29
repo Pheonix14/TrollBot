@@ -1,6 +1,6 @@
 const fs = require('node:fs');
 const path = require('node:path');
-const { Client, Collection, GatewayIntentBits, Partials } = require('discord.js');
+const { Client, Collection, GatewayIntentBits } = require('discord.js');
 const { token } = require('./config/config.json');
 const settings = require('./config/settings.json')
 
@@ -60,12 +60,12 @@ console.log(`Loading Component Handlers...`);
       console.log(`➥ Loaded ${c} Component Handlers`);
     });
 
+// database connection
+require('./database/connect.js');
+
 // login to the bot
 
 console.log(`Logging Into To The Bot...`)
-
-// database connection
-require('./database/connect.js');
 
 client.login(token);
 
