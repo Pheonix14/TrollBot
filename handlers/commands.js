@@ -64,26 +64,6 @@ If You Believe You Got Banned By Mistake Go To [Appeal](${links.appeal}) And Sub
 	return interaction.editReply({embeds: [embed] });
 
 }
-const giftbox = ["noob", "lol", "get", "pro", "op"];
-    
-let giftbox_random = Math.floor(Math.random() * giftbox.length);
-   
-if (giftbox[giftbox_random] === "get") {
-  
-await items.add(`${interaction.user.id}.giftbox`, 1)
-
-const giftembed = new EmbedBuilder()
-  .setColor(embeds.color)
-  .setTitle(`**Santa's Gift**`)
-.setDescription(`**You Got x1 ${emojis.giftbox} Gift Box With Some Good Luck
-
-tip: use /use command to open the gift**`)
-  .setFooter({text: `${embeds.footer}`});
-  
-await interaction.editReply({ embeds: [giftembed] });
-
-await wait(5000);
-}
 
 	try {
 		await command.execute(interaction);
