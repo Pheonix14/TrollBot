@@ -1,7 +1,7 @@
 const { EmbedBuilder } = require("discord.js");
 const embeds = require("./../config/embed.json");
 const links = require("./../config/links.json");
-const { maintenance, admins } = require("./../config/settings.json");
+const config = require("./../config/config.json");
 
 module.exports = client => {
 
@@ -15,8 +15,8 @@ module.exports = client => {
 
 await interaction.deferReply();
 
-if (maintenance === "true") {
-if (!admins.includes(interaction.user.id)) return interaction.editReply(`**Bot Is Under Maintenance. Please Try Again Leter**`)
+if(config.settings.maintenance) {
+if (!config.settings.admins.includes(interaction.user.id)) return interaction.editReply(`**Bot Is Under Maintenance. Please Try Again Leter**`)
 }
     
 const db = require("./../database/connect.js");
@@ -56,4 +56,4 @@ If You Believe You Got Banned By Mistake Go To [Appeal](${links.appeal}) And Sub
 	}
 });
 
-}
+                                                          }

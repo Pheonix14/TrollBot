@@ -11,13 +11,15 @@ module.exports = {
   const embed = new EmbedBuilder()
   .setColor(embeds.color)
     .setTitle(`**TrollBot Updates**`)
-.setDescription(`**Version - 2.2.2
+.setDescription(`**Version - 2.3.0
 
-- Christmas Event Ended
+- Removed Meme Commands.
 
-- Some Internal Changes
+- Setting Commands Are Now Formatted.
 
-- Bug Fixes
+- Bug Fixes.
+
+- System Stabilization.
 
 Thank You!
 - TrollBot Development

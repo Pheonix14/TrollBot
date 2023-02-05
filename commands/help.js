@@ -24,12 +24,6 @@ const row = new ActionRowBuilder()
  value: "help_first"
  },
 {
- label: "Memes", 
-  emoji: emojis.meme,
- description: "Click here to see Memes Commands", 
- value: "help_second"
-},
-{
  label: "Currency", 
   emoji: emojis.troll_coin,
  description: "Click here to see Currency Commands", 
@@ -84,13 +78,6 @@ const embed2 = new EmbedBuilder()
     .setDescription("`/ping`, `/help`, `/support`, `/invite`, `/updates`, `/vote`")
   .setFooter({text: `${embeds.footer}`});
 
-
-    const embed3 = new EmbedBuilder()
-    .setColor(embeds.color)
-  .setTitle(`${emojis.meme} Memes Commands`)
-    .setDescription("`/meme`, `/abandon`, `/facts`, `/note`, `/stonks`, `/comment`, `/tweet`")
-  .setFooter({text: `${embeds.footer}`});
-
   const embed4 = new EmbedBuilder()
     .setColor(embeds.color)
   .setTitle(`${emojis.troll_coin} Currency Commands`)
@@ -123,10 +110,6 @@ if(value === "help_first") {
 collected.reply ({embeds: [embed2], ephemeral: true})
 }
 
-if(value === "help_second") {
-
-collected.reply ({embeds: [embed3], ephemeral: true})
-}
 if(value === "help_third") {
 
 collected.reply ({embeds: [embed4], ephemeral: true})

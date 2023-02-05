@@ -2,8 +2,7 @@ const { EmbedBuilder } = require("discord.js");
 const embeds = require("./../config/embed.json");
 const emojis = require("./../config/emojis.json");
 const links = require("./../config/links.json");
-const { maintenance, admins, nonDeffer_cmd } = require("./../config/settings.json");
-const wait = require('node:timers/promises').setTimeout;
+const config = require("./../config/config.json");
 
 module.exports = client => {
 
@@ -14,10 +13,10 @@ module.exports = client => {
 	const command = client.commands.get(interaction.commandName);
   
 
-	if (nonDeffer_cmd.includes(interaction.commandName)) {
+	if (config.settings.nonDeffer_cmd.includes(interaction.options.getSubcommand())) {
 
-if (maintenance === "true") {
-if (!admins.includes(interaction.user.id)) return interaction.reply(`**Bot Is Under Maintenance. Please Try Again Leter**`)
+if(config.settings.maintenance) {
+if (!config.settings.admins.includes(interaction.user.id)) return interaction.reply(`**Bot Is Under Maintenance. Please Try Again Leter**`)
 }
     
 	  try {
@@ -31,8 +30,8 @@ if (!admins.includes(interaction.user.id)) return interaction.reply(`**Bot Is Un
 await interaction.deferReply();
 
  
-  if (maintenance === "true") {
-if (!admins.includes(interaction.user.id)) return interaction.editReply(`**Bot Is Under Maintenance. Please Try Again Leter**`);
+  if(config.settings.maintenance) {
+if (!config.settings.admins.includes(interaction.user.id)) return interaction.editReply(`**Bot Is Under Maintenance. Please Try Again Leter**`);
 }
     
 const db = require("./../database/connect.js");

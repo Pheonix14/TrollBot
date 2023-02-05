@@ -1,12 +1,12 @@
 const { ActivityType } = require('discord.js');
-const settings = require('./../config/settings.json');
+const config = require('./../config/config.json');
 
 
 module.exports = client => {
 
 client.on('ready', () => {
 
-if (settings.maintenance === "true") {
+if(config.settings.maintenance) {
 client.user.setPresence({ activities: [{ name: `Bot Under Maintenance`, type: ActivityType.Playing }], status: 'online' })
 
 } else {
@@ -14,7 +14,7 @@ client.user.setPresence({ activities: [{ name: `Bot Under Maintenance`, type: Ac
 setInterval(() => {
 
         const statuses = [
-            `/help | ${client.guilds.cache.size} Servers`, `${settings.presence}`, `${settings.presence2}`
+            `/help | ${client.guilds.cache.size} Servers`, `${config.settings.presence}`, `${config.settings.presence2}`
         ]
 
         const status = statuses[Math.floor(Math.random() * statuses.length)] 

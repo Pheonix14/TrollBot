@@ -1,7 +1,20 @@
 {
+  "bot": {
 "clientId": "",
 "guildId": "",
 "token": "",
-"memerkey": "",
-"MongoURI": ""
+"MongoURI": "",
+"webhook_key": ""
+  },
+  "settings": {
+"antiCrash": false,
+"maintenance": true,
+"globalCommands": false,
+"presence": "",
+"presence2": "",
+"votingApi": true,
+"owner": "674145228063768587",
+"admins": ["756508455837237358", "674145228063768587"],
+"nonDeffer_cmd": ["bio"]
+  }
 }

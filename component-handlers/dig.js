@@ -1,4 +1,5 @@
 const emojis = require("./../config/emojis.json");
+const config = require("./../config/config.json");
 const values = require("./../JSON/values.json");
 const embeds = require("./../config/embed.json");
 const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
@@ -37,6 +38,10 @@ await interaction.deferUpdate();
   
   let user = interaction.user;
 
+if(config.settings.maintenance) {
+if (!config.settings.admins.includes(interaction.user.id)) return interaction.followUp(`**Bot Is Under Maintenance. Please Try Again Leter**`)
+}
+  
 let register = await settings.get(`${user.id}.register`)
 
 if (register === undefined) register = 'false';
