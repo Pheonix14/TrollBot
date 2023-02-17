@@ -53,7 +53,7 @@ console.log(`Loading Modules...`);
   });
 
 console.log(`Loading Component Handlers...`);
-["dig", "fish", "modals", "context-menu"]
+["dig", "fish", "context-menu"]
   .filter(Boolean)
   .forEach(c => {
     require(`./component-handlers/${c}`)(client);

@@ -46,6 +46,9 @@ module.exports = {
       subcommand
         .setName('bio')
         .setDescription('⚙️ change profile bio')
+       .addStringOption(option =>
+		option.setName('bio')
+			.setDescription('Set A Bio For Your Profile').setRequired(true))
     ),
   async execute(interaction, client) {
 
@@ -392,27 +395,26 @@ module.exports = {
 
     if (interaction.options.getSubcommand() === 'bio') {
 
+const db = require("./../database/connect.js");
+
+const items = db.table('items');
+const settings = db.table('settings');
+      
+let phone = await items.get(`${interaction.user.id}.phone`)
+
+  if (phone === undefined) phone = 0;
+
+if (phone === 0) {
+  return interaction.editReply("You Need A Phone To Use This Command. Tip: use /shop and /buy to buy a phone")
+}
+    
+const submitted_bio = interaction.options.getString('bio');
 
 
-      const modal = new ModalBuilder()
-        .setCustomId('myModal')
-        .setTitle('Profile Bio');
-
-
-      const bio = new TextInputBuilder()
-        .setCustomId('bio')
-        .setLabel("Text")
-        .setStyle(TextInputStyle.Short)
-        .setRequired(true);
-
-
-      const firstActionRow = new ActionRowBuilder().addComponents(bio);
-
-      modal.addComponents(firstActionRow);
-
-
-      await interaction.showModal(modal);
-
+await settings.set(`${interaction.user.id}.bio`, submitted_bio)
+    
+		await interaction.editReply({ content: `**Your Profile Bio Changed To** ***${submitted_bio}*** **Successfully!**` });
+      
     }
 
   },

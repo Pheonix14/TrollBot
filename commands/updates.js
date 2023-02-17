@@ -11,15 +11,9 @@ module.exports = {
   const embed = new EmbedBuilder()
   .setColor(embeds.color)
     .setTitle(`**TrollBot Updates**`)
-.setDescription(`**Version - 2.3.0
+.setDescription(`**Version - 2.3.1
 
-- Removed Meme Commands.
-
-- Setting Commands Are Now Formatted.
-
-- Bug Fixes.
-
-- System Stabilization.
+- /settings bio Command's Error Fixed
 
 Thank You!
 - TrollBot Development
