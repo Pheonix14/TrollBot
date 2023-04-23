@@ -65,7 +65,7 @@ require('./database/connect.js');
 
 // login to the bot
 
-console.log(`Logging Into To The Bot...`)
+console.log(`Logging Into To The Bot...`);
 
 client.login(config.bot.token);
 
